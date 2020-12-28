@@ -7,7 +7,7 @@ abstract class PomodoroThemeData {
   // Color get backgroundLight;
   Color get backgroundLightest;
   Color get foreground;
-  // Color get foregroundDarker;
+  Color get foregroundDarker;
   // Color get foregroundDarkest;
   Color get error;
   Color get background;
@@ -28,7 +28,7 @@ abstract class PomodoroThemeData {
         primary: accent,
         primaryVariant: backgroundLightest, // todo
         secondary: backgroundLightest,
-        secondaryVariant: backgroundLightest, // todo
+        secondaryVariant: foregroundDarker,
         surface: backgroundLightest, // todo
         background: background,
         error: error,
@@ -87,6 +87,9 @@ abstract class PomodoroThemeData {
       appBarTheme: AppBarTheme(
         color: background,
         elevation: 0,
+      ),
+      buttonTheme: ButtonThemeData(
+        buttonColor: backgroundLightest,
       ),
     );
   }

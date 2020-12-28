@@ -32,9 +32,13 @@ format-analyze: ## run code analyzer && format code
 generate: ## update generated files
 	fvm flutter pub run build_runner build --delete-conflicting-outputs
 
-.PHONY: run-dev
+.PHONY: run-web
 run-web: ## run web app
 	fvm flutter run -d chrome --target lib/main.dart
+
+.PHONY: run-desktop
+run-desktop: ## run macos desktop
+	fvm flutter run -d macos --target lib/main.dart
 
 .PHONY: run-dev
 run-dev: ## run app in debug mode with production flavor

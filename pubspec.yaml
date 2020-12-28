@@ -27,6 +27,7 @@ dependencies:
 
   # UI
   cupertino_icons: ^1.0.0
+  auto_size_text: ^2.1.0
 
   # State Management
   state_notifier: '>=0.6.0 <1.0.0'
@@ -71,3 +72,6 @@ flutter:
       fonts:
         - asset: assets/fonts/RobotoMono-Light.ttf
           weight: 200
+    - family:  PomodoroIcons
+      fonts:
+        - asset: assets/fonts/PomodoroIcons.ttf
