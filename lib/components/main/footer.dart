@@ -35,14 +35,14 @@ class _LeftFooter extends HookWidget {
           TextButton(
             style: TextButton.styleFrom(
               primary: theme.colorScheme.secondary,
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w200,
                 letterSpacing: 0.05,
               ),
             ),
-            child: Text('Reset'),
             onPressed: () => context.read(timerControllerProvider).resetTimer(),
+            child: const Text('Reset'),
           ),
         ],
       ),
@@ -61,7 +61,7 @@ class _RightFooter extends StatelessWidget {
       bottom: 16,
       right: 16,
       child: IconButton(
-        icon: Icon(CupertinoIcons.forward),
+        icon: const Icon(CupertinoIcons.forward),
         onPressed: () => context.read(timerControllerProvider).setNextRound(),
       ),
     );

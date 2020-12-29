@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
-import 'package:pomodoro/components/settings/controllers/intervals.dart';
-import 'package:pomodoro/components/settings/controllers/theme.dart';
+
+import '../controllers/intervals.dart';
+import '../controllers/theme.dart';
 
 class TimerSection extends StatelessWidget {
   const TimerSection({
@@ -111,14 +112,14 @@ class _ResetButton extends HookWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           primary: theme.foregroundDarker,
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w200,
             letterSpacing: 0.05,
           ),
         ),
-        child: Text('Reset Default'),
         onPressed: context.read(intervalsProvider).resetAllValues,
+        child: const Text('Reset Default'),
       ),
     );
   }
@@ -162,10 +163,10 @@ class _Row extends HookWidget {
           const SizedBox(height: 16),
           Container(
             color: theme.background,
-            padding: EdgeInsets.all(6),
+            padding: const EdgeInsets.all(6),
             child: Text(
               '$value:00',
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'RobotoMono',
                 fontSize: 12,
               ),

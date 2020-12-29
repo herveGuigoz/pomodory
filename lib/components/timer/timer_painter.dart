@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 
 class CustomTimerPainter extends CustomPainter {
   CustomTimerPainter({
@@ -18,13 +19,13 @@ class CustomTimerPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
+    final paint = Paint()
       ..color = color
       ..strokeWidth = strokeWidth ?? 5.0
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
-    Paint circle = Paint()
+    final circle = Paint()
       ..color = color
       ..strokeWidth = strokeWidth / 3 ?? 1.0
       ..strokeCap = StrokeCap.round
@@ -32,7 +33,7 @@ class CustomTimerPainter extends CustomPainter {
 
     canvas.drawCircle(size.center(Offset.zero), size.width / 2, circle);
     // double progress = (animation.value) * 2 * math.pi;
-    double progress = value * 2 * math.pi;
+    final progress = value * 2 * math.pi;
     paint.color = fillColor;
     canvas.drawArc(Offset.zero & size, math.pi * 1.5, progress, false, paint);
 
@@ -48,12 +49,9 @@ class CustomTimerPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomTimerPainter old) {
-    // return animation.value != old.animation.value ||
-    //     color != old.color ||
-    //     fillColor != old.fillColor;
-    return value != old.value ||
-        color != old.color ||
-        fillColor != old.fillColor;
+  bool shouldRepaint(CustomTimerPainter oldDelegate) {
+    return value != oldDelegate.value ||
+        color != oldDelegate.color ||
+        fillColor != oldDelegate.fillColor;
   }
 }

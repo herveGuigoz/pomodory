@@ -24,10 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # UI
-  cupertino_icons: ^1.0.0
   auto_size_text: ^2.1.0
+  cupertino_icons: ^1.0.0
 
   # State Management
   state_notifier: '>=0.6.0 <1.0.0'

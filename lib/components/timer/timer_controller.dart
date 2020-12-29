@@ -1,10 +1,10 @@
-import 'package:hooks_riverpod/all.dart';
-import 'package:pomodoro/components/settings/controllers/intervals.dart';
-import 'package:pomodoro/components/timer/ticker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/all.dart';
 
 import '../../core/extensions/duration.dart';
+import '../settings/controllers/intervals.dart';
+import 'ticker.dart';
 
 part 'timer_controller.freezed.dart';
 
@@ -14,7 +14,7 @@ class TimerController extends TickerService {
   final IntervalsSettings _settings;
 
   static TimerState getInitialState(IntervalsSettings settings) {
-    final round = Round.work();
+    const round = Round.work();
     final duration = round.getRoundDuration(settings);
     return TimerState(
       round: 0,
@@ -26,11 +26,11 @@ class TimerController extends TickerService {
   }
 
   void setNextRound({bool mustStartTimer = false}) {
-    Round nextRound = state.currentRound.maybeWhen(
+    final nextRound = state.currentRound.maybeWhen(
       work: () => state.round < _settings.roundsLength
-          ? Round.shortBreak()
-          : Round.longBreak(),
-      orElse: () => Round.work(),
+          ? const Round.shortBreak()
+          : const Round.longBreak(),
+      orElse: () => const Round.work(),
     );
 
     state = state.copyWith(
@@ -69,7 +69,7 @@ abstract class TimerState implements _$TimerState {
 
   /// This Method returns the **Current Time** of Countdown Timer
   String get time => Duration(seconds: value).time;
-  double get fractionalValue => (value / (duration.inSeconds / 100) / 100);
+  double get fractionalValue => value / (duration.inSeconds / 100) / 100;
 }
 
 @freezed

@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
-import 'package:pomodoro/components/settings/controllers/theme.dart';
-import 'package:pomodoro/core/theme/pomodoro_icons.dart';
 
+import '../../core/theme/pomodoro_icons.dart';
+import '../settings/controllers/theme.dart';
 import '../settings/views/intervals.dart';
 import '../settings/views/theme.dart';
 
@@ -26,7 +26,7 @@ class PomodoroDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
-    String label = semanticLabel;
+    var label = semanticLabel;
     switch (Theme.of(context).platform) {
       case TargetPlatform.iOS:
       case TargetPlatform.macOS:
@@ -46,7 +46,7 @@ class PomodoroDrawer extends StatelessWidget {
         constraints: const BoxConstraints.expand(),
         child: Material(
           elevation: elevation,
-          child: _Content(),
+          child: const _Content(),
         ),
       ),
     );
@@ -62,7 +62,6 @@ class _Content extends HookWidget {
   Widget build(BuildContext context) {
     final index = useState<int>(0);
     final theme = useProvider(themeControllerProvider.state);
-    print(index);
 
     return Scaffold(
       backgroundColor: theme.backgroundLight,
@@ -70,14 +69,14 @@ class _Content extends HookWidget {
         leading: IconButton(
           splashRadius: 0.01,
           color: Theme.of(context).colorScheme.secondary,
-          icon: Icon(CupertinoIcons.chevron_back),
+          icon: const Icon(CupertinoIcons.chevron_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         title: Text(
           _items[index.value].label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.normal,
             letterSpacing: 0.05,

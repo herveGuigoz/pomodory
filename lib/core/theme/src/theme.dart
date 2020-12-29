@@ -25,20 +25,38 @@ class PomodoroTheme extends PomodoroThemeData with PomodoroTextTheme {
   });
 
   final String name;
+
   // Long break countdown color
   final Color longRound;
+
   // Short break countdown color
   final Color shortRound;
+
   // Work countdown color
   final Color focusRound;
+
+  @override
   final Color background;
+
   final Color backgroundLight;
+
+  @override
   final Color backgroundLightest;
+
+  @override
   final Color foreground;
+
+  @override
   final Color foregroundDarker;
+
   final Color foregroundDarkest;
+
+  @override
   final Color accent;
+
+  @override
   final Color error;
 
+  @override
   double get backgroundLuminance => background.computeLuminance();
 }

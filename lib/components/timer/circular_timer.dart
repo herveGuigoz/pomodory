@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 
-import 'package:pomodoro/components/timer/timer_controller.dart';
+import 'timer_controller.dart';
 import 'timer_painter.dart';
 
 class CircularCountDownTimer extends StatelessWidget {
-  CircularCountDownTimer({
+  const CircularCountDownTimer({
     Key key,
     @required this.label,
     @required this.width,
@@ -63,7 +63,7 @@ class CircularCountDownTimer extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -71,7 +71,7 @@ class CircularCountDownTimer extends StatelessWidget {
                   child: Align(
                     alignment: FractionalOffset.center,
                     child: AspectRatio(
-                      aspectRatio: 1.0,
+                      aspectRatio: 1,
                       child: Stack(
                         children: <Widget>[
                           _Painter(
@@ -142,7 +142,7 @@ class _Painter extends HookWidget {
 }
 
 class _Time extends HookWidget {
-  _Time({
+  const _Time({
     Key key,
     @required this.textStyle,
   }) : super(key: key);

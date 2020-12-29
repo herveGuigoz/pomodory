@@ -341,7 +341,7 @@ class _$Work extends Work with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'Round.work'));
+    properties.add(DiagnosticsProperty('type', 'Round.work'));
   }
 
   @override
@@ -443,7 +443,7 @@ class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'Round.shortBreak'));
+    properties.add(DiagnosticsProperty('type', 'Round.shortBreak'));
   }
 
   @override
@@ -544,7 +544,7 @@ class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'Round.longBreak'));
+    properties.add(DiagnosticsProperty('type', 'Round.longBreak'));
   }
 
   @override

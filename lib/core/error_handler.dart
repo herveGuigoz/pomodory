@@ -12,7 +12,7 @@ class ErrorHandler {
   }) {
     if (kReleaseMode) {
       // override the error widget in release mode (the red error screen)
-      ErrorWidget.builder = (FlutterErrorDetails details) => const SizedBox();
+      ErrorWidget.builder = (details) => const SizedBox();
     }
 
     FlutterError.onError = _handleFlutterError;

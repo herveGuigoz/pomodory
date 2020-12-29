@@ -13,7 +13,7 @@ class MainAppBarIconButton extends StatelessWidget {
         splashRadius: 0.01,
         splashColor: Colors.transparent,
         hoverColor: Colors.transparent,
-        icon: Icon(CupertinoIcons.line_horizontal_3),
+        icon: const Icon(CupertinoIcons.line_horizontal_3),
         onPressed: () {
           Scaffold.of(context).openDrawer();
         },
