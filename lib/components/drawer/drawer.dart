@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/all.dart';
 
 import '../../core/theme/pomodoro_icons.dart';
 import '../settings/controllers/theme.dart';
+import '../settings/views/info.dart';
 import '../settings/views/intervals.dart';
 import '../settings/views/theme.dart';
 

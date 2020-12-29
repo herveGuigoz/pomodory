@@ -65,7 +65,7 @@ const List<Item> _items = <Item>[
   ),
   Item(
     label: 'Info',
-    child: SizedBox(),
+    child: Info(),
     iconData: PomodoroIcons.info,
   ),
 ];
