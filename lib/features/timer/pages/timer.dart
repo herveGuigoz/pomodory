@@ -6,15 +6,23 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+import '../../../core/icons/pomodoro_icons.dart';
 import '../../settings/bloc/bloc.dart';
 import '../../settings/pages/settings.dart';
 import '../bloc/bloc.dart';
 
 part '../widgets/drawer.dart';
 part '../widgets/drawer_icon_button.dart';
-part '../widgets/footer.dart';
+part '../widgets/next_interval_icon_button.dart';
 part '../widgets/circular_timer.dart';
 part '../widgets/play_pause_button.dart';
+part '../widgets/round_count.dart';
+part '../widgets/rollback_icon_button.dart';
+
+const double _kIconSizes = 21;
+const _kSplashRadius = 0.01;
+const _kSplashColor = Colors.transparent;
+const _kHoverColor = Colors.transparent;
 
 class Timer extends HookWidget {
   const Timer({
@@ -27,7 +35,8 @@ class Timer extends HookWidget {
       drawer: const PomodoroDrawer(),
       body: Stack(
         children: [
-          AppBar(leading: const _DrawerIconButton()),
+          const _DrawerIconButton(),
+          const _RoundsCount(),
           Align(
             alignment: FractionalOffset.center,
             child: Column(
@@ -39,8 +48,8 @@ class Timer extends HookWidget {
               ],
             ),
           ),
-          const _LeftFooter(),
-          const _RightFooter(),
+          const _RollbackIconButton(),
+          const _NextIntervalIconButton(),
         ],
       ),
     );
@@ -72,7 +81,7 @@ class _CircularCountDownTimerImplementation extends HookWidget {
       // Text Style for Countdown Text
       countdownTextStyle: TextStyle(
         fontFamily: 'RobotoMono',
-        fontSize: 40,
+        fontSize: 30,
         color: theme.primaryVariant,
         fontWeight: FontWeight.bold,
       ),

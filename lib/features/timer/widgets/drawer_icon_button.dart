@@ -7,16 +7,20 @@ class _DrawerIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) => IconButton(
-        color: Theme.of(context).colorScheme.secondary,
-        splashRadius: 0.01,
-        splashColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        icon: const Icon(CupertinoIcons.line_horizontal_3),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
+    return Positioned(
+      top: 16,
+      left: 16,
+      child: Builder(
+        builder: (context) => IconButton(
+          splashRadius: _kSplashRadius,
+          splashColor: _kSplashColor,
+          hoverColor: _kHoverColor,
+          icon: const Icon(PomodoroIcons.menu),
+          // icon: const Icon(CupertinoIcons.line_horizontal_3),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
       ),
     );
   }

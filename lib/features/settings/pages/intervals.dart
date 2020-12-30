@@ -15,7 +15,6 @@ class _Timer extends StatelessWidget {
           _ShortBreak(),
           _LongBreak(),
           _Rounds(),
-          _ResetButton(),
         ],
       ),
     );
@@ -90,32 +89,6 @@ class _Rounds extends StatelessWidget {
       color: context.read(themeProvider).textColor,
       onChanged: context.read(settingsProvider).setRoundsLength,
       selector: (setting) => setting.roundsLength,
-    );
-  }
-}
-
-class _ResetButton extends HookWidget {
-  const _ResetButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
-
-    return Align(
-      child: TextButton(
-        style: TextButton.styleFrom(
-          primary: theme.secondaryVariant,
-          textStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w200,
-            letterSpacing: 0.05,
-          ),
-        ),
-        onPressed: context.read(settingsProvider).resetAllValues,
-        child: const Text('Reset Default'),
-      ),
     );
   }
 }
