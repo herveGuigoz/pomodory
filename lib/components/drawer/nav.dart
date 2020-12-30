@@ -1,7 +1,7 @@
 part of 'drawer.dart';
 
-class _NavigationBar extends HookWidget {
-  const _NavigationBar({
+class NavigationBar extends HookWidget {
+  const NavigationBar({
     Key key,
     @required this.index,
     @required this.onTap,
@@ -21,9 +21,9 @@ class _NavigationBar extends HookWidget {
       selectedItemColor: theme.colorScheme.secondary,
       unselectedItemColor: theme.iconTheme.color,
       currentIndex: index,
-      items: _items.map((item) {
+      items: navigationItems.map((item) {
         return BottomNavigationBarItem(
-          label: '',
+          label: item.label,
           icon: Icon(item.iconData, size: 18),
         );
       }).toList(),
@@ -46,7 +46,7 @@ class Item {
   final IconData iconData;
 }
 
-const List<Item> _items = <Item>[
+const List<Item> navigationItems = <Item>[
   Item(
     label: 'Timer',
     child: TimerSection(),
@@ -60,7 +60,7 @@ const List<Item> _items = <Item>[
   ),
   Item(
     label: 'Settings',
-    child: SizedBox(),
+    child: PreferencesSection(),
     iconData: PomodoroIcons.settings,
   ),
   Item(

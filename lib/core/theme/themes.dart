@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'src/theme.dart';
+export 'src/theme.dart';
 
 part 'dracula.dart';
 part 'pomotroid.dart';
@@ -25,3 +26,10 @@ final themes = <PomodoroTheme>[
   GruvboxTheme(),
   MonokaiTheme(),
 ];
+
+// extension PomodoryThemesExt on List<PomotroidTheme> {
+//   PomodoroTheme getThemeByName(String value) => themes.firstWhere(
+//         (theme) => theme.name == value,
+//         orElse: () => themes.first,
+//       );
+// }

@@ -12,7 +12,7 @@ class _LeftFooter extends HookWidget {
       timerControllerProvider.state.select((value) => value.round),
     );
     final totalRounds = useProvider(
-      intervalsProvider.state.select((value) => value.roundsLength),
+      settingsProvider.state.select((value) => value.roundsLength),
     );
 
     return Positioned(

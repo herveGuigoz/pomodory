@@ -36,7 +36,7 @@ const $TimerState = _$TimerStateTearOff();
 
 /// @nodoc
 mixin _$TimerState {
-  Duration get duration;
+  Duration get duration; // todo rename to tick
   int get value;
   bool get isPlaying;
   int get round;
@@ -160,7 +160,7 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
 
   @override
   final Duration duration;
-  @override
+  @override // todo rename to tick
   final int value;
   @override
   final bool isPlaying;
@@ -232,7 +232,7 @@ abstract class _TimerState extends TimerState {
 
   @override
   Duration get duration;
-  @override
+  @override // todo rename to tick
   int get value;
   @override
   bool get isPlaying;
@@ -341,7 +341,7 @@ class _$Work extends Work with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'Round.work'));
+    properties..add(DiagnosticsProperty('type', 'Round.work'));
   }
 
   @override
@@ -443,7 +443,7 @@ class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'Round.shortBreak'));
+    properties..add(DiagnosticsProperty('type', 'Round.shortBreak'));
   }
 
   @override
@@ -544,7 +544,7 @@ class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'Round.longBreak'));
+    properties..add(DiagnosticsProperty('type', 'Round.longBreak'));
   }
 
   @override

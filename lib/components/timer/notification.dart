@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import '../../core/file_helper.dart';
-import '../../core/notifications.dart';
+import '../../core/notifications/notifications.dart';
 import 'ticker.dart';
 
 mixin TimerNotification on TickerService {
@@ -9,7 +9,7 @@ mixin TimerNotification on TickerService {
   static const _iconGreen = 'assets/images/icon_green.png';
   static const _iconRed = 'assets/images/icon.png';
 
-  Future<void> showNotification() async {
+  Future<void> showNotification({bool playSound}) async {
     String title, body;
     File icon;
 
@@ -31,6 +31,11 @@ mixin TimerNotification on TickerService {
       },
     );
 
-    await PomodoroNotification.instance.show(title, body, icon.path);
+    await PomodoroNotification.instance.show(
+      title,
+      body,
+      filePath: icon.path,
+      withSound: playSound,
+    );
   }
 }

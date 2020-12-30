@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/theme/themes.dart';
-import '../controllers/theme.dart';
+import '../settings_controller.dart';
 
 class ThemeSection extends HookWidget {
   const ThemeSection({
@@ -13,9 +13,7 @@ class ThemeSection extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentTheme = useProvider(
-      themeControllerProvider.state.select((value) => value.name),
-    );
+    final currentTheme = useProvider(themeProvider).name;
     return Padding(
       padding: const EdgeInsets.all(8),
       child: ListView.builder(
@@ -45,8 +43,7 @@ class ThemeSection extends HookWidget {
                 trailing: currentTheme == theme.name
                     ? const Icon(CupertinoIcons.check_mark)
                     : null,
-                onTap: () =>
-                    context.read(themeControllerProvider).theme = theme,
+                onTap: () => context.read(settingsProvider).theme = theme,
               ),
             ),
           );

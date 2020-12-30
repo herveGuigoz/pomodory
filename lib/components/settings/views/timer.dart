@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 
-import '../controllers/intervals.dart';
-import '../controllers/theme.dart';
+import '../settings_controller.dart';
 
 class TimerSection extends StatelessWidget {
   const TimerSection({
@@ -38,9 +37,9 @@ class _Focus extends StatelessWidget {
       item: 'Focus',
       min: kMinDurationValue,
       max: kMaxDurationValue,
-      color: context.read(themeControllerProvider.state).focusRound,
-      onChanged: context.read(intervalsProvider).setFocusDurationAsInt,
-      selector: (setting) => setting.focus,
+      color: context.read(themeProvider).focusRound,
+      onChanged: context.read(settingsProvider).setFocusDurationAsInt,
+      selector: (setting) => setting.focusInMinutes,
     );
   }
 }
@@ -56,9 +55,9 @@ class _ShortBreak extends StatelessWidget {
       item: 'Short Break',
       min: kMinDurationValue,
       max: kMaxDurationValue,
-      color: context.read(themeControllerProvider.state).shortRound,
-      onChanged: context.read(intervalsProvider).setShortBreakDurationAsInt,
-      selector: (setting) => setting.shortBreak,
+      color: context.read(themeProvider).shortRound,
+      onChanged: context.read(settingsProvider).setShortBreakDurationAsInt,
+      selector: (setting) => setting.shortBreakInMinutes,
     );
   }
 }
@@ -74,9 +73,9 @@ class _LongBreak extends StatelessWidget {
       item: 'Long Break',
       min: kMinDurationValue,
       max: kMaxDurationValue,
-      color: context.read(themeControllerProvider.state).longRound,
-      onChanged: context.read(intervalsProvider).setLongBreakDurationAsInt,
-      selector: (setting) => setting.longBreak,
+      color: context.read(themeProvider).longRound,
+      onChanged: context.read(settingsProvider).setLongBreakDurationAsInt,
+      selector: (setting) => setting.longBreakInMinutes,
     );
   }
 }
@@ -92,8 +91,8 @@ class _Rounds extends StatelessWidget {
       item: 'Rounds',
       min: kMinRoundsNubers,
       max: kMaxRoundsNubers,
-      color: context.read(themeControllerProvider.state).textColor,
-      onChanged: context.read(intervalsProvider).setRoundsLength,
+      color: context.read(themeProvider).textColor,
+      onChanged: context.read(settingsProvider).setRoundsLength,
       selector: (setting) => setting.roundsLength,
     );
   }
@@ -106,7 +105,7 @@ class _ResetButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = useProvider(themeControllerProvider.state);
+    final theme = Theme.of(context).colorScheme;
 
     return Align(
       child: TextButton(
@@ -118,7 +117,7 @@ class _ResetButton extends HookWidget {
             letterSpacing: 0.05,
           ),
         ),
-        onPressed: context.read(intervalsProvider).resetAllValues,
+        onPressed: context.read(settingsProvider).resetAllValues,
         child: const Text('Reset Default'),
       ),
     );
@@ -141,12 +140,12 @@ class _Row extends HookWidget {
   final int max;
   final Color color;
   final void Function(int) onChanged;
-  final int Function(IntervalsSettings) selector;
+  final int Function(Settings) selector;
 
   @override
   Widget build(BuildContext context) {
-    final value = useProvider(intervalsProvider.state.select(selector));
-    final theme = useProvider(themeControllerProvider.state);
+    final value = useProvider(settingsProvider.state.select(selector));
+    final theme = Theme.of(context);
 
     return SizedBox(
       height: 105,
@@ -155,14 +154,14 @@ class _Row extends HookWidget {
           Text(
             item,
             style: TextStyle(
-              color: theme.secondary,
+              color: theme.colorScheme.secondary,
               fontSize: 14,
               letterSpacing: 0.05,
             ),
           ),
           const SizedBox(height: 16),
           Container(
-            color: theme.background,
+            color: theme.backgroundColor,
             padding: const EdgeInsets.all(6),
             child: Text(
               '$value:00',
@@ -177,7 +176,7 @@ class _Row extends HookWidget {
             min: min.toDouble(),
             max: max.toDouble(),
             activeColor: color,
-            inactiveColor: theme.background,
+            inactiveColor: theme.backgroundColor,
             value: value.toDouble(),
             onChanged: (value) => onChanged(value.toInt()),
           )

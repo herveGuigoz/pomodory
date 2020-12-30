@@ -4,8 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 
 import '../drawer/drawer.dart';
-import '../settings/controllers/intervals.dart';
-import '../settings/controllers/theme.dart';
+import '../settings/settings_controller.dart';
 import '../timer/circular_timer.dart';
 import '../timer/timer_controller.dart';
 
@@ -69,7 +68,7 @@ class _Timer extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = useProvider(themeControllerProvider.state);
+    final theme = useProvider(themeProvider);
     final state = useProvider(
       timerControllerProvider.state.select((value) => value.currentRound),
     );

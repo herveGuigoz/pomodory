@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/all.dart';
 
 import '../../core/icons/pomodoro_icons.dart';
-import '../settings/controllers/theme.dart';
+import '../settings/settings.dart';
 import '../settings/views/info.dart';
-import '../settings/views/intervals.dart';
+import '../settings/views/preferences.dart';
 import '../settings/views/theme.dart';
+import '../settings/views/timer.dart';
 
 part 'nav.dart';
 
@@ -45,48 +45,8 @@ class PomodoroDrawer extends StatelessWidget {
         constraints: const BoxConstraints.expand(),
         child: Material(
           elevation: elevation,
-          child: const _Content(),
+          child: const Settings(),
         ),
-      ),
-    );
-  }
-}
-
-class _Content extends HookWidget {
-  const _Content();
-
-  @override
-  Widget build(BuildContext context) {
-    final index = useState<int>(0);
-    final theme = useProvider(themeControllerProvider.state);
-
-    return Scaffold(
-      backgroundColor: theme.primary,
-      appBar: AppBar(
-        leading: IconButton(
-          splashRadius: 0.01,
-          color: Theme.of(context).colorScheme.secondary,
-          icon: const Icon(CupertinoIcons.chevron_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        title: Text(
-          _items[index.value].label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.normal,
-            letterSpacing: 0.05,
-          ),
-        ),
-      ),
-      body: AnimatedSwitcher(
-        duration: kThemeAnimationDuration,
-        child: _items[index.value].child,
-      ),
-      bottomNavigationBar: _NavigationBar(
-        index: index.value,
-        onTap: (i) => index.value = i,
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/all.dart';
 
 import '../../core/extensions/duration.dart';
-import '../settings/controllers/intervals.dart';
+import '../settings/settings_controller.dart';
 import 'notification.dart';
 import 'ticker.dart';
 
@@ -12,8 +12,9 @@ part 'timer_controller.freezed.dart';
 class TimerController extends TickerService with TimerNotification {
   TimerController(this.settings) : super(settings.initialTimerState);
 
-  final IntervalsSettings settings;
+  final Settings settings;
 
+  /// Switch to either work, shortBreak or longBreak,
   void setNextRound({bool mustStartTimer = false}) {
     final nextRound = state.currentRound.maybeWhen(
       work: () => state.round < settings.roundsLength
@@ -39,17 +40,21 @@ class TimerController extends TickerService with TimerNotification {
   }
 
   /// Reset current period.
-  /// Reset iteration only if counter has decreased.
+  /// Reset iteration only if counter hasnt decreased.
   void reset() {
     final isRoundOnStart = state.duration.inSeconds == state.value;
     resetTimer();
     if (isRoundOnStart) state = settings.initialTimerState;
   }
 
+  /// Called when timer ended.
+  /// Follow user preferences to start next timer and show notification.
   @override
   Future<void> onDone() async {
-    setNextRound(mustStartTimer: state.currentRound is! LongBreak);
-    await showNotification();
+    setNextRound(mustStartTimer: state.currentRound.autoStartNext(settings));
+    if (settings.desktopNotifications) {
+      await showNotification(playSound: settings.desktopNotificationsSound);
+    }
   }
 }
 
@@ -68,10 +73,14 @@ abstract class TimerState implements _$TimerState {
 
   /// This Method returns the **Current Time** of Countdown Timer
   String get time => Duration(seconds: value).time;
+
+  /// This Method returns the fractional value (between 0 to 1) of Countdown Timer
   double get fractionalValue => value / (duration.inSeconds / 100) / 100;
 }
 
-extension TimerStateExt on IntervalsSettings {
+/// Helper to build initial state.
+extension TimerStateExt on Settings {
+  /// Initial state will be work round with user preferences for durations.
   TimerState get initialTimerState {
     const round = Round.work();
     final duration = round.getRoundDuration(this);
@@ -93,18 +102,23 @@ abstract class Round implements _$Round {
   const factory Round.shortBreak() = ShortBreak;
   const factory Round.longBreak() = LongBreak;
 
-  Duration getRoundDuration(IntervalsSettings settings) => when(
-        work: () => Duration(seconds: settings.focus),
-        shortBreak: () => Duration(seconds: settings.shortBreak),
-        longBreak: () => Duration(seconds: settings.longBreak),
-        // work: () => Duration(minutes: settings.focus),
-        // shortBreak: () => Duration(minutes: settings.shortBreak),
-        // longBreak: () => Duration(minutes: settings.longBreak),
+  Duration getRoundDuration(Settings settings) => when(
+        work: () => Duration(minutes: settings.focusInMinutes),
+        shortBreak: () => Duration(minutes: settings.shortBreakInMinutes),
+        longBreak: () => Duration(minutes: settings.longBreakInMinutes),
       );
+
+  bool autoStartNext(Settings settings) {
+    return when(
+      work: () => settings.autoStartBreakTimer,
+      shortBreak: () => settings.autoStartWorkTimer,
+      longBreak: () => false,
+    );
+  }
 }
 
 final timerControllerProvider = StateNotifierProvider<TimerController>((ref) {
-  final settings = ref.watch(intervalsProvider.state);
+  final settings = ref.watch(settingsProvider.state);
   final controller = TimerController(settings);
 
   return controller;

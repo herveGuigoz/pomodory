@@ -27,27 +27,35 @@ class PomodoroNotification {
     return notificationsPlugin;
   }
 
-  Future<void> requestPermission() async {
-    await _service
-        .resolvePlatformSpecificImplementation<
-            MacOSFlutterLocalNotificationsPlugin>()
-        .requestPermissions(
-          alert: true,
-          badge: true,
-          sound: true,
-        );
-  }
+  // Future<void> requestPermission() async {
+  //   await _service
+  //       .resolvePlatformSpecificImplementation<
+  //           MacOSFlutterLocalNotificationsPlugin>()
+  //       .requestPermissions(
+  //         alert: true,
+  //         badge: true,
+  //         sound: true,
+  //       );
+  // }
 
-  Future<void> show(String title, String body, String filePath) async {
+  Future<void> show(
+    String title,
+    String body, {
+    String filePath,
+    bool withSound,
+  }) async {
     await _service.show(
       0,
       title,
       body,
       NotificationDetails(
         macOS: MacOSNotificationDetails(
-          attachments: <MacOSNotificationAttachment>[
-            MacOSNotificationAttachment(filePath)
-          ],
+          presentSound: withSound ?? true,
+          attachments: filePath != null
+              ? [
+                  MacOSNotificationAttachment(filePath),
+                ]
+              : null,
         ),
       ),
     );
