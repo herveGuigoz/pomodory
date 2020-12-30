@@ -41,7 +41,7 @@ class _LeftFooter extends HookWidget {
                 letterSpacing: 0.05,
               ),
             ),
-            onPressed: () => context.read(timerControllerProvider).resetTimer(),
+            onPressed: () => context.read(timerControllerProvider).reset(),
             child: const Text('Reset'),
           ),
         ],
@@ -67,3 +67,42 @@ class _RightFooter extends StatelessWidget {
     );
   }
 }
+
+// focus 7h30 - 7h55 (25 min)
+// pause 7h55 - 8h00 (5 min)
+// focus 8h00 - 8h25 (25 min)
+// pause 8h25 - 8h30 (5 min)
+// focus 8h30 - 8h55 (25 min)
+// pause 8h55 - 9h00 (5 min)
+// focus 9h00 - 9h25 (25 min)
+// pause 9h25 - 9h40 (15 min)
+// 1h40
+
+// focus 9h40 - 10h05 (25 min)
+// pause 10h05 - 10h20 (5 min)
+// focus 10h20 - 10h45 (25 min)
+// pause 10h45 - 10h50 (5 min)
+// focus 10h50 - 11h15 (25 min)
+// pause 11h15 - 11h20 (5 min)
+// focus 11h20 - 11h45 (25 min)
+// 3h20
+
+// focus 12h30 - 12h55 (25 min)
+// pause 12h55 - 13h00 (5 min)
+// focus 13h00 - 13h25 (25 min)
+// pause 13h25 - 13h30 (5 min)
+// focus 13h30 - 13h55 (25 min)
+// pause 13h55 - 14h00 (5 min)
+// focus 14h00 - 14h25 (25 min)
+// pause 14h25 - 14h40 (15 min)
+// 4h00
+
+// focus 14h40 - 15h05 (25 min)
+// pause 15h05 - 15h10 (5 min)
+// focus 15h10 - 15h35 (25 min)
+// pause 15h35 - 15h40 (5 min)
+// focus 15h40 - 16h05 (25 min)
+// pause 16h05 - 16h10 (5 min)
+// focus 16h10 - 16h35 (25 min)
+// pause 16h35 - 16h50 (15 min)
+// 5h40

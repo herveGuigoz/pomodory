@@ -6,7 +6,7 @@ mixin PomodoroTextTheme {
   static const FontWeight latoFontWeight = FontWeight.w400;
   static const double titleFontSize = 14;
 
-  Color get accent;
+  Color get textColor;
 
   TextTheme get textTheme =>
       Typography.englishLike2018.apply(fontFamily: lato).copyWith(
@@ -16,7 +16,7 @@ mixin PomodoroTextTheme {
               letterSpacing: 6,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent,
+              color: textColor,
               fontFamilyFallback: const <String>['Lato'],
             ),
             headline2: TextStyle(
@@ -24,14 +24,14 @@ mixin PomodoroTextTheme {
               letterSpacing: 2,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent,
+              color: textColor,
               fontFamilyFallback: const <String>['Lato'],
             ),
             headline3: TextStyle(
               fontSize: titleFontSize,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent,
+              color: textColor,
               fontFamilyFallback: const <String>['Lato'],
             ),
             headline4: TextStyle(
@@ -39,7 +39,7 @@ mixin PomodoroTextTheme {
               letterSpacing: 2,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent.withOpacity(0.8),
+              color: textColor.withOpacity(0.8),
               fontFamilyFallback: const <String>['Lato'],
             ),
             headline6: TextStyle(
@@ -47,7 +47,7 @@ mixin PomodoroTextTheme {
               letterSpacing: 2,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent,
+              color: textColor,
               fontFamilyFallback: const <String>['Lato'],
             ),
 
@@ -56,7 +56,7 @@ mixin PomodoroTextTheme {
               letterSpacing: 1,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent.withOpacity(0.9),
+              color: textColor.withOpacity(0.9),
               fontFamilyFallback: const <String>['Lato'],
             ),
             subtitle2: TextStyle(
@@ -64,7 +64,7 @@ mixin PomodoroTextTheme {
               fontSize: 16,
               fontFamily: lato,
               fontWeight: latoFontWeight,
-              color: accent,
+              color: textColor,
               fontFamilyFallback: const <String>['Lato'],
             ),
 
@@ -77,7 +77,7 @@ mixin PomodoroTextTheme {
             bodyText1: TextStyle(
               fontSize: 14,
               fontFamily: lato,
-              color: accent.withOpacity(0.7),
+              color: textColor.withOpacity(0.7),
               fontFamilyFallback: const <String>['Lato'],
             ),
 
@@ -85,7 +85,7 @@ mixin PomodoroTextTheme {
               fontSize: 16,
               letterSpacing: 1.2,
               fontFamily: lato,
-              color: accent,
+              color: textColor,
               fontFamilyFallback: const <String>['Lato'],
             ),
           );

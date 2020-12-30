@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 
-import '../../core/theme/pomodoro_icons.dart';
+import '../../core/icons/pomodoro_icons.dart';
 import '../settings/controllers/theme.dart';
 import '../settings/views/info.dart';
 import '../settings/views/intervals.dart';
@@ -14,11 +14,9 @@ part 'nav.dart';
 /// Forked from Flutter Drawer to allow full screen modal.
 class PomodoroDrawer extends StatelessWidget {
   const PomodoroDrawer({
-    Key key,
     this.elevation = 16.0,
     this.semanticLabel,
-  })  : assert(elevation != null && elevation >= 0.0),
-        super(key: key);
+  });
 
   final double elevation;
 
@@ -55,9 +53,7 @@ class PomodoroDrawer extends StatelessWidget {
 }
 
 class _Content extends HookWidget {
-  const _Content({
-    Key key,
-  }) : super(key: key);
+  const _Content();
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +61,7 @@ class _Content extends HookWidget {
     final theme = useProvider(themeControllerProvider.state);
 
     return Scaffold(
-      backgroundColor: theme.backgroundLight,
+      backgroundColor: theme.primary,
       appBar: AppBar(
         leading: IconButton(
           splashRadius: 0.01,

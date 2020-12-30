@@ -92,7 +92,7 @@ class _Rounds extends StatelessWidget {
       item: 'Rounds',
       min: kMinRoundsNubers,
       max: kMaxRoundsNubers,
-      color: context.read(themeControllerProvider.state).foreground,
+      color: context.read(themeControllerProvider.state).textColor,
       onChanged: context.read(intervalsProvider).setRoundsLength,
       selector: (setting) => setting.roundsLength,
     );
@@ -111,7 +111,7 @@ class _ResetButton extends HookWidget {
     return Align(
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: theme.foregroundDarker,
+          primary: theme.secondaryVariant,
           textStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w200,
@@ -155,7 +155,7 @@ class _Row extends HookWidget {
           Text(
             item,
             style: TextStyle(
-              color: theme.foregroundDarker,
+              color: theme.secondary,
               fontSize: 14,
               letterSpacing: 0.05,
             ),

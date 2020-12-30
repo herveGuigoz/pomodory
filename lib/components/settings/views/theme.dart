@@ -37,7 +37,7 @@ class ThemeSection extends HookWidget {
                 title: Text(
                   theme.name,
                   style: TextStyle(
-                    color: theme.foreground,
+                    color: theme.textColor,
                     fontSize: 14,
                     letterSpacing: 0.05,
                   ),

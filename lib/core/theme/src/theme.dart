@@ -11,18 +11,27 @@ part 'text_theme.dart';
 class PomodoroTheme extends PomodoroThemeData with PomodoroTextTheme {
   PomodoroTheme(
     this.name, {
+    @required Color primary,
+    @required Color primaryVariant,
+    @required Color secondary,
+    @required Color secondaryVariant,
+    @required Color textColor,
+    @required Color accent,
+    @required Color background,
     @required this.longRound,
     @required this.shortRound,
     @required this.focusRound,
-    @required this.background,
-    @required this.backgroundLight,
-    @required this.backgroundLightest,
-    @required this.foreground,
-    @required this.foregroundDarker,
-    @required this.foregroundDarkest,
-    @required this.accent,
-    this.error = Colors.red,
-  });
+    Color error = Colors.red,
+  }) : super(
+          primary: primary,
+          primaryVariant: primaryVariant,
+          secondary: secondary,
+          secondaryVariant: secondaryVariant,
+          textColor: textColor,
+          accent: accent,
+          background: background,
+          error: error,
+        );
 
   final String name;
 
@@ -34,28 +43,6 @@ class PomodoroTheme extends PomodoroThemeData with PomodoroTextTheme {
 
   // Work countdown color
   final Color focusRound;
-
-  @override
-  final Color background;
-
-  final Color backgroundLight;
-
-  @override
-  final Color backgroundLightest;
-
-  @override
-  final Color foreground;
-
-  @override
-  final Color foregroundDarker;
-
-  final Color foregroundDarkest;
-
-  @override
-  final Color accent;
-
-  @override
-  final Color error;
 
   @override
   double get backgroundLuminance => background.computeLuminance();

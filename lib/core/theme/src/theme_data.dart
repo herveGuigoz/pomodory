@@ -1,16 +1,27 @@
 part of 'theme.dart';
 
 abstract class PomodoroThemeData {
+  PomodoroThemeData({
+    this.primary,
+    this.primaryVariant,
+    this.secondary,
+    this.secondaryVariant,
+    this.textColor,
+    this.accent,
+    this.background,
+    this.error,
+  });
+  final Color primary;
+  final Color primaryVariant;
+  final Color secondary;
+  final Color secondaryVariant;
+  final Color textColor;
+  final Color accent;
+  final Color background;
+  final Color error;
+
   TextTheme get textTheme;
   double get backgroundLuminance;
-  Color get accent;
-  // Color get backgroundLight;
-  Color get backgroundLightest;
-  Color get foreground;
-  Color get foregroundDarker;
-  // Color get foregroundDarkest;
-  Color get error;
-  Color get background;
 
   // the Material Design color brightness threshold
   static const double kThreshold = 0.15;
@@ -25,23 +36,23 @@ abstract class PomodoroThemeData {
       brightness: brightness,
       textTheme: textTheme,
       colorScheme: ColorScheme(
-        primary: accent,
-        primaryVariant: backgroundLightest, // todo
-        secondary: backgroundLightest,
-        secondaryVariant: foregroundDarker,
-        surface: backgroundLightest, // todo
+        primary: primary,
+        primaryVariant: primaryVariant, //backgroundLightest, // todo
+        secondary: secondary,
+        secondaryVariant: secondaryVariant,
+        surface: primary, // todo
         background: background,
         error: error,
-        onPrimary: backgroundLightest, // todo
-        onSecondary: backgroundLightest, // todo
-        onSurface: backgroundLightest, // todo
-        onBackground: backgroundLightest, // todo
-        onError: backgroundLightest, // todo
+        onPrimary: textColor, // todo
+        onSecondary: textColor, // todo
+        onSurface: textColor, // todo
+        onBackground: textColor, // todo
+        onError: textColor, // todo
         brightness: brightness,
       ),
-      primaryColor: accent,
+      primaryColor: primary,
       accentColor: accent,
-      buttonColor: backgroundLightest,
+      buttonColor: background,
       errorColor: error,
       dividerColor: brightness == Brightness.dark
           ? Colors.white.withOpacity(.2)
@@ -83,13 +94,10 @@ abstract class PomodoroThemeData {
         shape: kDefaultShapeBorder,
         behavior: SnackBarBehavior.floating,
       ),
-      iconTheme: IconThemeData(size: 20, color: backgroundLightest),
+      iconTheme: IconThemeData(size: 20, color: primaryVariant),
       appBarTheme: AppBarTheme(
         color: background,
         elevation: 0,
-      ),
-      buttonTheme: ButtonThemeData(
-        buttonColor: backgroundLightest,
       ),
     );
   }

@@ -12,14 +12,14 @@ class _NavigationBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = useProvider(themeControllerProvider.state);
+    final theme = Theme.of(context);
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      selectedItemColor: theme.foregroundDarker,
-      unselectedItemColor: theme.backgroundLightest,
+      selectedItemColor: theme.colorScheme.secondary,
+      unselectedItemColor: theme.iconTheme.color,
       currentIndex: index,
       items: _items.map((item) {
         return BottomNavigationBarItem(

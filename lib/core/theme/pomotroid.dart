@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import 'src/theme.dart';
+part of 'themes.dart';
 
 class PomotroidTheme extends PomodoroTheme {
   PomotroidTheme()
@@ -10,11 +8,16 @@ class PomotroidTheme extends PomodoroTheme {
           shortRound: const Color(0xff05ec8c),
           focusRound: const Color(0xffff4e4d),
           background: const Color(0xff2f384b),
-          backgroundLight: const Color(0xff3d4457),
-          backgroundLightest: const Color(0xff9ca5b5),
-          foreground: const Color(0xfff6f2eb),
-          foregroundDarker: const Color(0xffc0c9da),
-          foregroundDarkest: const Color(0xffdbe1ef),
+          // background-light
+          primary: const Color(0xff3d4457),
+          // background-lightest
+          primaryVariant: const Color(0xff9ca5b5),
+          // foreground
+          textColor: const Color(0xfff6f2eb),
+          // foreground-darker
+          secondary: const Color(0xffc0c9da),
+          // foreground-darkest
+          secondaryVariant: const Color(0xffdbe1ef),
           accent: const Color(0xff05ec8c),
         );
 }
