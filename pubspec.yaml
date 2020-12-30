@@ -54,10 +54,19 @@ flutter:
       fonts:
         - asset: assets/fonts/Lato-Regular.ttf
           weight: 400
+
     - family: RobotoMono
       fonts:
         - asset: assets/fonts/RobotoMono-Light.ttf
           weight: 200
-    - family:  PomodoroIcons
+    
+    - family: SFProDisplay
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Regular.otf
+        - asset: assets/fonts/SF-Pro-Display-RegularItalic.otf
+          style: italic
+        
+    - family: PomodoroIcons
       fonts:
         - asset: assets/fonts/PomodoroIcons.ttf
+
