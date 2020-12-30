@@ -20,6 +20,10 @@ dependencies:
   # Dart data class
   freezed_annotation: '>=0.12.0 <1.0.0'
 
+  # Cache
+  hive: ^1.4.4+1
+  synchronized: ^2.2.0+2
+
   # MISC
   flutter_hooks: '>=0.15.0 <1.0.0'
   hooks_riverpod: '>=0.12.1 <1.0.0'
@@ -35,6 +39,8 @@ dev_dependencies:
   freezed: '>=0.12.0 <1.0.0'
   json_serializable: '>=3.5.1 <4.0.0'
   build_runner: '>=1.10.11 <2.0.0'
+  mockito: ^4.1.3
+  uuid: ^2.2.2
 
 flutter:
   uses-material-design: true

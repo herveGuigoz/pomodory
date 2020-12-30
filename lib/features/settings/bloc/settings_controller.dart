@@ -1,6 +1,6 @@
 part of 'bloc.dart';
 
-class SettingsController extends StateNotifier<SettingsState> {
+class SettingsController extends HydratedStateNotifier<SettingsState> {
   SettingsController() : super(SettingsState());
 
   void setFocusDurationAsInt(int value) => state = state.copyWith(
@@ -40,4 +40,14 @@ class SettingsController extends StateNotifier<SettingsState> {
       );
 
   void resetAllValues() => state = SettingsState();
+
+  @override
+  SettingsState fromJson(Map<String, dynamic> json) {
+    return SettingsState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(SettingsState state) {
+    return state.toJson();
+  }
 }
