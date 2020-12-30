@@ -4,38 +4,27 @@ import 'package:hooks_riverpod/all.dart';
 
 import '../../core/extensions/duration.dart';
 import '../settings/controllers/intervals.dart';
+import 'notification.dart';
 import 'ticker.dart';
 
 part 'timer_controller.freezed.dart';
 
-class TimerController extends TickerService {
-  TimerController(this._settings) : super(getInitialState(_settings));
+class TimerController extends TickerService with TimerNotification {
+  TimerController(this.settings) : super(settings.initialTimerState);
 
-  final IntervalsSettings _settings;
-
-  static TimerState getInitialState(IntervalsSettings settings) {
-    const round = Round.work();
-    final duration = round.getRoundDuration(settings);
-    return TimerState(
-      round: 0,
-      currentRound: round,
-      duration: duration,
-      value: duration.inSeconds,
-      isPlaying: false,
-    );
-  }
+  final IntervalsSettings settings;
 
   void setNextRound({bool mustStartTimer = false}) {
     final nextRound = state.currentRound.maybeWhen(
-      work: () => state.round < _settings.roundsLength
+      work: () => state.round < settings.roundsLength
           ? const Round.shortBreak()
           : const Round.longBreak(),
       orElse: () => const Round.work(),
     );
 
     state = state.copyWith(
-      duration: nextRound.getRoundDuration(_settings),
-      value: nextRound.getRoundDuration(_settings).inSeconds,
+      duration: nextRound.getRoundDuration(settings),
+      value: nextRound.getRoundDuration(settings).inSeconds,
       currentRound: nextRound,
       round: state.currentRound is LongBreak
           ? 0
@@ -49,9 +38,18 @@ class TimerController extends TickerService {
     if (mustStartTimer) startTimer();
   }
 
+  /// Reset current period.
+  /// Reset iteration only if counter has decreased.
+  void reset() {
+    final isRoundOnStart = state.duration.inSeconds == state.value;
+    resetTimer();
+    if (isRoundOnStart) state = settings.initialTimerState;
+  }
+
   @override
-  void onDone() {
+  Future<void> onDone() async {
     setNextRound(mustStartTimer: state.currentRound is! LongBreak);
+    await showNotification();
   }
 }
 
@@ -61,6 +59,7 @@ abstract class TimerState implements _$TimerState {
 
   factory TimerState({
     @required Duration duration,
+    // todo rename to tick
     @required int value,
     @required bool isPlaying,
     @Default(1) int round,
@@ -70,6 +69,20 @@ abstract class TimerState implements _$TimerState {
   /// This Method returns the **Current Time** of Countdown Timer
   String get time => Duration(seconds: value).time;
   double get fractionalValue => value / (duration.inSeconds / 100) / 100;
+}
+
+extension TimerStateExt on IntervalsSettings {
+  TimerState get initialTimerState {
+    const round = Round.work();
+    final duration = round.getRoundDuration(this);
+    return TimerState(
+      round: 0,
+      currentRound: round,
+      duration: duration,
+      value: duration.inSeconds,
+      isPlaying: false,
+    );
+  }
 }
 
 @freezed

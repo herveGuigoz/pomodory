@@ -4,6 +4,21 @@ import 'package:hooks_riverpod/all.dart';
 
 import 'components/main/main.dart';
 import 'components/settings/controllers/theme.dart';
+import 'core/defer_init.dart';
+import 'core/notifications.dart';
+
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DeferInit(
+      create: () async {
+        final service = await PomodoroNotification.init();
+        await service.requestPermission();
+        return Pomodoro();
+      },
+    );
+  }
+}
 
 class Pomodoro extends HookWidget {
   @override

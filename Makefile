@@ -68,6 +68,10 @@ build-ios: ## build ios release
 	fvm flutter clean
 	fvm flutter build ios
 
+.PHONY: check-nullsafety
+check-nullsafety: ## Check migration state dependency status
+	fvm flutter pub outdated --mode=null-safety
+
 .PHONY: unit-test
 unit-test: ## run unit tests
 	fvm flutter test test/all_tests.dart

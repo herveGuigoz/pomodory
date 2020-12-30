@@ -19,7 +19,6 @@ class ErrorHandler {
 
     runZonedGuarded<Future<void>>(
       () async {
-        WidgetsFlutterBinding.ensureInitialized();
         runApp(ProviderScope(child: child));
       },
       _handleError,

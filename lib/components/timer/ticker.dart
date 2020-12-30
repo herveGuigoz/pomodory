@@ -24,12 +24,15 @@ abstract class TickerService extends StateNotifier<TimerState> {
 
   int get _duration => state.duration.inSeconds;
 
+  set _playing(bool value) => state = state.copyWith(isPlaying: value);
+
   void onDone() {}
 
   void startTimer() {
     _subscription?.cancel();
     _subscription =
         _ticker.tick(ticks: _duration).listen(_mapTimerToState, onDone: onDone);
+    _playing = true;
   }
 
   void _mapTimerToState(int timer) {
@@ -40,12 +43,12 @@ abstract class TickerService extends StateNotifier<TimerState> {
 
   void play() {
     _subscription != null ? _subscription.resume() : startTimer();
-    state = state.copyWith(isPlaying: true);
+    _playing = true;
   }
 
   void pause() {
     _subscription.pause();
-    state = state.copyWith(isPlaying: false);
+    _playing = false;
   }
 
   void resetTimer() {

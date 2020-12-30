@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'core/error_handler.dart';
 import 'pomodoro.dart';
 
-void main() {
-  ErrorHandler(child: Pomodoro());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  ErrorHandler(child: SplashScreen());
 }

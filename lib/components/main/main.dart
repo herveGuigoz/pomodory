@@ -77,7 +77,7 @@ class _Timer extends HookWidget {
     return CircularCountDownTimer(
       width: MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height / 2,
-      color: theme.backgroundLightest,
+      color: theme.primaryVariant,
       fillColor: state.when(
         work: () => theme.focusRound,
         shortBreak: () => theme.shortRound,
@@ -88,7 +88,7 @@ class _Timer extends HookWidget {
       countdownTextStyle: TextStyle(
         fontFamily: 'RobotoMono',
         fontSize: 40,
-        color: theme.backgroundLightest,
+        color: theme.primaryVariant,
         fontWeight: FontWeight.bold,
       ),
       label: state.when(
@@ -100,7 +100,7 @@ class _Timer extends HookWidget {
         fontFamily: 'RobotoMono',
         fontSize: 16,
         letterSpacing: 0.1,
-        color: theme.backgroundLightest,
+        color: theme.primaryVariant,
         fontWeight: FontWeight.bold,
       ),
     );

@@ -25,6 +25,8 @@ dependencies:
   hooks_riverpod: '>=0.12.1 <1.0.0'
   logger: '>=0.9.4 <1.0.0'
   package_info: ^0.4.3+2
+  flutter_local_notifications: ^3.0.2
+  path_provider: ^1.6.24
 
 dev_dependencies:
   flutter_test:
