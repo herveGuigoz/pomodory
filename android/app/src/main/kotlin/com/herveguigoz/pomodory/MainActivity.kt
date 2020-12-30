@@ -1,4 +1,4 @@
-package com.herveguigoz.pomodoro
+package com.herveguigoz.pomodory
 
 import io.flutter.embedding.android.FlutterActivity
 

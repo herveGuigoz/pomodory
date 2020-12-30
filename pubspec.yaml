@@ -1,4 +1,4 @@
-name: pomodoro
+name: pomodory
 description: Pomodoro Timer
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
