@@ -16,8 +16,8 @@ import 'package:pomodory/core/cache/hydrated_state_notifier.dart';
 class MockBox extends Mock implements Box<dynamic> {}
 
 class MockPathProviderPlatform extends Mock
-    // ignore: prefer_mixin
     with
+        // ignore: prefer_mixin
         MockPlatformInterfaceMixin
     implements
         PathProviderPlatform {
@@ -85,10 +85,10 @@ void main() {
           'when storageDirectory is null and kIsWeb', () async {
         HydratedStorage.isWeb = true;
         final completer = Completer<void>();
-        await runZoned(() {
+        await runZonedGuarded(() {
           HydratedStorage.build().whenComplete(completer.complete);
           return completer.future;
-        }, onError: (dynamic _) {});
+        }, (_, __) {});
         HydratedStorage.isWeb = kIsWeb;
         expect(getTemporaryDirectoryCallCount, 0);
       });
