@@ -39,7 +39,9 @@ class SettingsController extends HydratedStateNotifier<SettingsState> {
         desktopNotificationsSound: value,
       );
 
-  void resetAllValues() => state = SettingsState();
+  void resetAllValues() => state = SettingsState(
+        pomodoroThemeName: state.pomodoroThemeName,
+      );
 
   @override
   SettingsState fromJson(Map<String, dynamic> json) {

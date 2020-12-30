@@ -34,7 +34,7 @@ class _Preferences extends HookWidget {
             ),
             const SizedBox(height: 16),
             CheckboxListTile(
-              title: const Text('Desktop notifications'),
+              title: const Text('Notification'),
               value: settings.desktopNotifications,
               onChanged: (value) {
                 context.read(settingsProvider).desktopNotifications = value;
@@ -42,7 +42,7 @@ class _Preferences extends HookWidget {
             ),
             const SizedBox(height: 16),
             CheckboxListTile(
-              title: const Text('Notifications sound'),
+              title: const Text('Sound'),
               value: settings.desktopNotificationsSound,
               onChanged: (value) {
                 context.read(settingsProvider).notificationsSound = value;

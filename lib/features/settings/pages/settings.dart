@@ -8,16 +8,15 @@ import '../../../core/theme/themes.dart';
 import '../bloc/bloc.dart';
 import '../bloc/settings_state.dart';
 import '../section.dart';
-import '../widgets/navigation_bar.dart';
 
 part 'info.dart';
 part 'preferences.dart';
 part 'themes.dart';
-part 'timer.dart';
+part 'intervals.dart';
 
 const List<Section> navigationItems = <Section>[
   Section(
-    label: 'Timer',
+    label: 'Intervals',
     child: _Timer(),
     iconData: PomodoroIcons.timer,
     // iconData: CupertinoIcons.time,
@@ -44,37 +43,52 @@ class SettingsPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final index = useState<int>(0);
-    final theme = Theme.of(context).colorScheme;
+    final theme = useProvider(themeProvider);
 
-    return Scaffold(
-      backgroundColor: theme.primary,
-      appBar: AppBar(
-        leading: IconButton(
-          splashRadius: 0.01,
-          color: Theme.of(context).colorScheme.secondary,
-          icon: const Icon(CupertinoIcons.chevron_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        title: Text(
-          navigationItems[index.value].label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.normal,
-            letterSpacing: 0.05,
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        backgroundColor: theme.background,
+        activeColor: theme.textColor,
+        iconSize: 18,
+        items: navigationItems
+            .map((item) => BottomNavigationBarItem(
+                  icon: Icon(item.iconData),
+                  label: item.label,
+                ))
+            .toList(),
+      ),
+      tabBuilder: (context, index) {
+        return CupertinoPageScaffold(
+          backgroundColor: theme.primary,
+          navigationBar: CupertinoNavigationBar(
+            actionsForegroundColor: theme.secondaryVariant,
+            backgroundColor: theme.background,
+            leading: IconButton(
+              icon: const Icon(PomodoroIcons.back, size: 16),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            middle: Text(
+              navigationItems[index].label,
+              style: TextStyle(
+                color: theme.secondaryVariant,
+                fontFamily: 'SFProDisplay',
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+              ),
+            ),
+            trailing: index == 0
+                ? IconButton(
+                    icon: const Icon(PomodoroIcons.reset, size: 16),
+                    onPressed: () {
+                      context.read(settingsProvider).resetAllValues();
+                    },
+                  )
+                : null,
           ),
-        ),
-      ),
-      body: AnimatedSwitcher(
-        duration: kThemeAnimationDuration,
-        child: navigationItems[index.value].child,
-      ),
-      bottomNavigationBar: NavigationBar(
-        index: index.value,
-        onTap: (i) => index.value = i,
-      ),
+          child: navigationItems[index].child,
+        );
+      },
     );
   }
 }

@@ -15,7 +15,6 @@ class _Timer extends StatelessWidget {
           _ShortBreak(),
           _LongBreak(),
           _Rounds(),
-          _ResetButton(),
         ],
       ),
     );
@@ -30,7 +29,7 @@ class _Focus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Focus',
+      item: 'Pomodoro Length',
       min: kMinDurationValue,
       max: kMaxDurationValue,
       color: context.read(themeProvider).focusRound,
@@ -48,7 +47,7 @@ class _ShortBreak extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Short Break',
+      item: 'Short Break Length',
       min: kMinDurationValue,
       max: kMaxDurationValue,
       color: context.read(themeProvider).shortRound,
@@ -66,7 +65,7 @@ class _LongBreak extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Long Break',
+      item: 'Long Break Length',
       min: kMinDurationValue,
       max: kMaxDurationValue,
       color: context.read(themeProvider).longRound,
@@ -84,38 +83,12 @@ class _Rounds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Rounds',
+      item: 'Cycle Length',
       min: kMinRoundsNubers,
       max: kMaxRoundsNubers,
       color: context.read(themeProvider).textColor,
       onChanged: context.read(settingsProvider).setRoundsLength,
       selector: (setting) => setting.roundsLength,
-    );
-  }
-}
-
-class _ResetButton extends HookWidget {
-  const _ResetButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
-
-    return Align(
-      child: TextButton(
-        style: TextButton.styleFrom(
-          primary: theme.secondaryVariant,
-          textStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w200,
-            letterSpacing: 0.05,
-          ),
-        ),
-        onPressed: context.read(settingsProvider).resetAllValues,
-        child: const Text('Reset Default'),
-      ),
     );
   }
 }

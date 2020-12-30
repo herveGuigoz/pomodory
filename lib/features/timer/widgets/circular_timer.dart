@@ -81,8 +81,10 @@ class _CircularCountDownTimer extends StatelessWidget {
                               children: [
                                 _Time(textStyle: countdownTextStyle),
                                 const SizedBox(height: 16),
-                                Text(
+                                AutoSizeText(
                                   label.toUpperCase(),
+                                  minFontSize: 4,
+                                  maxLines: 1,
                                   style: labelTextStyle,
                                 )
                               ],
@@ -203,7 +205,7 @@ class _Time extends HookWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: AutoSizeText(
         time,
-        minFontSize: 21,
+        minFontSize: 4,
         maxLines: 1,
         style: textStyle,
       ),
