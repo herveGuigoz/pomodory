@@ -51,7 +51,7 @@ class ErrorHandler {
 
     // report the error in release mode
     if (kReleaseMode) {
-      // report error to sentry.
+      // todo eport error to sentry.
     } else {
       _log.i('not reporting error in debug / profile mode');
     }
