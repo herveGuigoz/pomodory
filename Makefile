@@ -36,8 +36,8 @@ generate: ## update generated files
 run-web: ## run web app
 	fvm flutter run -d chrome --target lib/main.dart
 
-.PHONY: run-desktop
-run-desktop: ## run macos desktop
+.PHONY: run-macos
+run-macos: ## run macos desktop
 	fvm flutter run -d macos --target lib/main.dart
 
 .PHONY: run-dev
@@ -47,10 +47,6 @@ run-dev: ## run app in debug mode with production flavor
 .PHONY: run-prd
 run-prd: ## run app in production mode
 	fvm flutter run --release --target lib/main.dart
-
-.PHONY: run-local
-run-local: ## run app in debug mode with local flavor
-	fvm flutter run --target lib/main_local.dart
 
 .PHONY: build-android
 build-android: ## build android release
@@ -68,6 +64,11 @@ build-ios: ## build ios release
 	fvm flutter clean
 	fvm flutter build ios
 
+.PHONY: build-ios
+build-macos: ## build ios release
+	fvm flutter clean
+	fvm flutter build macos
+
 .PHONY: check-nullsafety
 check-nullsafety: ## Check migration state dependency status
 	fvm flutter pub outdated --mode=null-safety
@@ -75,14 +76,6 @@ check-nullsafety: ## Check migration state dependency status
 .PHONY: unit-test
 unit-test: ## run unit tests
 	fvm flutter test test/all_tests.dart
-
-.PHONY: mirror
-mirror: ## mirror screen read-only (using scrcpy)
-	scrcpy -n -m 1024 --window-title 'NGTV' 
-
-.PHONY: record
-record: ## record video (using scrcpy)
-	scrcpy --record record.mp4
 
 .PHONY: screenshot
 screenshot: ## Capture screenshot
