@@ -1,0 +1,23 @@
+part of '../pages/timer.dart';
+
+class _DrawerIconButton extends StatelessWidget {
+  const _DrawerIconButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (context) => IconButton(
+        color: Theme.of(context).colorScheme.secondary,
+        splashRadius: 0.01,
+        splashColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        icon: const Icon(CupertinoIcons.line_horizontal_3),
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+      ),
+    );
+  }
+}

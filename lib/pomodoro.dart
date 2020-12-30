@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 
-import 'components/main/main.dart';
-import 'components/navigation/defer_init.dart';
-import 'components/settings/settings_controller.dart';
-import 'core/notifications/notifications.dart';
+import 'core/defer_init.dart';
+import 'features/settings/bloc/bloc.dart';
+import 'features/timer/domain/notifications.dart';
+import 'features/timer/pages/timer.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -29,7 +29,7 @@ class Pomodoro extends HookWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pomodoro Timer',
       theme: theme.themeData,
-      home: Main(),
+      home: const Timer(),
     );
   }
 }
