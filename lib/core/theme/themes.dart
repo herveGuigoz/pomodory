@@ -12,9 +12,11 @@ part 'github.dart';
 part 'graphite.dart';
 part 'gruvbox.dart';
 part 'monokai.dart';
+part 'macos.dart';
 
 /// A list of [PomodoroTheme]s that can be used as the theme for the app.
 final themes = <PomodoroTheme>[
+  MacOsTheme(),
   PomotroidTheme(),
   AndromedaTheme(),
   AyuTheme(),

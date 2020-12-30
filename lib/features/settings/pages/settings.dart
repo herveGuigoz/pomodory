@@ -13,11 +13,11 @@ import '../widgets/navigation_bar.dart';
 part 'info.dart';
 part 'preferences.dart';
 part 'themes.dart';
-part 'timer.dart';
+part 'intervals.dart';
 
 const List<Section> navigationItems = <Section>[
   Section(
-    label: 'Timer',
+    label: 'Intervals',
     child: _Timer(),
     iconData: PomodoroIcons.timer,
     // iconData: CupertinoIcons.time,

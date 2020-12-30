@@ -30,7 +30,7 @@ class _Focus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Focus',
+      item: 'Pomodoro Length',
       min: kMinDurationValue,
       max: kMaxDurationValue,
       color: context.read(themeProvider).focusRound,
@@ -48,7 +48,7 @@ class _ShortBreak extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Short Break',
+      item: 'Short Break Length',
       min: kMinDurationValue,
       max: kMaxDurationValue,
       color: context.read(themeProvider).shortRound,
@@ -66,7 +66,7 @@ class _LongBreak extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Long Break',
+      item: 'Long Break Length',
       min: kMinDurationValue,
       max: kMaxDurationValue,
       color: context.read(themeProvider).longRound,
@@ -84,7 +84,7 @@ class _Rounds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Row(
-      item: 'Rounds',
+      item: 'Cycle Length',
       min: kMinRoundsNubers,
       max: kMaxRoundsNubers,
       color: context.read(themeProvider).textColor,
