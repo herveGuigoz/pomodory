@@ -1,7 +1,10 @@
 part of 'bloc.dart';
 
-class TimerController extends Timer with NotificationMixin {
+// TODO make stats controller
+class TimerController extends Timer with NotificationMixin, ResultsMixin {
   TimerController(this.settings) : super(settings.initialTimerState);
+
+  static const _kJsonKey = 'results';
 
   final SettingsState settings;
 
@@ -42,9 +45,32 @@ class TimerController extends Timer with NotificationMixin {
   /// Follow user preferences to start next timer and show notification.
   @override
   Future<void> onDone() async {
+    saveResults();
+    print(state.resultList);
     setNextRound(mustStartTimer: state.currentRound.autoStartNext(settings));
     if (settings.desktopNotifications) {
       await showNotification(playSound: settings.desktopNotificationsSound);
     }
+  }
+
+  @override
+  TimerState fromJson(Map<String, Object> json) {
+    final results = json[_kJsonKey] != null
+        ? (json[_kJsonKey] as List<Object>)
+            .map((e) => Results.fromJson(e as Map<String, Object>))
+            .toList()
+        : null;
+
+    return settings.initialTimerState.copyWith(resultList: results ?? []);
+  }
+
+  @override
+  Map<String, Object> toJson(TimerState state) {
+    // TODO this is calle every tick, save here
+    final json = <String, Object>{
+      _kJsonKey: state.resultList?.map((e) => e.toJson())?.toList(),
+    };
+    // print('FROM JSON : $json');
+    return json;
   }
 }

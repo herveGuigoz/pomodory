@@ -14,9 +14,9 @@ abstract class Round implements _$Round {
   const factory Round.longBreak() = LongBreak;
 
   Duration getRoundDuration(SettingsState settings) => when(
-        work: () => Duration(minutes: settings.focusInMinutes),
-        shortBreak: () => Duration(minutes: settings.shortBreakInMinutes),
-        longBreak: () => Duration(minutes: settings.longBreakInMinutes),
+        work: () => Duration(seconds: settings.focusInMinutes),
+        shortBreak: () => Duration(seconds: settings.shortBreakInMinutes),
+        longBreak: () => Duration(seconds: settings.longBreakInMinutes),
       );
 
   bool autoStartNext(SettingsState settings) {

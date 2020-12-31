@@ -10,6 +10,7 @@ abstract class TimerState implements _$TimerState {
     @required bool isPlaying,
     @Default(1) int round,
     @Default(Round.work()) Round currentRound,
+    @nullable List<Results> resultList,
   }) = _TimerState;
 
   /// This Method returns the **Current Time** of Countdown Timer

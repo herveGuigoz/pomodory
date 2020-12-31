@@ -19,13 +19,15 @@ class _$TimerStateTearOff {
       @required int tick,
       @required bool isPlaying,
       int round = 1,
-      Round currentRound = const Round.work()}) {
+      Round currentRound = const Round.work(),
+      @nullable List<Results> resultList}) {
     return _TimerState(
       duration: duration,
       tick: tick,
       isPlaying: isPlaying,
       round: round,
       currentRound: currentRound,
+      resultList: resultList,
     );
   }
 }
@@ -41,6 +43,8 @@ mixin _$TimerState {
   bool get isPlaying;
   int get round;
   Round get currentRound;
+  @nullable
+  List<Results> get resultList;
 
   $TimerStateCopyWith<TimerState> get copyWith;
 }
@@ -55,7 +59,8 @@ abstract class $TimerStateCopyWith<$Res> {
       int tick,
       bool isPlaying,
       int round,
-      Round currentRound});
+      Round currentRound,
+      @nullable List<Results> resultList});
 
   $RoundCopyWith<$Res> get currentRound;
 }
@@ -75,6 +80,7 @@ class _$TimerStateCopyWithImpl<$Res> implements $TimerStateCopyWith<$Res> {
     Object isPlaying = freezed,
     Object round = freezed,
     Object currentRound = freezed,
+    Object resultList = freezed,
   }) {
     return _then(_value.copyWith(
       duration: duration == freezed ? _value.duration : duration as Duration,
@@ -83,6 +89,9 @@ class _$TimerStateCopyWithImpl<$Res> implements $TimerStateCopyWith<$Res> {
       round: round == freezed ? _value.round : round as int,
       currentRound:
           currentRound == freezed ? _value.currentRound : currentRound as Round,
+      resultList: resultList == freezed
+          ? _value.resultList
+          : resultList as List<Results>,
     ));
   }
 
@@ -108,7 +117,8 @@ abstract class _$TimerStateCopyWith<$Res> implements $TimerStateCopyWith<$Res> {
       int tick,
       bool isPlaying,
       int round,
-      Round currentRound});
+      Round currentRound,
+      @nullable List<Results> resultList});
 
   @override
   $RoundCopyWith<$Res> get currentRound;
@@ -131,6 +141,7 @@ class __$TimerStateCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
     Object isPlaying = freezed,
     Object round = freezed,
     Object currentRound = freezed,
+    Object resultList = freezed,
   }) {
     return _then(_TimerState(
       duration: duration == freezed ? _value.duration : duration as Duration,
@@ -139,6 +150,9 @@ class __$TimerStateCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
       round: round == freezed ? _value.round : round as int,
       currentRound:
           currentRound == freezed ? _value.currentRound : currentRound as Round,
+      resultList: resultList == freezed
+          ? _value.resultList
+          : resultList as List<Results>,
     ));
   }
 }
@@ -150,7 +164,8 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
       @required this.tick,
       @required this.isPlaying,
       this.round = 1,
-      this.currentRound = const Round.work()})
+      this.currentRound = const Round.work(),
+      @nullable this.resultList})
       : assert(duration != null),
         assert(tick != null),
         assert(isPlaying != null),
@@ -170,10 +185,13 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
   @JsonKey(defaultValue: const Round.work())
   @override
   final Round currentRound;
+  @override
+  @nullable
+  final List<Results> resultList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TimerState(duration: $duration, tick: $tick, isPlaying: $isPlaying, round: $round, currentRound: $currentRound)';
+    return 'TimerState(duration: $duration, tick: $tick, isPlaying: $isPlaying, round: $round, currentRound: $currentRound, resultList: $resultList)';
   }
 
   @override
@@ -185,7 +203,8 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('tick', tick))
       ..add(DiagnosticsProperty('isPlaying', isPlaying))
       ..add(DiagnosticsProperty('round', round))
-      ..add(DiagnosticsProperty('currentRound', currentRound));
+      ..add(DiagnosticsProperty('currentRound', currentRound))
+      ..add(DiagnosticsProperty('resultList', resultList));
   }
 
   @override
@@ -204,7 +223,10 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(other.round, round)) &&
             (identical(other.currentRound, currentRound) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentRound, currentRound)));
+                    .equals(other.currentRound, currentRound)) &&
+            (identical(other.resultList, resultList) ||
+                const DeepCollectionEquality()
+                    .equals(other.resultList, resultList)));
   }
 
   @override
@@ -214,7 +236,8 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(tick) ^
       const DeepCollectionEquality().hash(isPlaying) ^
       const DeepCollectionEquality().hash(round) ^
-      const DeepCollectionEquality().hash(currentRound);
+      const DeepCollectionEquality().hash(currentRound) ^
+      const DeepCollectionEquality().hash(resultList);
 
   @override
   _$TimerStateCopyWith<_TimerState> get copyWith =>
@@ -228,7 +251,8 @@ abstract class _TimerState extends TimerState {
       @required int tick,
       @required bool isPlaying,
       int round,
-      Round currentRound}) = _$_TimerState;
+      Round currentRound,
+      @nullable List<Results> resultList}) = _$_TimerState;
 
   @override
   Duration get duration;
@@ -240,6 +264,9 @@ abstract class _TimerState extends TimerState {
   int get round;
   @override
   Round get currentRound;
+  @override
+  @nullable
+  List<Results> get resultList;
   @override
   _$TimerStateCopyWith<_TimerState> get copyWith;
 }

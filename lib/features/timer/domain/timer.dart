@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:hooks_riverpod/all.dart';
+import '../../../core/cache/hydrated_state_notifier.dart';
 
 import '../bloc/bloc.dart';
 import 'ticker.dart';
 
-abstract class Timer extends StateNotifier<TimerState> {
+abstract class Timer extends HydratedStateNotifier<TimerState> {
   Timer(
     TimerState state, {
     Ticker ticker,
