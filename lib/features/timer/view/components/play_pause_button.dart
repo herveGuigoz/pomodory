@@ -1,4 +1,4 @@
-part of '../pages/timer.dart';
+part of '../timer.dart';
 
 class _PlayPauseButton extends HookWidget {
   const _PlayPauseButton({

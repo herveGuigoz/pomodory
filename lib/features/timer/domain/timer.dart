@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import '../../../core/cache/hydrated_state_notifier.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 import '../bloc/bloc.dart';
 import 'ticker.dart';
 
-abstract class Timer extends HydratedStateNotifier<TimerState> {
+abstract class Timer extends StateNotifier<TimerState> {
   Timer(
     TimerState state, {
     Ticker ticker,
@@ -26,6 +26,9 @@ abstract class Timer extends HydratedStateNotifier<TimerState> {
   /// Callback to trigger when timer is over.
   void onDone() {}
 
+  // Callback to trigger timer is running;
+  void onTickUpdate() {}
+
   /// Create new timer.
   void startTimer() {
     _subscription?.cancel();
@@ -36,6 +39,7 @@ abstract class Timer extends HydratedStateNotifier<TimerState> {
 
   /// Update state on every ticks.
   void _mapTimerToState(int timer) {
+    onTickUpdate();
     state = state.copyWith(tick: timer);
   }
 

@@ -29,7 +29,6 @@ class HydratedStorage implements Storage {
   /// Following snippet shows how to make default one:
   /// ```dart
   /// import 'package:crypto/crypto.dart';
-  /// import 'package:hydrated_bloc/hydrated_bloc.dart';
   ///
   /// const password = 'hydration';
   /// final byteskey = sha256.convert(utf8.encode(password)).bytes;

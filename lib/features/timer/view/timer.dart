@@ -8,16 +8,16 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import '../../../core/icons/pomodoro_icons.dart';
 import '../../settings/bloc/bloc.dart';
-import '../../settings/pages/settings.dart';
+import '../../settings/views/settings.dart';
 import '../bloc/bloc.dart';
 
-part '../widgets/drawer.dart';
-part '../widgets/drawer_icon_button.dart';
-part '../widgets/next_interval_icon_button.dart';
-part '../widgets/circular_timer.dart';
-part '../widgets/play_pause_button.dart';
-part '../widgets/round_count.dart';
-part '../widgets/rollback_icon_button.dart';
+part 'components/drawer.dart';
+part 'components/drawer_icon_button.dart';
+part 'components/next_interval_icon_button.dart';
+part 'components/circular_timer.dart';
+part 'components/play_pause_button.dart';
+part 'components/round_count.dart';
+part 'components/rollback_icon_button.dart';
 
 const double _kIconSizes = 21;
 const _kSplashRadius = 0.01;
