@@ -37,6 +37,17 @@ origin=Developer ID Application: Spreaker Inc (xxx)
 ```
 (Read More)[https://pracucci.com/atom-electron-signing-mac-app.html] (or)[https://flutter.dev/desktop#distribution]
 
+# Define Window size
+
+- Edit `MainFlutterWindow`
+  ```swift
+  self.setFrame(windowFrame, display: true)
+  self.setContentSize(NSSize.init(width: 430, height: 550)) // +
+  ```
+
+- Disable resize
+under `Runner/Ressources/MainMenu.xib`, unselect resize.
+
 ## License
 
 MIT &copy; [Guigoz Herve](https://github.com/herveGuigoz)
