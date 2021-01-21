@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:pomodory/features/timer/view/components/animated_button.dart';
+import 'package:pomodory/features/timer/view/components/linear_painter.dart';
 
 import '../../../core/icons/pomodoro_icons.dart';
 import '../../settings/bloc/bloc.dart';
@@ -37,6 +39,7 @@ class Timer extends HookWidget {
         children: [
           const _DrawerIconButton(),
           const _RoundsCount(),
+          const LinearProgressBar(),
           Align(
             alignment: FractionalOffset.center,
             child: Column(
@@ -51,6 +54,25 @@ class Timer extends HookWidget {
           const _RollbackIconButton(),
           const _NextIntervalIconButton(),
         ],
+      ),
+    );
+  }
+}
+
+class LinearProgressBar extends HookWidget {
+  const LinearProgressBar({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 80,
+      left: 16,
+      right: 16,
+      child: LinearPainter(
+        backgroundColor: const Color.fromRGBO(0, 0, 0, 0.1),
+        valueColor: const AlwaysStoppedAnimation(Colors.white),
       ),
     );
   }

@@ -10,15 +10,27 @@ class _PlayPauseButton extends HookWidget {
     final isPLaying = useProvider(
       timerControllerProvider.state.select((value) => value.isPlaying),
     );
-    return RawMaterialButton(
+
+    return AnimatedButton(
       onPressed: () => context.read(timerControllerProvider).playOrPause(),
-      hoverColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      shape: const CircleBorder(),
-      child: Icon(
-        isPLaying ? CupertinoIcons.pause_circle : CupertinoIcons.play_circle,
-        size: 45,
+      child: Text(
+        isPLaying ? ' PAUSE' : 'START',
+        style: TextStyle(
+          fontFamily: 'ArialRoundedBold',
+          fontSize: 21,
+          color: Theme.of(context).colorScheme.background,
+        ),
       ),
     );
+    // return RawMaterialButton(
+    //   onPressed: () => context.read(timerControllerProvider).playOrPause(),
+    //   hoverColor: Colors.transparent,
+    //   splashColor: Colors.transparent,
+    //   shape: const CircleBorder(),
+    //   child: Icon(
+    //     isPLaying ? CupertinoIcons.pause_circle : CupertinoIcons.play_circle,
+    //     size: 45,
+    //   ),
+    // );
   }
 }

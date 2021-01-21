@@ -65,6 +65,14 @@ flutter:
         - asset: assets/fonts/SF-Pro-Display-Regular.otf
         - asset: assets/fonts/SF-Pro-Display-RegularItalic.otf
           style: italic
+    
+    - family: ArialRounded
+      fonts:
+        - asset: assets/fonts/ArialRounded.ttf
+    
+    - family: ArialRoundedBold
+      fonts:
+        - asset: assets/fonts/ArialRounded-bold.ttf
         
     - family: PomodoroIcons
       fonts:
