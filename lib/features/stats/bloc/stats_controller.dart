@@ -14,7 +14,6 @@ class StatsController extends HydratedStateNotifier<List<Stats>> {
 
   /// Save result to cache
   /// @round finished round
-  /// @duration total duration for this round in minutes
   void save(Round round) {
     final list = state ?? [];
     final now = DateTime.now();
