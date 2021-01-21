@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:hooks_riverpod/all.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 import '../bloc/bloc.dart';
 import 'ticker.dart';
@@ -26,6 +26,9 @@ abstract class Timer extends StateNotifier<TimerState> {
   /// Callback to trigger when timer is over.
   void onDone() {}
 
+  // Callback to trigger timer is running;
+  void onTickUpdate() {}
+
   /// Create new timer.
   void startTimer() {
     _subscription?.cancel();
@@ -36,6 +39,7 @@ abstract class Timer extends StateNotifier<TimerState> {
 
   /// Update state on every ticks.
   void _mapTimerToState(int timer) {
+    onTickUpdate();
     state = state.copyWith(tick: timer);
   }
 

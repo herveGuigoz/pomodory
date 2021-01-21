@@ -6,7 +6,7 @@ import 'core/cache/hydrated_state_notifier.dart';
 import 'core/defer_init.dart';
 import 'features/settings/bloc/bloc.dart';
 import 'features/timer/domain/notifications.dart';
-import 'features/timer/pages/timer.dart';
+import 'features/timer/view/timer.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -14,8 +14,8 @@ class SplashScreen extends StatelessWidget {
     return DeferInit(
       create: () async {
         HydratedStateNotifier.storage = await HydratedStorage.build();
-        await PomodoroNotification.init();
-        // await service.requestPermission();
+        final notificationService = await PomodoroNotification.init();
+        await notificationService.requestMacOsPermission();
         return Pomodoro();
       },
     );

@@ -1,4 +1,4 @@
-part of '../pages/timer.dart';
+part of '../timer.dart';
 
 /// Forked from Flutter Drawer to allow full screen modal.
 class PomodoroDrawer extends StatelessWidget {

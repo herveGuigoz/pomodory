@@ -1,4 +1,4 @@
-part of '../pages/timer.dart';
+part of '../timer.dart';
 
 class _RoundsCount extends HookWidget {
   const _RoundsCount({

@@ -1,9 +1,13 @@
 part of 'bloc.dart';
 
 class TimerController extends Timer with NotificationMixin {
-  TimerController(this.settings) : super(settings.initialTimerState);
+  TimerController(
+    this.settings,
+    this.statsController,
+  ) : super(settings.initialTimerState);
 
   final SettingsState settings;
+  final StatsController statsController;
 
   /// Switch to either work, shortBreak or longBreak,
   void setNextRound({bool mustStartTimer = false}) {
@@ -46,5 +50,10 @@ class TimerController extends Timer with NotificationMixin {
     if (settings.desktopNotifications) {
       await showNotification(playSound: settings.desktopNotificationsSound);
     }
+  }
+
+  @override
+  void onTickUpdate() {
+    statsController.save(state.currentRound);
   }
 }

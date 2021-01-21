@@ -19,7 +19,11 @@ class PomodoroNotification {
 
   static Future<FlutterLocalNotificationsPlugin> _initDependencie() async {
     final notificationsPlugin = FlutterLocalNotificationsPlugin();
-    const macOSSettings = MacOSInitializationSettings();
+    const macOSSettings = MacOSInitializationSettings(
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false,
+    );
     const settings = InitializationSettings(macOS: macOSSettings);
 
     await notificationsPlugin.initialize(settings);
@@ -27,7 +31,7 @@ class PomodoroNotification {
     return notificationsPlugin;
   }
 
-  Future<void> requestPermission() async {
+  Future<void> requestMacOsPermission() async {
     await _service
         .resolvePlatformSpecificImplementation<
             MacOSFlutterLocalNotificationsPlugin>()

@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/all.dart';
 import '../../../core/extensions/duration.dart';
 import '../../settings/bloc/bloc.dart';
 import '../../settings/bloc/settings_state.dart';
+import '../../stats/bloc/stats_controller.dart';
 import '../domain/badges.dart';
 import '../domain/entities/round.dart';
 import '../domain/notifications.dart';
@@ -19,7 +20,8 @@ part 'timer_state.dart';
 
 final timerControllerProvider = StateNotifierProvider<TimerController>((ref) {
   final settings = ref.watch(settingsProvider.state);
-  final controller = TimerController(settings);
+  final statsController = ref.read(statsProvider);
+  final controller = TimerController(settings, statsController);
 
   return controller;
 });

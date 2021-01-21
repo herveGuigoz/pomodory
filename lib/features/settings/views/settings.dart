@@ -5,14 +5,15 @@ import 'package:hooks_riverpod/all.dart';
 
 import '../../../core/icons/pomodoro_icons.dart';
 import '../../../core/theme/themes.dart';
+import '../../stats/views/stats.dart';
 import '../bloc/bloc.dart';
 import '../bloc/settings_state.dart';
 import '../section.dart';
 
 part 'info.dart';
+part 'intervals.dart';
 part 'preferences.dart';
 part 'themes.dart';
-part 'intervals.dart';
 
 const List<Section> navigationItems = <Section>[
   Section(
@@ -30,6 +31,11 @@ const List<Section> navigationItems = <Section>[
     label: 'Settings',
     child: _Preferences(),
     iconData: PomodoroIcons.settings,
+  ),
+  Section(
+    label: 'Stats',
+    child: Stats(),
+    iconData: PomodoroIcons.statistics,
   ),
   Section(
     label: 'Info',

@@ -1,4 +1,4 @@
-part of '../pages/timer.dart';
+part of '../timer.dart';
 
 class _CircularCountDownTimer extends StatelessWidget {
   const _CircularCountDownTimer({
