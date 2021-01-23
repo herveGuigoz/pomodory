@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pomodory/core/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
 import 'package:pomodory/core/theme/themes.dart';
-import 'package:pomodory/features/settings/bloc/bloc.dart';
-import 'package:pomodory/features/settings/bloc/settings_state.dart';
+import 'package:pomodory/views/settings/controllers/bloc.dart';
+import 'package:pomodory/models/settings_state.dart';
 
 class MockStorage extends Mock implements Storage {}
 

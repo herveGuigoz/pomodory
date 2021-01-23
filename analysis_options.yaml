@@ -93,3 +93,5 @@ linter:
 
     # Allow to customize pubspec dependencies order
     sort_pub_dependencies: false
+
+    avoid_classes_with_only_static_members: false

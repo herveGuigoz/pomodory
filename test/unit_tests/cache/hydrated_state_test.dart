@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pomodory/core/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
 import 'package:uuid/uuid.dart';
 
 class MockStorage extends Mock implements Storage {}

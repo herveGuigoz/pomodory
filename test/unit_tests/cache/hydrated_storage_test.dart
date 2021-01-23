@@ -11,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:pomodory/core/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
 
 class MockBox extends Mock implements Box<dynamic> {}
 
