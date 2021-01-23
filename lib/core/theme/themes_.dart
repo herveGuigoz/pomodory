@@ -26,7 +26,7 @@ class AppTheme with PomodoroTextTheme {
     // Color color(String value) => ColorUtils.parseHex(value);
     switch (type) {
       case ThemeType.FlockGreen:
-        return AppTheme(isDark: false)
+        return AppTheme(isDark: true)
           ..bg1 = const Color(0xfff1f7f0)
           ..bg2 = const Color(0xffc1dcbc)
           ..surface = Colors.white

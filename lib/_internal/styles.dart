@@ -114,10 +114,36 @@ class TextStyles {
   static TextStyle get body3 => arialRounded.size(FontSizes.s11);
 
   static TextStyle get btn =>
-      arialRoundedBold.size(FontSizes.s14).letterSpace(1.75);
+      arialRoundedBold.size(FontSizes.s12).letterSpace(.4);
 
   static TextStyle get caption =>
       arialRounded.size(FontSizes.s11).letterSpace(.3);
+}
+
+class BackgroundColor {
+  static Color get light => const Color.fromRGBO(255, 255, 255, 0.1);
+  static Color get dark => const Color.fromRGBO(0, 0, 0, 0.15);
+}
+
+class TextButtonStyle {
+  static ButtonStyle get small => TextButton.styleFrom(
+        primary: Colors.white,
+        backgroundColor: BackgroundColor.light,
+        textStyle: TextStyles.caption,
+      );
+
+  // static ButtonStyle get smallOutlined => TextButton.styleFrom(
+  //     primary: Colors.white,
+  //     backgroundColor: BackgroundColor.light,
+  //     textStyle: TextStyles.caption,
+  //     side: const BorderSide(color: Color.fromRGBO(255, 255, 255, 0.4)),
+  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)));
+
+  static ButtonStyle get medium => TextButton.styleFrom(
+        primary: Colors.white,
+        backgroundColor: BackgroundColor.dark,
+        textStyle: TextStyles.btn,
+      );
 }
 
 class Shadows {

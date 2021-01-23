@@ -3,9 +3,9 @@ import '../_internal/styles.dart';
 
 /// A container that will animate when you change colors.
 class StyledContainer extends StatelessWidget {
-  const StyledContainer(
-    this.color, {
+  const StyledContainer({
     Key key,
+    this.color,
     this.borderRadius,
     this.shadows,
     this.child,

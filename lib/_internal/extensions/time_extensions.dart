@@ -225,7 +225,6 @@ extension DurationTimeExtension on Duration {
   /// Returns a Future.delayed from this
   Future<void> get delay => Future.delayed(this);
 
-  String get time => inHours != 0
-      ? '$inHours:${inMinutes % 60}:${(inSeconds % 60).toString().padLeft(2, '0')}'
-      : '${inMinutes % 60}:${(inSeconds % 60).toString().padLeft(2, '0')}';
+  String get time =>
+      '${(inMinutes % 60).toString().padLeft(2, '0')}:${(inSeconds % 60).toString().padLeft(2, '0')}';
 }

@@ -145,8 +145,10 @@ class StyledSearchTextInputState extends State<StyledSearchTextInput> {
 
   @override
   void initState() {
-    _controller =
-        widget.controller ?? TextEditingController(text: widget.initialValue);
+    _controller = widget.controller ??
+        TextEditingController(
+          text: widget.initialValue,
+        );
     _focusNode = FocusNode(
       debugLabel: widget.label ?? '',
       onKey: (node, evt) {
@@ -268,8 +270,10 @@ class ThinUnderlineBorder extends InputBorder {
   bool get isOutline => false;
 
   @override
-  UnderlineInputBorder copyWith(
-      {BorderSide borderSide, BorderRadius borderRadius}) {
+  UnderlineInputBorder copyWith({
+    BorderSide borderSide,
+    BorderRadius borderRadius,
+  }) {
     return UnderlineInputBorder(
       borderSide: borderSide ?? this.borderSide,
       borderRadius: borderRadius ?? this.borderRadius,

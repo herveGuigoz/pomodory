@@ -10,13 +10,14 @@ class TimerController extends Timer with NotificationMixin {
   final StatsController statsController;
 
   /// Switch to either work, shortBreak or longBreak,
-  void setNextRound({bool mustStartTimer = false}) {
-    final nextRound = state.currentRound.maybeWhen(
-      work: () => state.round < settings.roundsLength
-          ? const Round.shortBreak()
-          : const Round.longBreak(),
-      orElse: () => const Round.work(),
-    );
+  void setNextRound({Round next, bool mustStartTimer = false}) {
+    final nextRound = next ??
+        state.currentRound.maybeWhen(
+          work: () => state.round < settings.roundsLength
+              ? const Round.shortBreak()
+              : const Round.longBreak(),
+          orElse: () => const Round.work(),
+        );
 
     state = state.copyWith(
       duration: nextRound.getRoundDuration(settings),
