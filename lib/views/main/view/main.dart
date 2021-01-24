@@ -8,13 +8,14 @@ import '../../../_internal/styles.dart';
 import '../../../components/styled_container.dart';
 import '../../../components/styled_text.dart';
 import '../../../core/theme/themes_.dart';
+import '../../settings/views/settings.dart';
 import '../bloc/bloc.dart';
 import 'components/animated_button.dart';
 import 'components/linear_painter.dart';
 
-part 'components/timer.dart';
 part 'components/header.dart';
 part 'components/tasks.dart';
+part 'components/timer.dart';
 
 class Timer extends HookWidget {
   const Timer({

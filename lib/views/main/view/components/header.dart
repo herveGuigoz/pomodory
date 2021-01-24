@@ -5,7 +5,6 @@ class _Header extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  static const double _kPadding = 8;
   static const double _kIconSize = 18;
 
   @override
@@ -16,15 +15,17 @@ class _Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton.icon(
-            onPressed: () {},
             icon: const Icon(PomodoroIcons.statistics, size: _kIconSize),
             label: const Text('Report'),
-          ),
-          const SizedBox(width: _kPadding),
-          TextButton.icon(
             onPressed: () {},
+          ),
+          const SizedBox(width: 8),
+          TextButton.icon(
             icon: const Icon(PomodoroIcons.settings, size: _kIconSize),
             label: const Text('Setting'),
+            onPressed: () {
+              Navigator.of(context).push<void>(SettingsView.route());
+            },
           )
         ],
       ),

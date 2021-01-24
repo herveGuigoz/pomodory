@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'extensions/textstyle_extensions.dart';
 import 'extensions/time_extensions.dart';
 
+export 'extensions/textstyle_extensions.dart';
+
 class Durations {
   static Duration get fastest => .15.seconds;
 
@@ -107,6 +109,12 @@ class TextStyles {
 
   static TextStyle get h2 => arialRoundedBold.size(FontSizes.s12);
 
+  static TextStyle get h3 => arialRounded
+      .size(FontSizes.s16)
+      .weight(FontWeight.bold)
+      .letterSpace(.45)
+      .textColor(const Color.fromRGBO(85, 85, 85, 1));
+
   static TextStyle get body1 => arialRounded.size(FontSizes.s14);
 
   static TextStyle get body2 => arialRounded.size(FontSizes.s12);
@@ -118,6 +126,12 @@ class TextStyles {
 
   static TextStyle get caption =>
       arialRounded.size(FontSizes.s11).letterSpace(.3);
+
+  // todo remove textColor, use Theme.of(context)
+  static TextStyle get label => arialRounded
+      .size(FontSizes.s14)
+      .letterSpace(.4)
+      .textColor(const Color.fromRGBO(187, 187, 187, 1));
 }
 
 class BackgroundColor {

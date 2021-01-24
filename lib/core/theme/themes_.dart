@@ -114,6 +114,12 @@ class AppTheme with PomodoroTextTheme {
       buttonColor: accent1,
       highlightColor: accent1,
       toggleableActiveColor: accent1,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      scaffoldBackgroundColor: Colors.white,
+      dividerTheme: const DividerThemeData(space: 0),
     );
   }
 
