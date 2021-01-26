@@ -1,4 +1,4 @@
-part of 'bloc.dart';
+part of 'provider.dart';
 
 class TimerController extends Timer with NotificationMixin {
   TimerController(

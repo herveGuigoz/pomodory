@@ -3,12 +3,15 @@ part of '../settings.dart';
 class _RoundsLengthPicker extends StatelessWidget {
   const _RoundsLengthPicker({
     Key key,
+    @required this.height,
   }) : super(key: key);
+
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240,
+      height: height,
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

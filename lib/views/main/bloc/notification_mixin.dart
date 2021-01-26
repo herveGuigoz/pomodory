@@ -1,4 +1,4 @@
-part of 'bloc.dart';
+part of 'provider.dart';
 
 mixin NotificationMixin on Timer {
   static const _badgeBlue = 'assets/images/badge_blue.png';

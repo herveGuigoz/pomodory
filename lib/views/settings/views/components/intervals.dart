@@ -57,7 +57,12 @@ class _CycleLength extends HookWidget {
         GestureDetector(
           onTap: () async => showModalBottomSheet<void>(
             context: context,
-            builder: (context) => const _RoundsLengthPicker(),
+            builder: (context) {
+              final size = MediaQuery.of(context).size.height;
+              final panelHeight = size == null ? 240.0 : size / 3;
+
+              return _RoundsLengthPicker(height: panelHeight);
+            },
           ),
           child: Container(
             // todo use padding on parent

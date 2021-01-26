@@ -15,4 +15,7 @@ class PomodoroIcons {
   static const circled_right = IconData(0xe807, fontFamily: _kFontFam);
   static const rollback = IconData(0xe808, fontFamily: _kFontFam);
   static const statistics = IconData(0xe809, fontFamily: _kFontFam);
+  static const close = IconData(0xe80a, fontFamily: _kFontFam);
+  static const down = IconData(0xe80b, fontFamily: _kFontFam);
+  static const up = IconData(0xe80d, fontFamily: _kFontFam);
 }

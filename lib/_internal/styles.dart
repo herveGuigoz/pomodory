@@ -109,11 +109,11 @@ class TextStyles {
 
   static TextStyle get h2 => arialRoundedBold.size(FontSizes.s12);
 
-  static TextStyle get h3 => arialRounded
-      .size(FontSizes.s16)
-      .weight(FontWeight.bold)
-      .letterSpace(.45)
-      .textColor(const Color.fromRGBO(85, 85, 85, 1));
+  static TextStyle get h3 => arialRoundedBold.size(FontSizes.s16);
+  // .size(FontSizes.s16)
+  // .weight(FontWeight.bold)
+  // .letterSpace(.45)
+  // .textColor(const Color.fromRGBO(85, 85, 85, 1));
 
   static TextStyle get body1 => arialRounded.size(FontSizes.s14);
 

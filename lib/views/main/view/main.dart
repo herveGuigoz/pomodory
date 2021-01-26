@@ -1,20 +1,26 @@
+import 'dart:math' as math;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/all.dart';
 
 import '../../../_internal/icons/pomodoro_icons.dart';
 import '../../../_internal/styles.dart';
+import '../../../components/buttons/animated_button.dart';
 import '../../../components/styled_container.dart';
 import '../../../components/styled_text.dart';
 import '../../../core/theme/themes_.dart';
 import '../../settings/views/settings.dart';
-import '../bloc/bloc.dart';
-import 'components/animated_button.dart';
+import '../bloc/provider.dart';
 import 'components/linear_painter.dart';
+import 'task_modal/task_modal.dart';
 
 part 'components/header.dart';
-part 'components/tasks.dart';
+part 'components/task.dart';
+
+part 'components/tasks_header.dart';
 part 'components/timer.dart';
 
 class Timer extends HookWidget {
@@ -29,27 +35,31 @@ class Timer extends HookWidget {
     return Material(
       child: StyledContainer(
         color: color,
-        child: SafeArea(
+        child: const SafeArea(
           bottom: false,
-          child: Column(
-            children: const [
-              Padding(
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: _Header(),
+                sliver: SliverToBoxAdapter(child: _Header()),
               ),
-              Padding(
+              SliverPadding(
                 padding: EdgeInsets.only(top: 8, left: 16, right: 16),
-                child: LinearPainter(),
+                sliver: SliverToBoxAdapter(child: LinearPainter()),
               ),
-              Padding(
+              SliverPadding(
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                child: _TimerBloc(),
+                sliver: SliverToBoxAdapter(child: _TimerBloc()),
               ),
-              _Headline(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: _Tasks(),
-              )
+              SliverPadding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 24),
+                sliver: SliverToBoxAdapter(child: _Headline()),
+              ),
+              _TasksHeader(),
+              SliverPadding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                sliver: _Tasks(),
+              ),
             ],
           ),
         ),
@@ -65,14 +75,12 @@ class _Headline extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final headline = useProvider(currentRoundProvider).maybeWhen(
-      work: () => 'Time to work!',
-      orElse: () => 'Time for a break',
-    );
+    final headline = useProvider(headlineProvider);
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 8, bottom: 16),
-      child: Text(headline, style: TextStyles.h1),
+    return Text(
+      headline,
+      style: TextStyles.h1,
+      textAlign: TextAlign.center,
     );
   }
 }

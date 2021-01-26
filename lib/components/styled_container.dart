@@ -12,6 +12,7 @@ class StyledContainer extends StatelessWidget {
     this.width,
     this.height,
     this.align,
+    this.shape,
     this.margin,
     this.duration,
     this.border,
@@ -24,6 +25,7 @@ class StyledContainer extends StatelessWidget {
   final double width;
   final double height;
   final Alignment align;
+  final BoxShape shape;
   final EdgeInsets margin;
   final Duration duration;
   final BoxBorder border;
@@ -41,6 +43,7 @@ class StyledContainer extends StatelessWidget {
         borderRadius: borderRadius,
         boxShadow: shadows,
         border: border,
+        shape: shape ?? BoxShape.rectangle,
       ),
       child: child,
     );

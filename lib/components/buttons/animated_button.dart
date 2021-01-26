@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// TODO Keep button focused on play
-
 /// Using [ShadowDegree] with values [ShadowDegree.dark] or [ShadowDegree.light]
 /// to get a darker version of the used color.
 /// [duration] in milliseconds
@@ -17,6 +15,7 @@ class AnimatedButton extends StatefulWidget {
     this.width = 200,
     this.duration = 70,
     this.shape = BoxShape.rectangle,
+    this.border,
   })  : assert(child != null),
         super(key: key);
 
@@ -29,6 +28,7 @@ class AnimatedButton extends StatefulWidget {
   final ShadowDegree shadowDegree;
   final int duration;
   final BoxShape shape;
+  final BoxBorder border;
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();
@@ -62,29 +62,29 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                 height: _height,
                 width: widget.width,
                 decoration: BoxDecoration(
-                    // color: const Color.fromRGBO(235, 235, 235, 100),
-                    color: widget.enabled
-                        ? darken(widget.color, widget.shadowDegree)
-                        : darken(Colors.grey, widget.shadowDegree),
-                    borderRadius: widget.shape != BoxShape.circle
-                        ? const BorderRadius.all(Radius.circular(_radius))
-                        : null,
-                    shape: widget?.shape),
+                  // color: const Color.fromRGBO(235, 235, 235, 100),
+                  color: darken(widget.color, widget.shadowDegree),
+                  borderRadius: widget.shape != BoxShape.circle
+                      ? const BorderRadius.all(Radius.circular(_radius))
+                      : null,
+                  shape: widget?.shape,
+                ),
               ),
             ),
             AnimatedPositioned(
               curve: _curve,
               duration: Duration(milliseconds: widget.duration),
-              bottom: _position,
+              bottom: widget.enabled ? _position : 0,
               child: Container(
                 height: _height,
                 width: widget.width,
                 decoration: BoxDecoration(
-                  color: widget.enabled ? widget.color : Colors.grey,
+                  color: widget.color,
                   borderRadius: widget.shape != BoxShape.circle
                       ? const BorderRadius.all(Radius.circular(_radius))
                       : null,
                   shape: widget?.shape,
+                  border: widget.border,
                 ),
                 child: Center(
                   child: widget.child,

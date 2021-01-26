@@ -5,12 +5,14 @@ import 'package:hooks_riverpod/all.dart';
 
 import '../../../models/round.dart';
 import '../../../models/settings_state.dart';
+import '../../../models/task.dart';
 import '../../../models/timer_state.dart';
 import '../../../services/files_service.dart';
 import '../../../services/notifications_service.dart';
 import '../../settings/controllers/bloc.dart';
 import '../../stats/controllers/stats_controller.dart';
 import '../domain/timer.dart';
+import 'task_controller.dart';
 
 export '../../../models/round.dart';
 export '../../../models/timer_state.dart';
@@ -48,3 +50,16 @@ final colorFromCurrentRoundProvider = Provider((ref) {
     longBreak: () => longBreakColor,
   );
 });
+
+final headlineProvider = Provider((ref) {
+  return ref.watch(currentRoundProvider).maybeWhen(
+        work: () => 'Time to work!',
+        orElse: () => 'Time for a break',
+      );
+});
+
+final tasksController = StateNotifierProvider((ref) {
+  return TaskController();
+});
+
+final taskProvider = ScopedProvider<Task>(null);
