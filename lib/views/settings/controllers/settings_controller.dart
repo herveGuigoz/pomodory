@@ -32,11 +32,11 @@ class SettingsController extends HydratedStateNotifier<SettingsState> {
       );
 
   set desktopNotifications(bool value) => state = state.copyWith(
-        desktopNotifications: value,
+        notifications: value,
       );
 
   set notificationsSound(bool value) => state = state.copyWith(
-        desktopNotificationsSound: value,
+        sound: value,
       );
 
   void resetAllValues() => state = SettingsState(

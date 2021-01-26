@@ -25,8 +25,8 @@ class _$SettingsStateTearOff {
       String pomodoroThemeName = 'Pomotroid',
       bool autoStartWorkTimer = true,
       bool autoStartBreakTimer = true,
-      bool desktopNotifications = true,
-      bool desktopNotificationsSound = true}) {
+      bool notifications = true,
+      bool sound = true}) {
     return _SettingsState(
       focusInMinutes: focusInMinutes,
       shortBreakInMinutes: shortBreakInMinutes,
@@ -35,8 +35,8 @@ class _$SettingsStateTearOff {
       pomodoroThemeName: pomodoroThemeName,
       autoStartWorkTimer: autoStartWorkTimer,
       autoStartBreakTimer: autoStartBreakTimer,
-      desktopNotifications: desktopNotifications,
-      desktopNotificationsSound: desktopNotificationsSound,
+      notifications: notifications,
+      sound: sound,
     );
   }
 
@@ -59,8 +59,8 @@ mixin _$SettingsState {
   String get pomodoroThemeName;
   bool get autoStartWorkTimer;
   bool get autoStartBreakTimer;
-  bool get desktopNotifications;
-  bool get desktopNotificationsSound;
+  bool get notifications;
+  bool get sound;
 
   Map<String, dynamic> toJson();
   $SettingsStateCopyWith<SettingsState> get copyWith;
@@ -79,8 +79,8 @@ abstract class $SettingsStateCopyWith<$Res> {
       String pomodoroThemeName,
       bool autoStartWorkTimer,
       bool autoStartBreakTimer,
-      bool desktopNotifications,
-      bool desktopNotificationsSound});
+      bool notifications,
+      bool sound});
 }
 
 /// @nodoc
@@ -101,8 +101,8 @@ class _$SettingsStateCopyWithImpl<$Res>
     Object pomodoroThemeName = freezed,
     Object autoStartWorkTimer = freezed,
     Object autoStartBreakTimer = freezed,
-    Object desktopNotifications = freezed,
-    Object desktopNotificationsSound = freezed,
+    Object notifications = freezed,
+    Object sound = freezed,
   }) {
     return _then(_value.copyWith(
       focusInMinutes: focusInMinutes == freezed
@@ -125,12 +125,10 @@ class _$SettingsStateCopyWithImpl<$Res>
       autoStartBreakTimer: autoStartBreakTimer == freezed
           ? _value.autoStartBreakTimer
           : autoStartBreakTimer as bool,
-      desktopNotifications: desktopNotifications == freezed
-          ? _value.desktopNotifications
-          : desktopNotifications as bool,
-      desktopNotificationsSound: desktopNotificationsSound == freezed
-          ? _value.desktopNotificationsSound
-          : desktopNotificationsSound as bool,
+      notifications: notifications == freezed
+          ? _value.notifications
+          : notifications as bool,
+      sound: sound == freezed ? _value.sound : sound as bool,
     ));
   }
 }
@@ -150,8 +148,8 @@ abstract class _$SettingsStateCopyWith<$Res>
       String pomodoroThemeName,
       bool autoStartWorkTimer,
       bool autoStartBreakTimer,
-      bool desktopNotifications,
-      bool desktopNotificationsSound});
+      bool notifications,
+      bool sound});
 }
 
 /// @nodoc
@@ -174,8 +172,8 @@ class __$SettingsStateCopyWithImpl<$Res>
     Object pomodoroThemeName = freezed,
     Object autoStartWorkTimer = freezed,
     Object autoStartBreakTimer = freezed,
-    Object desktopNotifications = freezed,
-    Object desktopNotificationsSound = freezed,
+    Object notifications = freezed,
+    Object sound = freezed,
   }) {
     return _then(_SettingsState(
       focusInMinutes: focusInMinutes == freezed
@@ -198,12 +196,10 @@ class __$SettingsStateCopyWithImpl<$Res>
       autoStartBreakTimer: autoStartBreakTimer == freezed
           ? _value.autoStartBreakTimer
           : autoStartBreakTimer as bool,
-      desktopNotifications: desktopNotifications == freezed
-          ? _value.desktopNotifications
-          : desktopNotifications as bool,
-      desktopNotificationsSound: desktopNotificationsSound == freezed
-          ? _value.desktopNotificationsSound
-          : desktopNotificationsSound as bool,
+      notifications: notifications == freezed
+          ? _value.notifications
+          : notifications as bool,
+      sound: sound == freezed ? _value.sound : sound as bool,
     ));
   }
 }
@@ -220,8 +216,8 @@ class _$_SettingsState extends _SettingsState {
       this.pomodoroThemeName = 'Pomotroid',
       this.autoStartWorkTimer = true,
       this.autoStartBreakTimer = true,
-      this.desktopNotifications = true,
-      this.desktopNotificationsSound = true})
+      this.notifications = true,
+      this.sound = true})
       : assert(focusInMinutes != null),
         assert(shortBreakInMinutes != null),
         assert(longBreakInMinutes != null),
@@ -229,8 +225,8 @@ class _$_SettingsState extends _SettingsState {
         assert(pomodoroThemeName != null),
         assert(autoStartWorkTimer != null),
         assert(autoStartBreakTimer != null),
-        assert(desktopNotifications != null),
-        assert(desktopNotificationsSound != null),
+        assert(notifications != null),
+        assert(sound != null),
         super._();
 
   factory _$_SettingsState.fromJson(Map<String, dynamic> json) =>
@@ -259,14 +255,14 @@ class _$_SettingsState extends _SettingsState {
   final bool autoStartBreakTimer;
   @JsonKey(defaultValue: true)
   @override
-  final bool desktopNotifications;
+  final bool notifications;
   @JsonKey(defaultValue: true)
   @override
-  final bool desktopNotificationsSound;
+  final bool sound;
 
   @override
   String toString() {
-    return 'SettingsState(focusInMinutes: $focusInMinutes, shortBreakInMinutes: $shortBreakInMinutes, longBreakInMinutes: $longBreakInMinutes, roundsLength: $roundsLength, pomodoroThemeName: $pomodoroThemeName, autoStartWorkTimer: $autoStartWorkTimer, autoStartBreakTimer: $autoStartBreakTimer, desktopNotifications: $desktopNotifications, desktopNotificationsSound: $desktopNotificationsSound)';
+    return 'SettingsState(focusInMinutes: $focusInMinutes, shortBreakInMinutes: $shortBreakInMinutes, longBreakInMinutes: $longBreakInMinutes, roundsLength: $roundsLength, pomodoroThemeName: $pomodoroThemeName, autoStartWorkTimer: $autoStartWorkTimer, autoStartBreakTimer: $autoStartBreakTimer, notifications: $notifications, sound: $sound)';
   }
 
   @override
@@ -294,14 +290,11 @@ class _$_SettingsState extends _SettingsState {
             (identical(other.autoStartBreakTimer, autoStartBreakTimer) ||
                 const DeepCollectionEquality()
                     .equals(other.autoStartBreakTimer, autoStartBreakTimer)) &&
-            (identical(other.desktopNotifications, desktopNotifications) ||
-                const DeepCollectionEquality().equals(
-                    other.desktopNotifications, desktopNotifications)) &&
-            (identical(other.desktopNotificationsSound,
-                    desktopNotificationsSound) ||
-                const DeepCollectionEquality().equals(
-                    other.desktopNotificationsSound,
-                    desktopNotificationsSound)));
+            (identical(other.notifications, notifications) ||
+                const DeepCollectionEquality()
+                    .equals(other.notifications, notifications)) &&
+            (identical(other.sound, sound) ||
+                const DeepCollectionEquality().equals(other.sound, sound)));
   }
 
   @override
@@ -314,8 +307,8 @@ class _$_SettingsState extends _SettingsState {
       const DeepCollectionEquality().hash(pomodoroThemeName) ^
       const DeepCollectionEquality().hash(autoStartWorkTimer) ^
       const DeepCollectionEquality().hash(autoStartBreakTimer) ^
-      const DeepCollectionEquality().hash(desktopNotifications) ^
-      const DeepCollectionEquality().hash(desktopNotificationsSound);
+      const DeepCollectionEquality().hash(notifications) ^
+      const DeepCollectionEquality().hash(sound);
 
   @override
   _$SettingsStateCopyWith<_SettingsState> get copyWith =>
@@ -337,8 +330,8 @@ abstract class _SettingsState extends SettingsState {
       String pomodoroThemeName,
       bool autoStartWorkTimer,
       bool autoStartBreakTimer,
-      bool desktopNotifications,
-      bool desktopNotificationsSound}) = _$_SettingsState;
+      bool notifications,
+      bool sound}) = _$_SettingsState;
 
   factory _SettingsState.fromJson(Map<String, dynamic> json) =
       _$_SettingsState.fromJson;
@@ -358,9 +351,9 @@ abstract class _SettingsState extends SettingsState {
   @override
   bool get autoStartBreakTimer;
   @override
-  bool get desktopNotifications;
+  bool get notifications;
   @override
-  bool get desktopNotificationsSound;
+  bool get sound;
   @override
   _$SettingsStateCopyWith<_SettingsState> get copyWith;
 }

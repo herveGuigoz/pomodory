@@ -48,8 +48,8 @@ class TimerController extends Timer with NotificationMixin {
   @override
   Future<void> onDone() async {
     setNextRound(mustStartTimer: state.currentRound.autoStartNext(settings));
-    if (settings.desktopNotifications) {
-      await showNotification(playSound: settings.desktopNotificationsSound);
+    if (settings.notifications) {
+      await showNotification(playSound: settings.sound);
     }
   }
 

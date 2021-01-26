@@ -28,8 +28,8 @@ abstract class SettingsState implements _$SettingsState {
     @Default('Pomotroid') String pomodoroThemeName,
     @Default(true) bool autoStartWorkTimer,
     @Default(true) bool autoStartBreakTimer,
-    @Default(true) bool desktopNotifications,
-    @Default(true) bool desktopNotificationsSound,
+    @Default(true) bool notifications,
+    @Default(true) bool sound,
   }) = _SettingsState;
 
   factory SettingsState.fromJson(Map<String, dynamic> json) =>

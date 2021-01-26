@@ -64,8 +64,8 @@ void main() {
 
         final controller = SettingsController();
 
-        expect(controller.state.desktopNotifications, true);
-        expect(controller.state.desktopNotificationsSound, true);
+        expect(controller.state.notifications, true);
+        expect(controller.state.sound, true);
       },
     );
 
@@ -104,8 +104,8 @@ void main() {
       controller.notificationsSound = false;
       final state = controller.state;
 
-      expect(state.desktopNotifications, false);
-      expect(state.desktopNotificationsSound, false);
+      expect(state.notifications, false);
+      expect(state.sound, false);
       verify<dynamic>(storage.write(any, any)).called(3);
     });
   });

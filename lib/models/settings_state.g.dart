@@ -15,9 +15,8 @@ _$_SettingsState _$_$_SettingsStateFromJson(Map<String, dynamic> json) {
     pomodoroThemeName: json['pomodoroThemeName'] as String ?? 'Pomotroid',
     autoStartWorkTimer: json['autoStartWorkTimer'] as bool ?? true,
     autoStartBreakTimer: json['autoStartBreakTimer'] as bool ?? true,
-    desktopNotifications: json['desktopNotifications'] as bool ?? true,
-    desktopNotificationsSound:
-        json['desktopNotificationsSound'] as bool ?? true,
+    notifications: json['notifications'] as bool ?? true,
+    sound: json['sound'] as bool ?? true,
   );
 }
 
@@ -30,6 +29,6 @@ Map<String, dynamic> _$_$_SettingsStateToJson(_$_SettingsState instance) =>
       'pomodoroThemeName': instance.pomodoroThemeName,
       'autoStartWorkTimer': instance.autoStartWorkTimer,
       'autoStartBreakTimer': instance.autoStartBreakTimer,
-      'desktopNotifications': instance.desktopNotifications,
-      'desktopNotificationsSound': instance.desktopNotificationsSound,
+      'notifications': instance.notifications,
+      'sound': instance.sound,
     };

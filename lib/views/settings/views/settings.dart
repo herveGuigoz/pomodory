@@ -77,7 +77,7 @@ class SettingsView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: _SwitchImpl(
                       title: 'Notifications',
-                      selector: (state) => state.desktopNotifications,
+                      selector: (state) => state.notifications,
                       onChanged: (value) => context
                           .read(settingsProvider)
                           .desktopNotifications = value,
