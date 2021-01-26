@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../models/round.dart';
+import 'round.dart';
 
 part 'stats.freezed.dart';
 

@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/all.dart';
 import '../../../_internal/cache/hydrated_state_notifier.dart';
 import '../../../_internal/extensions/time_extensions.dart';
 import '../../../models/round.dart';
-import '../models/stats.dart';
+import '../../../models/stats.dart';
 
 final statsProvider = StateNotifierProvider((ref) => StatsController());
 
