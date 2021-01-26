@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pomodory/core/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
 import 'package:uuid/uuid.dart';
 
 class MockStorage extends Mock implements Storage {}
@@ -99,7 +99,7 @@ void main() {
       verify<dynamic>(storage.read('MyHydratedCounter')).called(1);
     });
 
-    // TODO fix test
+    // todo fix test
     // test(
     //     'does not read from storage on subsequent state changes '
     //     'when cache is malformed', () {
@@ -158,7 +158,7 @@ void main() {
         verify<dynamic>(storage.read('MyHydrated')).called(1);
       });
 
-      // TODO fix test
+      // todo fix test
       // test('initial state should return 0 when deserialization fails', () {
       //   when<dynamic>(storage.read('MyHydrated')).thenThrow(Exception('oops'));
       //   expect(MyHydrated().state, 0);

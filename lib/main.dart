@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'core/error_handler.dart';
+import '_internal/error_handler.dart';
 import 'pomodoro.dart';
 
 Future<void> main() async {

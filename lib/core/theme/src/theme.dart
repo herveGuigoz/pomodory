@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
+import '../../../_internal/styles.dart';
 import 'theme_constantes.dart';
 
 part 'theme_data.dart';
-part 'text_theme.dart';
+part '../../../_internal/theme/text_theme.dart';
 
 class PomodoroTheme extends PomodoroThemeData with PomodoroTextTheme {
   PomodoroTheme(
