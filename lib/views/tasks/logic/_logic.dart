@@ -1,7 +1,7 @@
-part of 'task_modal.dart';
+part of '../task_modal.dart';
 
-class TaskModal extends StatefulWidget {
-  const TaskModal({
+class TaskModalLogic extends StatefulWidget {
+  const TaskModalLogic({
     Key key,
     @required this.task,
   }) : super(key: key);
@@ -12,7 +12,7 @@ class TaskModal extends StatefulWidget {
     await showCupertinoDialog<void>(
       context: context,
       builder: (context) => Dialog(
-        child: TaskModal(task: task ?? Task.initial()),
+        child: TaskModalLogic(task: task ?? Task.initial()),
       ),
     );
   }
@@ -21,7 +21,7 @@ class TaskModal extends StatefulWidget {
   _TaskModalController createState() => _TaskModalController();
 }
 
-class _TaskModalController extends State<TaskModal> {
+class _TaskModalController extends State<TaskModalLogic> {
   Task get task => widget.task;
 
   TextEditingController _taskName;

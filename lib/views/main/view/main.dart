@@ -13,13 +13,12 @@ import '../../../components/styled_container.dart';
 import '../../../components/styled_text.dart';
 import '../../../core/theme/themes_.dart';
 import '../../settings/views/settings.dart';
+import '../../tasks/task_modal.dart';
 import '../bloc/provider.dart';
 import 'components/linear_painter.dart';
-import 'task_modal/task_modal.dart';
 
 part 'components/header.dart';
 part 'components/task.dart';
-
 part 'components/tasks_header.dart';
 part 'components/timer.dart';
 

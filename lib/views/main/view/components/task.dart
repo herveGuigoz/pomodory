@@ -48,7 +48,7 @@ class _Card extends HookWidget {
           caption: 'Edit',
           color: Colors.transparent,
           icon: Icons.edit,
-          onTap: () async => TaskModal.show(context, task: task),
+          onTap: () async => TaskModalLogic.show(context, task: task),
         ),
       ],
       child: Container(
@@ -82,10 +82,6 @@ class _Card extends HookWidget {
                       .textColor(const Color.fromRGBO(187, 187, 187, 1))
                   : TextStyles.h3
                       .textColor(const Color.fromRGBO(85, 85, 85, 1)),
-
-              //TextStyles.h3
-              // .textDecoration(TextDecoration.lineThrough)
-              // .textColor(const Color.fromRGBO(85, 85, 85, 1))
             ),
           ],
         ),
