@@ -10,7 +10,10 @@ class _Intervals extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Time (minutes)', style: TextStyles.h3),
+        Text(
+          'Time (minutes)',
+          style: TextStyles.h3.textColor(const Color.fromRGBO(34, 34, 34, 1)),
+        ),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +56,10 @@ class _CycleLength extends HookWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('Cycle Length', style: TextStyles.h3),
+        Text(
+          'Cycle Length',
+          style: TextStyles.h3.textColor(const Color.fromRGBO(34, 34, 34, 1)),
+        ),
         GestureDetector(
           onTap: () async => showModalBottomSheet<void>(
             context: context,

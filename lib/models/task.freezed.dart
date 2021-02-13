@@ -18,13 +18,15 @@ class _$TaskTearOff {
       {@required String id,
       @required String name,
       @required int estPomodoros,
-      bool active = false,
+      bool selected = false,
+      bool visible = false,
       bool completed = false}) {
     return _Task(
       id: id,
       name: name,
       estPomodoros: estPomodoros,
-      active: active,
+      selected: selected,
+      visible: visible,
       completed: completed,
     );
   }
@@ -39,7 +41,8 @@ mixin _$Task {
   String get id;
   String get name;
   int get estPomodoros;
-  bool get active;
+  bool get selected;
+  bool get visible;
   bool get completed;
 
   $TaskCopyWith<Task> get copyWith;
@@ -50,7 +53,12 @@ abstract class $TaskCopyWith<$Res> {
   factory $TaskCopyWith(Task value, $Res Function(Task) then) =
       _$TaskCopyWithImpl<$Res>;
   $Res call(
-      {String id, String name, int estPomodoros, bool active, bool completed});
+      {String id,
+      String name,
+      int estPomodoros,
+      bool selected,
+      bool visible,
+      bool completed});
 }
 
 /// @nodoc
@@ -66,7 +74,8 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object estPomodoros = freezed,
-    Object active = freezed,
+    Object selected = freezed,
+    Object visible = freezed,
     Object completed = freezed,
   }) {
     return _then(_value.copyWith(
@@ -74,7 +83,8 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       estPomodoros:
           estPomodoros == freezed ? _value.estPomodoros : estPomodoros as int,
-      active: active == freezed ? _value.active : active as bool,
+      selected: selected == freezed ? _value.selected : selected as bool,
+      visible: visible == freezed ? _value.visible : visible as bool,
       completed: completed == freezed ? _value.completed : completed as bool,
     ));
   }
@@ -86,7 +96,12 @@ abstract class _$TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       __$TaskCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id, String name, int estPomodoros, bool active, bool completed});
+      {String id,
+      String name,
+      int estPomodoros,
+      bool selected,
+      bool visible,
+      bool completed});
 }
 
 /// @nodoc
@@ -103,7 +118,8 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object estPomodoros = freezed,
-    Object active = freezed,
+    Object selected = freezed,
+    Object visible = freezed,
     Object completed = freezed,
   }) {
     return _then(_Task(
@@ -111,7 +127,8 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       estPomodoros:
           estPomodoros == freezed ? _value.estPomodoros : estPomodoros as int,
-      active: active == freezed ? _value.active : active as bool,
+      selected: selected == freezed ? _value.selected : selected as bool,
+      visible: visible == freezed ? _value.visible : visible as bool,
       completed: completed == freezed ? _value.completed : completed as bool,
     ));
   }
@@ -123,12 +140,14 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
       {@required this.id,
       @required this.name,
       @required this.estPomodoros,
-      this.active = false,
+      this.selected = false,
+      this.visible = false,
       this.completed = false})
       : assert(id != null),
         assert(name != null),
         assert(estPomodoros != null),
-        assert(active != null),
+        assert(selected != null),
+        assert(visible != null),
         assert(completed != null),
         super._();
 
@@ -140,14 +159,17 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
   final int estPomodoros;
   @JsonKey(defaultValue: false)
   @override
-  final bool active;
+  final bool selected;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool visible;
   @JsonKey(defaultValue: false)
   @override
   final bool completed;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Task(id: $id, name: $name, estPomodoros: $estPomodoros, active: $active, completed: $completed)';
+    return 'Task(id: $id, name: $name, estPomodoros: $estPomodoros, selected: $selected, visible: $visible, completed: $completed)';
   }
 
   @override
@@ -158,7 +180,8 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('estPomodoros', estPomodoros))
-      ..add(DiagnosticsProperty('active', active))
+      ..add(DiagnosticsProperty('selected', selected))
+      ..add(DiagnosticsProperty('visible', visible))
       ..add(DiagnosticsProperty('completed', completed));
   }
 
@@ -173,8 +196,12 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
             (identical(other.estPomodoros, estPomodoros) ||
                 const DeepCollectionEquality()
                     .equals(other.estPomodoros, estPomodoros)) &&
-            (identical(other.active, active) ||
-                const DeepCollectionEquality().equals(other.active, active)) &&
+            (identical(other.selected, selected) ||
+                const DeepCollectionEquality()
+                    .equals(other.selected, selected)) &&
+            (identical(other.visible, visible) ||
+                const DeepCollectionEquality()
+                    .equals(other.visible, visible)) &&
             (identical(other.completed, completed) ||
                 const DeepCollectionEquality()
                     .equals(other.completed, completed)));
@@ -186,7 +213,8 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(estPomodoros) ^
-      const DeepCollectionEquality().hash(active) ^
+      const DeepCollectionEquality().hash(selected) ^
+      const DeepCollectionEquality().hash(visible) ^
       const DeepCollectionEquality().hash(completed);
 
   @override
@@ -200,7 +228,8 @@ abstract class _Task extends Task {
       {@required String id,
       @required String name,
       @required int estPomodoros,
-      bool active,
+      bool selected,
+      bool visible,
       bool completed}) = _$_Task;
 
   @override
@@ -210,7 +239,9 @@ abstract class _Task extends Task {
   @override
   int get estPomodoros;
   @override
-  bool get active;
+  bool get selected;
+  @override
+  bool get visible;
   @override
   bool get completed;
   @override

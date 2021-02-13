@@ -11,7 +11,8 @@ abstract class Task implements _$Task {
     @required String id,
     @required String name,
     @required int estPomodoros,
-    @Default(false) bool active,
+    @Default(false) bool selected,
+    @Default(false) bool visible,
     @Default(false) bool completed,
   }) = _Task;
 
@@ -20,7 +21,8 @@ abstract class Task implements _$Task {
       id: json['id'] as String,
       name: json['name'] as String,
       estPomodoros: json['estPomodoros'] as int,
-      active: json['active'] as bool,
+      selected: json['selected'] as bool,
+      visible: json['visible'] as bool,
       completed: json['completed'] as bool,
     );
   }
@@ -38,7 +40,8 @@ abstract class Task implements _$Task {
       'id': id,
       'name': name,
       'estPomodoros': estPomodoros,
-      'active': active,
+      'selected': selected,
+      'visible': visible,
       'completed': completed,
     };
   }

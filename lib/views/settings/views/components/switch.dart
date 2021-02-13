@@ -19,7 +19,10 @@ class _SwitchImpl extends HookWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: TextStyles.h3),
+        Text(
+          title,
+          style: TextStyles.h3.textColor(const Color.fromRGBO(34, 34, 34, 1)),
+        ),
         CupertinoSwitch(
           trackColor: const Color.fromRGBO(204, 204, 204, 1),
           activeColor: const Color.fromRGBO(132, 199, 51, 0.8),

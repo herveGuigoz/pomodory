@@ -63,7 +63,9 @@ class _Card extends HookWidget {
             Container(
               width: 4,
               decoration: BoxDecoration(
-                color: const Color.fromRGBO(34, 34, 34, 1),
+                color: task.selected
+                    ? const Color.fromRGBO(34, 34, 34, 1)
+                    : Colors.transparent,
                 borderRadius: BorderRadius.only(
                   topLeft: Corners.s5Radius,
                   bottomLeft: Corners.s5Radius,
@@ -103,11 +105,9 @@ class _CheckBox extends HookWidget {
       builder: (context, constraints) {
         final size = constraints.maxHeight * .5;
         return GestureDetector(
-          onTap: () => context
-              .read(tasksController)
-              .update(task.copyWith(completed: !task.completed)),
+          onTap: () => context.read(tasksController).complete(task),
           child: StyledContainer(
-            duration: Durations.fast,
+            duration: Durations.fastest,
             width: size,
             height: size,
             align: Alignment.center,

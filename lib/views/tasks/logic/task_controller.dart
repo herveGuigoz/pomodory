@@ -25,6 +25,22 @@ class TaskController extends HydratedStateNotifier<List<Task>> {
     state = state.where((element) => element != value).toList();
   }
 
+  void select(Task task) {
+    state = state
+        .map((element) => element.id == task.id
+            ? task.copyWith(selected: !task.selected)
+            : element.copyWith(selected: false))
+        .toList();
+  }
+
+  void complete(Task task) {
+    state = state
+        .map((element) => element.id == task.id
+            ? task.copyWith(completed: !task.completed)
+            : element)
+        .toList();
+  }
+
   @override
   List<Task> fromJson(Map<String, dynamic> json) {
     return (json['tasks'] as List<dynamic>)
