@@ -1,4 +1,4 @@
-part of '../task_modal.dart';
+part of 'task_modal.dart';
 
 class TaskModalLogic extends StatefulWidget {
   const TaskModalLogic({

@@ -1,4 +1,4 @@
-part of '../task_modal.dart';
+part of 'task_modal.dart';
 
 class _TaskModalView extends WidgetView<TaskModalLogic, _TaskModalController> {
   const _TaskModalView(_TaskModalController state) : super(state);
