@@ -1,7 +1,7 @@
 import '../../../_internal/cache/hydrated_state_notifier.dart';
 import '../../../models/task.dart';
 
-extension _TaskInterableExt on Iterable<Task> {
+extension _TaskIterableExt on Iterable<Task> {
   List<Task> update(Task task) {
     return map((e) => e.id != task.id ? e : task).toList();
   }
