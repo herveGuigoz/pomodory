@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
 
-import '../../bloc/provider.dart';
+import '../../bloc/refs.dart';
 
 const double _kRadius = 2;
 

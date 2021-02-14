@@ -48,7 +48,7 @@ class Pomodoro extends HookWidget {
         debugShowCheckedModeBanner: false,
         title: 'Pomodoro Timer',
         theme: theme.themeData,
-        home: const Timer(),
+        home: const MainView(),
       ),
     );
   }

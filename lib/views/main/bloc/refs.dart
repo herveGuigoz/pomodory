@@ -63,3 +63,8 @@ final tasksController = StateNotifierProvider((ref) {
 });
 
 final taskProvider = ScopedProvider<Task>(null);
+
+final selectedTaskProvider = Provider((ref) {
+  final controller = ref.watch(tasksController.state);
+  return controller.firstWhere((task) => task.selected, orElse: () => null);
+});

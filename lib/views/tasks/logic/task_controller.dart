@@ -1,7 +1,7 @@
 import '../../../_internal/cache/hydrated_state_notifier.dart';
 import '../../../models/task.dart';
 
-extension _TaskInterableExt on Iterable<Task> {
+extension _TaskIterableExt on Iterable<Task> {
   List<Task> update(Task task) {
     return map((e) => e.id != task.id ? e : task).toList();
   }
@@ -26,6 +26,7 @@ class TaskController extends HydratedStateNotifier<List<Task>> {
   }
 
   void select(Task task) {
+    if (task.completed) return;
     state = state
         .map((element) => element.id == task.id
             ? task.copyWith(selected: !task.selected)
@@ -36,7 +37,7 @@ class TaskController extends HydratedStateNotifier<List<Task>> {
   void complete(Task task) {
     state = state
         .map((element) => element.id == task.id
-            ? task.copyWith(completed: !task.completed)
+            ? task.copyWith(completed: !task.completed, selected: false)
             : element)
         .toList();
   }
