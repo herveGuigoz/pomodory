@@ -1,6 +1,7 @@
 part of 'refs.dart';
 
-class TimerController extends Timer with NotificationMixin {
+class TimerController extends StateNotifier<TimerState>
+    with Timer, NotificationMixin {
   TimerController(
     this.settings,
     this.statsController,
@@ -35,12 +36,10 @@ class TimerController extends Timer with NotificationMixin {
     if (mustStartTimer) startTimer();
   }
 
-  /// Reset current period.
-  /// Reset iteration only if counter hasnt decreased.
-  void reset() {
-    final isFreshRound = state.duration.inSeconds == state.tick;
-    resetTimer();
-    if (isFreshRound) state = settings.initialTimerState;
+  @override
+  void onTickUpdate(int tick) {
+    statsController.save(state.currentRound);
+    state = state.copyWith(tick: tick);
   }
 
   /// Called when timer ended.
@@ -53,8 +52,17 @@ class TimerController extends Timer with NotificationMixin {
     }
   }
 
+  /// Reset current period.
+  /// Reset iteration only if counter hasnt decreased.
+  void reset() {
+    final isFreshRound = state.duration.inSeconds == state.tick;
+    resetTimer();
+    if (isFreshRound) state = settings.initialTimerState;
+  }
+
   @override
-  void onTickUpdate() {
-    statsController.save(state.currentRound);
+  void dispose() {
+    closeTimer();
+    super.dispose();
   }
 }

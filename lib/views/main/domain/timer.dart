@@ -5,15 +5,9 @@ import 'package:state_notifier/state_notifier.dart';
 import '../../../models/timer_state.dart';
 import 'ticker.dart';
 
-abstract class Timer extends StateNotifier<TimerState> {
-  Timer(
-    TimerState state, {
-    Ticker ticker,
-  })  : _ticker = ticker ?? Ticker(),
-        super(state);
-
+mixin Timer on StateNotifier<TimerState> {
   /// Stream of ticks
-  final Ticker _ticker;
+  final Ticker _ticker = Ticker();
 
   /// Ticks subscription.
   StreamSubscription<int> _subscription;
@@ -27,20 +21,14 @@ abstract class Timer extends StateNotifier<TimerState> {
   void onDone() {}
 
   // Callback to trigger timer is running;
-  void onTickUpdate() {}
+  void onTickUpdate(int tick) {}
 
   /// Create new timer.
   void startTimer() {
     _subscription?.cancel();
     _subscription =
-        _ticker.tick(ticks: _duration).listen(_mapTimerToState, onDone: onDone);
+        _ticker.tick(ticks: _duration).listen(onTickUpdate, onDone: onDone);
     _playing = true;
-  }
-
-  /// Update state on every ticks.
-  void _mapTimerToState(int timer) {
-    onTickUpdate();
-    state = state.copyWith(tick: timer);
   }
 
   void playOrPause() => state.isPlaying ? pause() : play();
@@ -61,9 +49,7 @@ abstract class Timer extends StateNotifier<TimerState> {
     state = state.copyWith(isPlaying: false, tick: _duration);
   }
 
-  @override
-  void dispose() {
+  void closeTimer() {
     _subscription?.cancel();
-    super.dispose();
   }
 }

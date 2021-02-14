@@ -1,6 +1,6 @@
 part of 'refs.dart';
 
-mixin NotificationMixin on Timer {
+mixin NotificationMixin on StateNotifier<TimerState> {
   static const _badgeBlue = 'assets/images/badge_blue.png';
   static const _badgeGreen = 'assets/images/badge_green.png';
   static const _badgeRed = 'assets/images/badge_red.png';
