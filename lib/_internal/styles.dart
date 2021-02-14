@@ -218,3 +218,8 @@ class Corners {
 
   static Radius get s10Radius => Radius.circular(s10);
 }
+
+class AppColors {
+  static const focusTextColor = Color.fromRGBO(170, 170, 170, 1);
+  static const focusBackgroundColor = Colors.black;
+}

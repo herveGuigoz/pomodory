@@ -14,16 +14,17 @@ import '../../../components/styled_text.dart';
 import '../../../core/theme/themes_.dart';
 import '../../settings/views/settings.dart';
 import '../../tasks/views/task_modal.dart';
-import '../bloc/provider.dart';
+import '../bloc/refs.dart';
 import 'components/linear_painter.dart';
 
 part 'components/header.dart';
-part 'components/task.dart';
+part 'components/headline.dart';
+part 'components/tasks_list.dart';
 part 'components/tasks_header.dart';
 part 'components/timer.dart';
 
-class Timer extends HookWidget {
-  const Timer({
+class MainView extends HookWidget {
+  const MainView({
     Key key,
   }) : super(key: key);
 
@@ -51,35 +52,18 @@ class Timer extends HookWidget {
                 sliver: SliverToBoxAdapter(child: _TimerBloc()),
               ),
               SliverPadding(
-                padding: EdgeInsets.fromLTRB(16, 8, 16, 24),
+                padding: EdgeInsets.symmetric(vertical: 8),
                 sliver: SliverToBoxAdapter(child: _Headline()),
               ),
               _TasksHeader(),
               SliverPadding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                sliver: _Tasks(),
+                sliver: _TasksList(),
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class _Headline extends HookWidget {
-  const _Headline({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final headline = useProvider(headlineProvider);
-
-    return Text(
-      headline,
-      style: TextStyles.h1,
-      textAlign: TextAlign.center,
     );
   }
 }

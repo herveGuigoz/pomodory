@@ -26,6 +26,7 @@ class TaskController extends HydratedStateNotifier<List<Task>> {
   }
 
   void select(Task task) {
+    if (task.completed) return;
     state = state
         .map((element) => element.id == task.id
             ? task.copyWith(selected: !task.selected)
@@ -36,7 +37,7 @@ class TaskController extends HydratedStateNotifier<List<Task>> {
   void complete(Task task) {
     state = state
         .map((element) => element.id == task.id
-            ? task.copyWith(completed: !task.completed)
+            ? task.copyWith(completed: !task.completed, selected: false)
             : element)
         .toList();
   }
