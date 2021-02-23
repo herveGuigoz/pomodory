@@ -14,6 +14,8 @@ extension _TaskIterableExt on Iterable<Task> {
 class TaskController extends HydratedStateNotifier<List<Task>> {
   TaskController() : super([]);
 
+  static const _kJsonKey = 'tasks';
+
   // Add or update given task;
   void update(Task task) {
     state._contains(task)
@@ -44,13 +46,15 @@ class TaskController extends HydratedStateNotifier<List<Task>> {
 
   @override
   List<Task> fromJson(Map<String, dynamic> json) {
-    return (json['tasks'] as List<dynamic>)
+    if (json[_kJsonKey] == null) return [];
+
+    return (json[_kJsonKey] as List<dynamic>)
         .map((dynamic e) => Task.fromJson(e as Map<String, Object>))
         .toList();
   }
 
   @override
   Map<String, dynamic> toJson(List<Task> state) {
-    return <String, Object>{'tasks': state.map((e) => e.toJson()).toList()};
+    return <String, Object>{_kJsonKey: state.map((e) => e.toJson()).toList()};
   }
 }

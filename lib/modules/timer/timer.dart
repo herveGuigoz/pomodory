@@ -1,9 +1,4 @@
-import 'dart:async';
-
-import 'package:state_notifier/state_notifier.dart';
-
-import '../../../models/timer_state.dart';
-import 'ticker.dart';
+part of 'timer_controller.dart';
 
 mixin Timer on StateNotifier<TimerState> {
   /// Stream of ticks

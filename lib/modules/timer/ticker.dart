@@ -1,4 +1,4 @@
-import 'dart:async';
+part of 'timer_controller.dart';
 
 /// Expose a stream of ticks which we can subscribe and react to.
 class Ticker {

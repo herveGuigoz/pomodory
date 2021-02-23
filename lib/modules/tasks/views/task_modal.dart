@@ -8,8 +8,9 @@ import '../../../_internal/styles.dart';
 import '../../../_internal/unfocus.dart';
 import '../../../_internal/widget_view.dart';
 import '../../../components/buttons/animated_button.dart';
+import '../../../models/activity.dart';
 import '../../../models/task.dart';
-import '../../main/bloc/refs.dart';
+import '../../../modules/refs.dart';
 
 part '_logic.dart';
 part '_view.dart';

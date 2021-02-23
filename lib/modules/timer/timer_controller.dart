@@ -1,14 +1,30 @@
-part of 'refs.dart';
+import 'dart:async';
+import 'dart:io';
+
+import 'package:hooks_riverpod/all.dart';
+import 'package:state_notifier/state_notifier.dart';
+
+import '../../models/round.dart';
+import '../../models/settings_state.dart';
+import '../../models/timer_state.dart';
+import '../../services/files_service.dart';
+import '../../services/notifications_service.dart';
+import '../activity/logic/activity_manager.dart';
+import '../refs.dart';
+
+part 'notifications.dart';
+part 'ticker.dart';
+part 'timer.dart';
 
 class TimerController extends StateNotifier<TimerState>
     with Timer, NotificationMixin {
   TimerController(
     this.settings,
-    this.statsController,
+    this.activityManager,
   ) : super(settings.initialTimerState);
 
   final SettingsState settings;
-  final StatsController statsController;
+  final ActivityManager activityManager;
 
   /// Switch to either work, shortBreak or longBreak,
   void setNextRound({Round next, bool mustStartTimer = false}) {
@@ -38,7 +54,8 @@ class TimerController extends StateNotifier<TimerState>
 
   @override
   void onTickUpdate(int tick) {
-    statsController.save(state.currentRound);
+    if (state.currentRound is Work) activityManager.save();
+
     state = state.copyWith(tick: tick);
   }
 

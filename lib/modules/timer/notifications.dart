@@ -1,4 +1,4 @@
-part of 'refs.dart';
+part of 'timer_controller.dart';
 
 mixin NotificationMixin on StateNotifier<TimerState> {
   static const _badgeBlue = 'assets/images/badge_blue.png';

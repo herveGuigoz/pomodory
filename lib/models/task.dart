@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'activity.dart';
+
 part 'task.freezed.dart';
 
 @freezed
@@ -14,6 +16,7 @@ abstract class Task implements _$Task {
     @Default(false) bool selected,
     @Default(false) bool visible,
     @Default(false) bool completed,
+    @Default(kDefaultProject) String project,
   }) = _Task;
 
   factory Task.fromJson(Map<String, Object> json) {
@@ -24,6 +27,7 @@ abstract class Task implements _$Task {
       selected: json['selected'] as bool,
       visible: json['visible'] as bool,
       completed: json['completed'] as bool,
+      project: json['project'] as String,
     );
   }
 
@@ -32,6 +36,7 @@ abstract class Task implements _$Task {
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: '',
       estPomodoros: 1,
+      project: kDefaultProject,
     );
   }
 
@@ -43,6 +48,7 @@ abstract class Task implements _$Task {
       'selected': selected,
       'visible': visible,
       'completed': completed,
+      'project': project,
     };
   }
 }

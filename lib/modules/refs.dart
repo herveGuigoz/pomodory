@@ -1,29 +1,24 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/all.dart';
 
-import '../../../models/round.dart';
-import '../../../models/settings_state.dart';
-import '../../../models/task.dart';
-import '../../../models/timer_state.dart';
-import '../../../services/files_service.dart';
-import '../../../services/notifications_service.dart';
-import '../../settings/controllers/bloc.dart';
-import '../../stats/controllers/stats_controller.dart';
-import '../../tasks/logic/task_controller.dart';
-import '../domain/timer.dart';
+import '../models/activity.dart';
+import '../models/task.dart';
+import '../views/settings/controllers/bloc.dart';
+import 'activity/logic/activity_manager.dart';
+import 'tasks/logic/task_controller.dart';
+import 'timer/timer_controller.dart';
 
-export '../../../models/round.dart';
-export '../../../models/timer_state.dart';
+export '../models/round.dart';
+export '../models/timer_state.dart';
 
-part 'notification_mixin.dart';
-part 'timer_controller.dart';
+final activityManagerProvider = StateNotifierProvider((ref) {
+  return ActivityManager(ref.read);
+});
 
 final timerControllerProvider = StateNotifierProvider<TimerController>((ref) {
   final settings = ref.watch(settingsProvider.state);
-  final statsController = ref.read(statsProvider);
-  final controller = TimerController(settings, statsController);
+  final activityManager = ref.read(activityManagerProvider);
+  final controller = TimerController(settings, activityManager);
 
   return controller;
 });
@@ -67,4 +62,9 @@ final taskProvider = ScopedProvider<Task>(null);
 final selectedTaskProvider = Provider((ref) {
   final controller = ref.watch(tasksController.state);
   return controller.firstWhere((task) => task.selected, orElse: () => null);
+});
+
+final selectedProjectProvider = Provider<String>((ref) {
+  final selectedTask = ref.watch(selectedTaskProvider);
+  return selectedTask?.project ?? kDefaultProject;
 });

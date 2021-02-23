@@ -109,7 +109,7 @@ class AppTheme with PomodoroTextTheme {
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: greyWeak,
         selectionHandleColor: Colors.transparent,
-        cursorColor: accent1,
+        cursorColor: const Color.fromRGBO(85, 85, 85, .4),
       ),
       buttonColor: accent1,
       highlightColor: accent1,

@@ -12,15 +12,16 @@ import '../../../components/buttons/animated_button.dart';
 import '../../../components/styled_container.dart';
 import '../../../components/styled_text.dart';
 import '../../../core/theme/themes_.dart';
+import '../../../modules/activity/views/report_view.dart';
+import '../../../modules/refs.dart';
+import '../../../modules/tasks/views/task_modal.dart';
 import '../../settings/views/settings.dart';
-import '../../tasks/views/task_modal.dart';
-import '../bloc/refs.dart';
 import 'components/linear_painter.dart';
 
 part 'components/header.dart';
 part 'components/headline.dart';
-part 'components/tasks_list.dart';
 part 'components/tasks_header.dart';
+part 'components/tasks_list.dart';
 part 'components/timer.dart';
 
 class MainView extends HookWidget {

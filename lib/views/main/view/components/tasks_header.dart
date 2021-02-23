@@ -56,7 +56,8 @@ class _AddTaskButton extends StatelessWidget {
       style: TextButtonStyle.small,
       icon: const Icon(Icons.add, size: 16),
       label: const Text('Add Task'),
-      onPressed: () async => TaskModalLogic.show(context),
+      onPressed: () async => Navigator.of(context).push(TaskModalLogic.route()),
+      // onPressed: () async => TaskModalLogic.show(context),
     );
   }
 }

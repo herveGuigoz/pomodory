@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/all.dart';
+import 'package:pomodory/components/logo_painted.dart';
 
 import '_internal/cache/hydrated_state_notifier.dart';
 import '_internal/defer_init.dart';

@@ -8,12 +8,18 @@ class TaskModalLogic extends StatefulWidget {
 
   final Task task;
 
-  static Future<void> show(BuildContext context, {Task task}) async {
-    await showCupertinoDialog<void>(
-      context: context,
-      builder: (context) => Dialog(
-        child: TaskModalLogic(task: task ?? Task.initial()),
-      ),
+  // static Future<void> show(BuildContext context, {Task task}) async {
+  //   await showCupertinoDialog<void>(
+  //     context: context,
+  //     builder: (context) => Dialog(
+  //       child: TaskModalLogic(task: task ?? Task.initial()),
+  //     ),
+  //   );
+  // }
+
+  static Route<T> route<T>([Task task]) {
+    return CupertinoPageRoute<T>(
+      builder: (_) => TaskModalLogic(task: task ?? Task.initial()),
     );
   }
 
@@ -25,6 +31,7 @@ class _TaskModalController extends State<TaskModalLogic> {
   Task get task => widget.task;
 
   TextEditingController _taskName;
+  TextEditingController _project;
 
   bool _isSaveButtonEnable;
 
@@ -34,6 +41,9 @@ class _TaskModalController extends State<TaskModalLogic> {
   void initState() {
     super.initState();
     _taskName = TextEditingController(text: widget.task.name);
+    _project = TextEditingController(
+      text: widget.task.project != kDefaultProject ? widget.task.project : '',
+    );
     _pomodoros = widget.task.estPomodoros;
     _isSaveButtonEnable = widget.task.name.isEmpty;
     _taskName.addListener(_textControllerListener);
@@ -52,6 +62,7 @@ class _TaskModalController extends State<TaskModalLogic> {
   void dispose() {
     _taskName.removeListener(_textControllerListener);
     _taskName.dispose();
+    _project.dispose();
     super.dispose();
   }
 

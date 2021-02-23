@@ -52,7 +52,10 @@ class _TaskTile extends HookWidget {
           caption: 'Edit',
           color: Colors.transparent,
           icon: Icons.edit,
-          onTap: () async => TaskModalLogic.show(context, task: task),
+          onTap: () async => Navigator.of(context).push(
+            TaskModalLogic.route(task),
+          ),
+          // onTap: () async => TaskModalLogic.show(context, task: task),
         ),
       ],
       child: GestureDetector(

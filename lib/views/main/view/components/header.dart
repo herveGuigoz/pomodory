@@ -17,7 +17,9 @@ class _Header extends StatelessWidget {
           TextButton.icon(
             icon: const Icon(PomodoroIcons.statistics, size: _kIconSize),
             label: const Text('Report'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push<void>(ReportView.route());
+            },
           ),
           const SizedBox(width: 8),
           TextButton.icon(

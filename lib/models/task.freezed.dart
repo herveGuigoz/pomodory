@@ -20,7 +20,8 @@ class _$TaskTearOff {
       @required int estPomodoros,
       bool selected = false,
       bool visible = false,
-      bool completed = false}) {
+      bool completed = false,
+      String project = kDefaultProject}) {
     return _Task(
       id: id,
       name: name,
@@ -28,6 +29,7 @@ class _$TaskTearOff {
       selected: selected,
       visible: visible,
       completed: completed,
+      project: project,
     );
   }
 }
@@ -44,6 +46,7 @@ mixin _$Task {
   bool get selected;
   bool get visible;
   bool get completed;
+  String get project;
 
   $TaskCopyWith<Task> get copyWith;
 }
@@ -58,7 +61,8 @@ abstract class $TaskCopyWith<$Res> {
       int estPomodoros,
       bool selected,
       bool visible,
-      bool completed});
+      bool completed,
+      String project});
 }
 
 /// @nodoc
@@ -77,6 +81,7 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
     Object selected = freezed,
     Object visible = freezed,
     Object completed = freezed,
+    Object project = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -86,6 +91,7 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
       selected: selected == freezed ? _value.selected : selected as bool,
       visible: visible == freezed ? _value.visible : visible as bool,
       completed: completed == freezed ? _value.completed : completed as bool,
+      project: project == freezed ? _value.project : project as String,
     ));
   }
 }
@@ -101,7 +107,8 @@ abstract class _$TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       int estPomodoros,
       bool selected,
       bool visible,
-      bool completed});
+      bool completed,
+      String project});
 }
 
 /// @nodoc
@@ -121,6 +128,7 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
     Object selected = freezed,
     Object visible = freezed,
     Object completed = freezed,
+    Object project = freezed,
   }) {
     return _then(_Task(
       id: id == freezed ? _value.id : id as String,
@@ -130,6 +138,7 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
       selected: selected == freezed ? _value.selected : selected as bool,
       visible: visible == freezed ? _value.visible : visible as bool,
       completed: completed == freezed ? _value.completed : completed as bool,
+      project: project == freezed ? _value.project : project as String,
     ));
   }
 }
@@ -142,13 +151,15 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
       @required this.estPomodoros,
       this.selected = false,
       this.visible = false,
-      this.completed = false})
+      this.completed = false,
+      this.project = kDefaultProject})
       : assert(id != null),
         assert(name != null),
         assert(estPomodoros != null),
         assert(selected != null),
         assert(visible != null),
         assert(completed != null),
+        assert(project != null),
         super._();
 
   @override
@@ -166,10 +177,13 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
   @JsonKey(defaultValue: false)
   @override
   final bool completed;
+  @JsonKey(defaultValue: kDefaultProject)
+  @override
+  final String project;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Task(id: $id, name: $name, estPomodoros: $estPomodoros, selected: $selected, visible: $visible, completed: $completed)';
+    return 'Task(id: $id, name: $name, estPomodoros: $estPomodoros, selected: $selected, visible: $visible, completed: $completed, project: $project)';
   }
 
   @override
@@ -182,7 +196,8 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('estPomodoros', estPomodoros))
       ..add(DiagnosticsProperty('selected', selected))
       ..add(DiagnosticsProperty('visible', visible))
-      ..add(DiagnosticsProperty('completed', completed));
+      ..add(DiagnosticsProperty('completed', completed))
+      ..add(DiagnosticsProperty('project', project));
   }
 
   @override
@@ -204,7 +219,9 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
                     .equals(other.visible, visible)) &&
             (identical(other.completed, completed) ||
                 const DeepCollectionEquality()
-                    .equals(other.completed, completed)));
+                    .equals(other.completed, completed)) &&
+            (identical(other.project, project) ||
+                const DeepCollectionEquality().equals(other.project, project)));
   }
 
   @override
@@ -215,7 +232,8 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(estPomodoros) ^
       const DeepCollectionEquality().hash(selected) ^
       const DeepCollectionEquality().hash(visible) ^
-      const DeepCollectionEquality().hash(completed);
+      const DeepCollectionEquality().hash(completed) ^
+      const DeepCollectionEquality().hash(project);
 
   @override
   _$TaskCopyWith<_Task> get copyWith =>
@@ -230,7 +248,8 @@ abstract class _Task extends Task {
       @required int estPomodoros,
       bool selected,
       bool visible,
-      bool completed}) = _$_Task;
+      bool completed,
+      String project}) = _$_Task;
 
   @override
   String get id;
@@ -244,6 +263,8 @@ abstract class _Task extends Task {
   bool get visible;
   @override
   bool get completed;
+  @override
+  String get project;
   @override
   _$TaskCopyWith<_Task> get copyWith;
 }
