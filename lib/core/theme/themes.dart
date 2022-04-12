@@ -1,6 +1,6 @@
 import 'dart:ui';
-import 'src/theme.dart';
-export 'src/theme.dart';
+
+import 'package:pomodory/core/theme/src/theme.dart';
 
 part 'dracula.dart';
 part 'pomotroid.dart';

@@ -2,9 +2,9 @@ part of '../settings.dart';
 
 class _DigitInputField extends StatelessWidget {
   const _DigitInputField({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    Key? key,
+    required this.value,
+    required this.onChanged,
     this.maxLength = 2,
   }) : super(key: key);
 
@@ -22,7 +22,6 @@ class _DigitInputField extends StatelessWidget {
         fontSize: FontSizes.s16,
       ),
       maxLength: maxLength,
-      keyboardType: const TextInputType.numberWithOptions(),
       inputFormatters: [
         LengthLimitingTextInputFormatter(maxLength),
         // todo use regex to avoid input at 0

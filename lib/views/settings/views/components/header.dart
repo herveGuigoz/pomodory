@@ -2,7 +2,7 @@ part of '../settings.dart';
 
 class _Header extends StatelessWidget {
   const _Header({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const Color _kColor = Color.fromRGBO(187, 187, 187, 1);

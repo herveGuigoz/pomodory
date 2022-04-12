@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart' show RendererBinding;
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
-typedef DeferInitCreate<T extends Widget> = Future<T> Function();
+typedef DeferInitCreate<T extends Widget?> = Future<T> Function();
 
-@immutable
-class DeferInit<T extends Widget> extends StatefulWidget {
+/// Defer first frame based on a background service
+class DeferInit<T extends Widget?> extends StatefulWidget {
   const DeferInit({
-    Key key,
-    @required this.create,
+    Key? key,
+    required this.create,
     this.emptyWidget = const SizedBox.shrink(),
   }) : super(key: key);
 
@@ -15,18 +15,18 @@ class DeferInit<T extends Widget> extends StatefulWidget {
   final Widget emptyWidget;
 
   @override
-  _DeferInitState<T> createState() => _DeferInitState<T>();
+  State<DeferInit<T>> createState() => _DeferInitState<T>();
 }
 
-class _DeferInitState<T extends Widget> extends State<DeferInit<T>> {
-  Future<T> _future;
+class _DeferInitState<T extends Widget?> extends State<DeferInit<T>> {
+  late Future<T> _future;
 
   @override
   void initState() {
     super.initState();
-    RendererBinding.instance.deferFirstFrame();
+    RendererBinding.instance!.deferFirstFrame();
     _future = widget.create().whenComplete(() {
-      RendererBinding.instance.allowFirstFrame();
+      RendererBinding.instance!.allowFirstFrame();
     });
   }
 
@@ -34,15 +34,13 @@ class _DeferInitState<T extends Widget> extends State<DeferInit<T>> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _future,
-      // ignore: avoid_types_on_closure_parameters
-      builder: (context, AsyncSnapshot<T> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<T> snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
           return const SizedBox.shrink();
         } else if (snapshot.hasError) {
-          return ErrorWidget(snapshot.error);
+          return ErrorWidget(snapshot.error!);
         } else {
-          final data = snapshot.data;
-          return data ?? widget.emptyWidget;
+          return snapshot.data ?? widget.emptyWidget;
         }
       },
     );

@@ -1,14 +1,14 @@
 part of '../main.dart';
 
-class _Headline extends HookWidget {
+class _Headline extends ConsumerWidget {
   const _Headline({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final selectedTask = useProvider(selectedTaskProvider);
-    final headline = useProvider(headlineProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedTask = ref.watch(selectedTaskProvider);
+    final headline = ref.watch(headlineProvider);
 
     final child = selectedTask != null
         ? Column(

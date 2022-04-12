@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'extensions/textstyle_extensions.dart';
-import 'extensions/time_extensions.dart';
+import 'package:pomodory/_internal/extensions/time_extensions.dart';
+import 'package:pomodory/_internal/styles.dart';
 
 export 'extensions/textstyle_extensions.dart';
 
@@ -165,7 +164,7 @@ class Shadows {
 
   static double get mRadius => 8;
 
-  static List<BoxShadow> m(Color color, [double opacity = 0]) {
+  static List<BoxShadow>? m(Color color, [double? opacity]) {
     return enabled
         ? [
             BoxShadow(

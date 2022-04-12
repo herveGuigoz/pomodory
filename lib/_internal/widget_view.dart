@@ -20,7 +20,7 @@ class _MyWidgetView extends WidgetView<MyWidget, _MyWidgetController> {
 abstract class WidgetView<T1, T2> extends StatelessWidget {
   const WidgetView(
     this.state, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final T2 state;
@@ -34,7 +34,7 @@ abstract class WidgetView<T1, T2> extends StatelessWidget {
 abstract class StatelessView<T1> extends StatelessWidget {
   const StatelessView(
     this.widget, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final T1 widget;

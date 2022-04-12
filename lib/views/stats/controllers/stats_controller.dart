@@ -1,21 +1,24 @@
-import 'package:hooks_riverpod/all.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/extensions/time_extensions.dart';
+import 'package:pomodory/models/round.dart';
+import 'package:pomodory/models/stats.dart';
 
-import '../../../_internal/cache/hydrated_state_notifier.dart';
-import '../../../_internal/extensions/time_extensions.dart';
-import '../../../models/round.dart';
-import '../../../models/stats.dart';
 
-final statsProvider = StateNotifierProvider((ref) => StatsController());
+
+final statsProvider = StateNotifierProvider<StatsController, List<Stats>>(
+  (ref) => StatsController(),
+);
 
 class StatsController extends HydratedStateNotifier<List<Stats>> {
-  StatsController({List<Stats> state}) : super(state ?? []);
+  StatsController({List<Stats>? state}) : super(state ?? []);
 
   static const _kJsonKey = 'stats';
 
   /// Save result to cache
   /// @round finished round
   void save(Round round) {
-    final list = state ?? [];
+    final list = state;
     final now = DateTime.now();
 
     final result = list.firstWhere(
@@ -31,12 +34,9 @@ class StatsController extends HydratedStateNotifier<List<Stats>> {
   }
 
   bool containsThisDate(DateTime date) {
-    final value = state.firstWhere(
+    return state.any(
       (element) => element.date.isAtSameDayAs(date),
-      orElse: () => null,
     );
-
-    return value != null;
   }
 
   @override
@@ -52,8 +52,8 @@ class StatsController extends HydratedStateNotifier<List<Stats>> {
 
   @override
   Map<String, dynamic> toJson(List<Stats> state) {
-    final json = <String, Object>{
-      _kJsonKey: state.map((e) => e.toJson())?.toList(),
+    final json = <String, dynamic>{
+      _kJsonKey: state.map((e) => e.toJson()).toList(),
     };
     return json;
   }

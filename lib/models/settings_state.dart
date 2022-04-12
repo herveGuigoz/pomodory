@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../core/theme/themes.dart';
+import 'package:pomodory/core/theme/src/theme.dart';
+import 'package:pomodory/core/theme/themes.dart';
 
 part 'settings_state.freezed.dart';
 part 'settings_state.g.dart';
@@ -12,14 +12,12 @@ const _kDefaultFocusDuration = 25;
 const _kDefaultShortBreakDuration = 5;
 const _kDefaultLongBreakDuration = 15;
 
-const kMinRoundsNubers = 1;
-const kMaxRoundsNubers = 12;
+const kMinRoundsNumbers = 1;
+const kMaxRoundsNumbers = 12;
 const _kDefaultRoundsLength = 4;
 
 @freezed
-abstract class SettingsState implements _$SettingsState {
-  SettingsState._();
-
+class SettingsState with _$SettingsState {
   factory SettingsState({
     @Default(_kDefaultFocusDuration) int focusInMinutes,
     @Default(_kDefaultShortBreakDuration) int shortBreakInMinutes,
@@ -31,6 +29,8 @@ abstract class SettingsState implements _$SettingsState {
     @Default(true) bool notifications,
     @Default(true) bool sound,
   }) = _SettingsState;
+
+  SettingsState._();
 
   factory SettingsState.fromJson(Map<String, dynamic> json) =>
       _$SettingsStateFromJson(json);

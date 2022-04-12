@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 /// [duration] in milliseconds
 class AnimatedButton extends StatefulWidget {
   const AnimatedButton({
-    Key key,
-    @required this.onPressed,
-    @required this.child,
+    Key? key,
+    required this.onPressed,
+    required this.child,
     this.enabled = true,
     this.color = Colors.white,
     this.height = 64,
@@ -16,8 +16,7 @@ class AnimatedButton extends StatefulWidget {
     this.duration = 70,
     this.shape = BoxShape.rectangle,
     this.border,
-  })  : assert(child != null),
-        super(key: key);
+  })  : super(key: key);
 
   final GestureTapCallback onPressed;
   final Widget child;
@@ -28,10 +27,10 @@ class AnimatedButton extends StatefulWidget {
   final ShadowDegree shadowDegree;
   final int duration;
   final BoxShape shape;
-  final BoxBorder border;
+  final BoxBorder? border;
 
   @override
-  _AnimatedButtonState createState() => _AnimatedButtonState();
+  State<AnimatedButton> createState() => _AnimatedButtonState();
 }
 
 class _AnimatedButtonState extends State<AnimatedButton> {
@@ -49,7 +48,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
       onTapUp: widget.enabled ? _unPressedOnTapUp : null,
       onTapCancel: widget.enabled ? _unPressed : null,
       // width here is required for centering the button in parent
-      child: Container(
+      child: SizedBox(
         width: widget.width,
         height: _height + _shadowHeight,
         child: Stack(
@@ -67,7 +66,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                   borderRadius: widget.shape != BoxShape.circle
                       ? const BorderRadius.all(Radius.circular(_radius))
                       : null,
-                  shape: widget?.shape,
+                  shape: widget.shape,
                 ),
               ),
             ),
@@ -83,7 +82,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                   borderRadius: widget.shape != BoxShape.circle
                       ? const BorderRadius.all(Radius.circular(_radius))
                       : null,
-                  shape: widget?.shape,
+                  shape: widget.shape,
                   border: widget.border,
                 ),
                 child: Center(
@@ -118,9 +117,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
 Color darken(Color color, ShadowDegree degree) {
   final amount = degree == ShadowDegree.dark ? 0.3 : 0.12;
   final hsl = HSLColor.fromColor(color);
-  final hslDark = hsl.withLightness(
-    (hsl.lightness - amount).clamp(0.0, 1.0) as double,
-  );
+  final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
 
   return hslDark.toColor();
 }

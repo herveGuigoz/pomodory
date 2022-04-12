@@ -2,15 +2,16 @@ part of 'theme.dart';
 
 abstract class PomodoroThemeData {
   PomodoroThemeData({
-    this.primary,
-    this.primaryVariant,
-    this.secondary,
-    this.secondaryVariant,
-    this.textColor,
-    this.accent,
-    this.background,
-    this.error,
+    required this.primary,
+    required this.primaryVariant,
+    required this.secondary,
+    required this.secondaryVariant,
+    required this.textColor,
+    required this.accent,
+    required this.background,
+    required this.error,
   });
+
   final Color primary;
   final Color primaryVariant;
   final Color secondary;
@@ -37,9 +38,9 @@ abstract class PomodoroThemeData {
       textTheme: textTheme,
       colorScheme: ColorScheme(
         primary: primary,
-        primaryVariant: primaryVariant, //backgroundLightest, // todo
+        primaryContainer: primaryVariant, //backgroundLightest, // todo
         secondary: secondary,
-        secondaryVariant: secondaryVariant,
+        secondaryContainer: secondaryVariant,
         surface: primary, // todo
         background: background,
         error: error,
@@ -51,14 +52,10 @@ abstract class PomodoroThemeData {
         brightness: brightness,
       ),
       primaryColor: primary,
-      accentColor: accent,
-      buttonColor: background,
       errorColor: error,
       dividerColor: brightness == Brightness.dark
           ? Colors.white.withOpacity(.2)
           : Colors.black.withOpacity(.2),
-      // determines the status bar icon color
-      primaryColorBrightness: brightness,
       // used for the background color of material widgets
       cardColor: background,
       canvasColor: background,

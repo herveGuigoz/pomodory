@@ -1,15 +1,15 @@
 part of '../main.dart';
 
-class _TasksList extends HookWidget {
+class _TasksList extends ConsumerWidget {
   const _TasksList({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const double _kTaskTileHeight = 70;
 
   @override
-  Widget build(BuildContext context) {
-    final tasks = useProvider(tasksController.state);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tasks = ref.watch(tasksController);
 
     return SliverFixedExtentList(
       itemExtent: _kTaskTileHeight,
@@ -24,43 +24,45 @@ class _TasksList extends HookWidget {
   }
 }
 
-class _TaskTile extends HookWidget {
+class _TaskTile extends ConsumerWidget {
   const _TaskTile({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const double _kVerticalMargin = 4;
 
   @override
-  Widget build(BuildContext context) {
-    final task = useProvider(taskProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final task = ref.watch(taskProvider);
 
     return Slidable(
-      actionPane: const SlidableDrawerActionPane(),
-      actionExtentRatio: 0.20,
-      secondaryActions: [
-        IconSlideAction(
-          caption: 'Delete',
-          color: Colors.transparent,
-          icon: Icons.delete,
-          onTap: () {
-            // todo show confirm modal
-            context.read(tasksController).delete(task);
-          },
-        ),
-        IconSlideAction(
-          caption: 'Edit',
-          color: Colors.transparent,
-          icon: Icons.edit,
-          onTap: () async => Navigator.of(context).push(
-            TaskModalLogic.route(task),
+      key: const ValueKey(0),
+      startActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        extentRatio: 0.20,
+        children: [
+          SlidableAction(
+            onPressed: (context) {
+              // todo show confirm modal
+              ref.read(tasksController.notifier).delete(task);
+            },
+            backgroundColor: Colors.transparent,
+            icon: Icons.delete,
+            label: 'Delete',
           ),
-          // onTap: () async => TaskModalLogic.show(context, task: task),
-        ),
-      ],
+          SlidableAction(
+            onPressed: (context) async => Navigator.of(context).push(
+              TaskModalLogic.route(task),
+            ),
+            backgroundColor: Colors.transparent,
+            icon: Icons.edit,
+            label: 'Edit',
+          ),
+        ],
+      ),
       child: GestureDetector(
         onTap: () {
-          context.read(tasksController).select(task);
+          ref.read(tasksController.notifier).select(task);
         },
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: _kVerticalMargin),
@@ -84,9 +86,9 @@ class _TaskTile extends HookWidget {
   }
 }
 
-class _BorderLeft extends HookWidget {
+class _BorderLeft extends ConsumerWidget {
   const _BorderLeft({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const _kUnselectedBorderColor = Color.fromRGBO(204, 204, 204, 1);
@@ -94,8 +96,8 @@ class _BorderLeft extends HookWidget {
   static const double _kBorderWidth = 6;
 
   @override
-  Widget build(BuildContext context) {
-    final task = useProvider(taskProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final task = ref.watch(taskProvider);
 
     return AnimatedContainer(
       duration: kThemeAnimationDuration,
@@ -111,9 +113,9 @@ class _BorderLeft extends HookWidget {
   }
 }
 
-class _CheckBox extends HookWidget {
+class _CheckBox extends ConsumerWidget {
   const _CheckBox({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const _kCompletedColor = Color.fromRGBO(219, 82, 77, 1);
@@ -121,14 +123,14 @@ class _CheckBox extends HookWidget {
   static const _kShape = BoxShape.circle;
 
   @override
-  Widget build(BuildContext context) {
-    final task = useProvider(taskProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final task = ref.watch(taskProvider);
 
     return LayoutBuilder(
       builder: (context, constraints) {
         final size = constraints.maxHeight * .5;
         return GestureDetector(
-          onTap: () => context.read(tasksController).complete(task),
+          onTap: () => ref.read(tasksController.notifier).complete(task),
           child: StyledContainer(
             duration: Durations.fastest,
             width: size,
@@ -144,17 +146,17 @@ class _CheckBox extends HookWidget {
   }
 }
 
-class _TaskName extends HookWidget {
+class _TaskName extends ConsumerWidget {
   const _TaskName({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const _kCompletedColor = Color.fromRGBO(187, 187, 187, 1);
   static const _kUncompletedColor = Color.fromRGBO(85, 85, 85, 1);
 
   @override
-  Widget build(BuildContext context) {
-    final task = useProvider(taskProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final task = ref.watch(taskProvider);
 
     return Text(
       task.name,

@@ -1,12 +1,12 @@
 part of '../settings.dart';
 
-class _Intervals extends StatelessWidget {
+class _Intervals extends ConsumerWidget {
   const _Intervals({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -20,19 +20,19 @@ class _Intervals extends StatelessWidget {
           children: [
             _InputField(
               label: 'Pomodoro',
-              onChanged: context.read(settingsProvider).setFocusDurationAsInt,
+              onChanged: ref.read(settingsProvider.notifier).setFocusDurationAsInt,
               selector: (setting) => setting.focusInMinutes,
             ),
             _InputField(
               label: 'Short Break',
               onChanged:
-                  context.read(settingsProvider).setShortBreakDurationAsInt,
+                  ref.read(settingsProvider.notifier).setShortBreakDurationAsInt,
               selector: (setting) => setting.shortBreakInMinutes,
             ),
             _InputField(
               label: 'Long Break',
               onChanged:
-                  context.read(settingsProvider).setLongBreakDurationAsInt,
+                  ref.read(settingsProvider.notifier).setLongBreakDurationAsInt,
               selector: (setting) => setting.longBreakInMinutes,
             ),
           ],
@@ -42,15 +42,15 @@ class _Intervals extends StatelessWidget {
   }
 }
 
-class _CycleLength extends HookWidget {
+class _CycleLength extends ConsumerWidget {
   const _CycleLength({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final value = useProvider(
-      settingsProvider.state.select((value) => value.roundsLength),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(
+      settingsProvider.select((value) => value.roundsLength),
     );
 
     return Row(
@@ -65,7 +65,7 @@ class _CycleLength extends HookWidget {
             context: context,
             builder: (context) {
               final size = MediaQuery.of(context).size.height;
-              final panelHeight = size == null ? 240.0 : size / 3;
+              final panelHeight = size / 3;
 
               return _RoundsLengthPicker(height: panelHeight);
             },
@@ -95,21 +95,21 @@ class _CycleLength extends HookWidget {
   }
 }
 
-class _InputField extends HookWidget {
+class _InputField extends ConsumerWidget {
   const _InputField({
-    Key key,
+    Key? key,
     this.label,
-    @required this.onChanged,
-    @required this.selector,
+    required this.onChanged,
+    required this.selector,
   }) : super(key: key);
 
-  final String label;
+  final String? label;
   final void Function(int) onChanged;
   final int Function(SettingsState) selector;
 
   @override
-  Widget build(BuildContext context) {
-    final value = useProvider(settingsProvider.state.select(selector));
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(settingsProvider.select(selector));
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.25,
@@ -117,8 +117,8 @@ class _InputField extends HookWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (label != null && label.isNotEmpty)
-            Text(label, style: TextStyles.label),
+          if (label != null && label!.isNotEmpty)
+            Text(label!, style: TextStyles.label),
           const SizedBox(height: 4),
           _DigitInputField(value: value, onChanged: onChanged),
         ],

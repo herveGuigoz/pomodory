@@ -1,12 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/painting.dart';
 
 class ColorUtils {
   static Color shiftHsl(Color c, [double amt = 0]) {
     final hslc = HSLColor.fromColor(c);
     return hslc
-        .withLightness((hslc.lightness + amt).clamp(0.0, 1.0) as double)
+        .withLightness((hslc.lightness + amt).clamp(0.0, 1.0))
         .toColor();
   }
 

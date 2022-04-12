@@ -1,17 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/all.dart';
-import 'package:pomodory/components/logo_painted.dart';
-
-import '_internal/cache/hydrated_state_notifier.dart';
-import '_internal/defer_init.dart';
-import 'core/theme/themes_.dart';
-import 'services/notifications_service.dart';
-import 'views/main/view/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/defer_init.dart';
+import 'package:pomodory/core/theme/themes_.dart';
+import 'package:pomodory/services/notifications_service.dart';
+import 'package:pomodory/views/main/view/main.dart';
 
 class SplashScreen extends StatelessWidget {
-  Future<void> _setPreferedOrientation() async {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  Future<void> _setOrientation() async {
     await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp],
     );
@@ -21,8 +22,12 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeferInit(
       create: () async {
-        await _setPreferedOrientation();
-        HydratedStateNotifier.storage = await HydratedStorage.build();
+        await _setOrientation();
+        HydratedStateNotifier.storage = await HydratedStorage.build(
+          storageDirectory: kIsWeb
+              ? HydratedStorage.webStorageDirectory
+              : await getTemporaryDirectory(),
+        );
         final notificationService = await NotificationsService.init();
         await notificationService.requestPermission();
         return const Pomodoro();
@@ -31,14 +36,14 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
-class Pomodoro extends HookWidget {
+class Pomodoro extends ConsumerWidget {
   const Pomodoro({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final theme = useProvider(appThemeProvider.state);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(appThemeProvider);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light.copyWith(

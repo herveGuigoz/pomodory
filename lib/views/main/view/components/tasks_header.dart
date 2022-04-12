@@ -1,13 +1,13 @@
 part of '../main.dart';
 
-class _TasksHeader extends HookWidget {
+class _TasksHeader extends ConsumerWidget {
   const _TasksHeader({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final color = useProvider(colorFromCurrentRoundProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final color = ref.watch(colorFromCurrentRoundProvider);
 
     return SliverPersistentHeader(
       pinned: true,
@@ -47,7 +47,7 @@ class _TasksHeader extends HookWidget {
 
 class _AddTaskButton extends StatelessWidget {
   const _AddTaskButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -64,9 +64,9 @@ class _AddTaskButton extends StatelessWidget {
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   _SliverAppBarDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
   });
 
   final double minHeight;

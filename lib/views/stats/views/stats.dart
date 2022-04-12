@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/all.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomodory/views/stats/controllers/stats_controller.dart';
 
-import '../controllers/stats_controller.dart';
-
-class Stats extends HookWidget {
+class Stats extends ConsumerWidget {
   const Stats({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final stats = useProvider(statsProvider.state);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stats = ref.watch(statsProvider);
     return ListView.builder(
       itemCount: stats.length,
       itemBuilder: (context, index) {

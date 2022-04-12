@@ -1,28 +1,27 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../_internal/extensions/time_extensions.dart';
-import 'round.dart';
-import 'settings_state.dart';
+import 'package:pomodory/_internal/extensions/time_extensions.dart';
+import 'package:pomodory/models/round.dart';
+import 'package:pomodory/models/settings_state.dart';
 
 part 'timer_state.freezed.dart';
 
 @freezed
-abstract class TimerState implements _$TimerState {
-  const TimerState._();
-
+class TimerState with _$TimerState {
   factory TimerState({
-    @required Duration duration,
-    @required int tick,
-    @required bool isPlaying,
+    required Duration duration,
+    required int tick,
+    required bool isPlaying,
     @Default(1) int round,
     @Default(Round.work()) Round currentRound,
   }) = _TimerState;
 
-  /// This Method returns the **Current Time** of Countdown Timer
+  const TimerState._();
+
+  /// Returns the **Current Time** of Countdown Timer
   String get time => Duration(seconds: tick).time;
 
-  /// This Method returns the fractional value (between 0 to 1) of Countdown Timer
+  /// Returns the fractional value (between 0 to 1) of Countdown Timer
   double get fractionalValue => tick / (duration.inSeconds / 100) / 100;
 }
 

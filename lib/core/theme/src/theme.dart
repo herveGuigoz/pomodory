@@ -1,9 +1,7 @@
-import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../../_internal/styles.dart';
-import 'theme_constantes.dart';
+import 'package:pomodory/_internal/styles.dart';
+import 'package:pomodory/core/theme/src/theme_constantes.dart';
 
 part 'theme_data.dart';
 part '../../../_internal/theme/text_theme.dart';
@@ -11,16 +9,16 @@ part '../../../_internal/theme/text_theme.dart';
 class PomodoroTheme extends PomodoroThemeData with PomodoroTextTheme {
   PomodoroTheme(
     this.name, {
-    @required Color primary,
-    @required Color primaryVariant,
-    @required Color secondary,
-    @required Color secondaryVariant,
-    @required Color textColor,
-    @required Color accent,
-    @required Color background,
-    @required this.longRound,
-    @required this.shortRound,
-    @required this.focusRound,
+    required Color primary,
+    required Color primaryVariant,
+    required Color secondary,
+    required Color secondaryVariant,
+    required Color textColor,
+    required Color accent,
+    required Color background,
+    required this.longRound,
+    required this.shortRound,
+    required this.focusRound,
     Color error = Colors.red,
   }) : super(
           primary: primary,

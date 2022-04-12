@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'stats.dart';
 
@@ -9,13 +11,19 @@ part of 'stats.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+Stats _$StatsFromJson(Map<String, dynamic> json) {
+  return _Stats.fromJson(json);
+}
+
 /// @nodoc
 class _$StatsTearOff {
   const _$StatsTearOff();
 
-// ignore: unused_element
   _Stats call(
-      {@required DateTime date,
+      {required DateTime date,
       int totalFocusedRoundInSeconds = 0,
       int totalShortBreaksInSeconds = 0,
       int totalLongBreaksInSeconds = 0}) {
@@ -26,20 +34,25 @@ class _$StatsTearOff {
       totalLongBreaksInSeconds: totalLongBreaksInSeconds,
     );
   }
+
+  Stats fromJson(Map<String, Object?> json) {
+    return Stats.fromJson(json);
+  }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Stats = _$StatsTearOff();
 
 /// @nodoc
 mixin _$Stats {
-  DateTime get date;
-  int get totalFocusedRoundInSeconds;
-  int get totalShortBreaksInSeconds;
-  int get totalLongBreaksInSeconds;
+  DateTime get date => throw _privateConstructorUsedError;
+  int get totalFocusedRoundInSeconds => throw _privateConstructorUsedError;
+  int get totalShortBreaksInSeconds => throw _privateConstructorUsedError;
+  int get totalLongBreaksInSeconds => throw _privateConstructorUsedError;
 
-  $StatsCopyWith<Stats> get copyWith;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $StatsCopyWith<Stats> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -63,22 +76,28 @@ class _$StatsCopyWithImpl<$Res> implements $StatsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object date = freezed,
-    Object totalFocusedRoundInSeconds = freezed,
-    Object totalShortBreaksInSeconds = freezed,
-    Object totalLongBreaksInSeconds = freezed,
+    Object? date = freezed,
+    Object? totalFocusedRoundInSeconds = freezed,
+    Object? totalShortBreaksInSeconds = freezed,
+    Object? totalLongBreaksInSeconds = freezed,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed ? _value.date : date as DateTime,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       totalFocusedRoundInSeconds: totalFocusedRoundInSeconds == freezed
           ? _value.totalFocusedRoundInSeconds
-          : totalFocusedRoundInSeconds as int,
+          : totalFocusedRoundInSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
       totalShortBreaksInSeconds: totalShortBreaksInSeconds == freezed
           ? _value.totalShortBreaksInSeconds
-          : totalShortBreaksInSeconds as int,
+          : totalShortBreaksInSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
       totalLongBreaksInSeconds: totalLongBreaksInSeconds == freezed
           ? _value.totalLongBreaksInSeconds
-          : totalLongBreaksInSeconds as int,
+          : totalLongBreaksInSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -106,48 +125,54 @@ class __$StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object date = freezed,
-    Object totalFocusedRoundInSeconds = freezed,
-    Object totalShortBreaksInSeconds = freezed,
-    Object totalLongBreaksInSeconds = freezed,
+    Object? date = freezed,
+    Object? totalFocusedRoundInSeconds = freezed,
+    Object? totalShortBreaksInSeconds = freezed,
+    Object? totalLongBreaksInSeconds = freezed,
   }) {
     return _then(_Stats(
-      date: date == freezed ? _value.date : date as DateTime,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       totalFocusedRoundInSeconds: totalFocusedRoundInSeconds == freezed
           ? _value.totalFocusedRoundInSeconds
-          : totalFocusedRoundInSeconds as int,
+          : totalFocusedRoundInSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
       totalShortBreaksInSeconds: totalShortBreaksInSeconds == freezed
           ? _value.totalShortBreaksInSeconds
-          : totalShortBreaksInSeconds as int,
+          : totalShortBreaksInSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
       totalLongBreaksInSeconds: totalLongBreaksInSeconds == freezed
           ? _value.totalLongBreaksInSeconds
-          : totalLongBreaksInSeconds as int,
+          : totalLongBreaksInSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
 class _$_Stats extends _Stats with DiagnosticableTreeMixin {
   _$_Stats(
-      {@required this.date,
+      {required this.date,
       this.totalFocusedRoundInSeconds = 0,
       this.totalShortBreaksInSeconds = 0,
       this.totalLongBreaksInSeconds = 0})
-      : assert(date != null),
-        assert(totalFocusedRoundInSeconds != null),
-        assert(totalShortBreaksInSeconds != null),
-        assert(totalLongBreaksInSeconds != null),
-        super._();
+      : super._();
+
+  factory _$_Stats.fromJson(Map<String, dynamic> json) =>
+      _$$_StatsFromJson(json);
 
   @override
   final DateTime date;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int totalFocusedRoundInSeconds;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int totalShortBreaksInSeconds;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int totalLongBreaksInSeconds;
 
@@ -173,45 +198,45 @@ class _$_Stats extends _Stats with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Stats &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.totalFocusedRoundInSeconds,
-                    totalFocusedRoundInSeconds) ||
-                const DeepCollectionEquality().equals(
-                    other.totalFocusedRoundInSeconds,
-                    totalFocusedRoundInSeconds)) &&
-            (identical(other.totalShortBreaksInSeconds,
-                    totalShortBreaksInSeconds) ||
-                const DeepCollectionEquality().equals(
-                    other.totalShortBreaksInSeconds,
-                    totalShortBreaksInSeconds)) &&
-            (identical(
-                    other.totalLongBreaksInSeconds, totalLongBreaksInSeconds) ||
-                const DeepCollectionEquality().equals(
-                    other.totalLongBreaksInSeconds, totalLongBreaksInSeconds)));
+        (other.runtimeType == runtimeType &&
+            other is _Stats &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(
+                other.totalFocusedRoundInSeconds, totalFocusedRoundInSeconds) &&
+            const DeepCollectionEquality().equals(
+                other.totalShortBreaksInSeconds, totalShortBreaksInSeconds) &&
+            const DeepCollectionEquality().equals(
+                other.totalLongBreaksInSeconds, totalLongBreaksInSeconds));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(totalFocusedRoundInSeconds) ^
-      const DeepCollectionEquality().hash(totalShortBreaksInSeconds) ^
-      const DeepCollectionEquality().hash(totalLongBreaksInSeconds);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(totalFocusedRoundInSeconds),
+      const DeepCollectionEquality().hash(totalShortBreaksInSeconds),
+      const DeepCollectionEquality().hash(totalLongBreaksInSeconds));
 
+  @JsonKey(ignore: true)
   @override
   _$StatsCopyWith<_Stats> get copyWith =>
       __$StatsCopyWithImpl<_Stats>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_StatsToJson(this);
+  }
 }
 
 abstract class _Stats extends Stats {
-  _Stats._() : super._();
   factory _Stats(
-      {@required DateTime date,
+      {required DateTime date,
       int totalFocusedRoundInSeconds,
       int totalShortBreaksInSeconds,
       int totalLongBreaksInSeconds}) = _$_Stats;
+  _Stats._() : super._();
+
+  factory _Stats.fromJson(Map<String, dynamic> json) = _$_Stats.fromJson;
 
   @override
   DateTime get date;
@@ -222,5 +247,6 @@ abstract class _Stats extends Stats {
   @override
   int get totalLongBreaksInSeconds;
   @override
-  _$StatsCopyWith<_Stats> get copyWith;
+  @JsonKey(ignore: true)
+  _$StatsCopyWith<_Stats> get copyWith => throw _privateConstructorUsedError;
 }

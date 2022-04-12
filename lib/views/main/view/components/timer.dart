@@ -2,7 +2,7 @@ part of '../main.dart';
 
 class _TimerBloc extends StatelessWidget {
   const _TimerBloc({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -29,17 +29,17 @@ class _TimerBloc extends StatelessWidget {
   }
 }
 
-class _PeriodsButton extends HookWidget {
+class _PeriodsButton extends ConsumerWidget {
   const _PeriodsButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const _kBgColor = Color.fromRGBO(0, 0, 0, 0.15);
 
   @override
-  Widget build(BuildContext context) {
-    final round = useProvider(currentRoundProvider);
-    final theme = useProvider(appThemeProvider.state);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final round = ref.watch(currentRoundProvider);
+    final theme = ref.watch(appThemeProvider);
 
     return TextButtonTheme(
       data: TextButtonThemeData(
@@ -56,8 +56,8 @@ class _PeriodsButton extends HookWidget {
               backgroundColor: round is Work ? _kBgColor : null,
             ),
             onPressed: () {
-              context
-                  .read(timerControllerProvider)
+              ref
+                  .read(timerControllerProvider.notifier)
                   .setNextRound(next: const Round.work());
             },
             child: const Text('Pomodoro'),
@@ -67,8 +67,8 @@ class _PeriodsButton extends HookWidget {
               backgroundColor: round is ShortBreak ? _kBgColor : null,
             ),
             onPressed: () {
-              context
-                  .read(timerControllerProvider)
+              ref
+                  .read(timerControllerProvider.notifier)
                   .setNextRound(next: const Round.shortBreak());
             },
             child: const Text('Short Break'),
@@ -78,8 +78,8 @@ class _PeriodsButton extends HookWidget {
               backgroundColor: round is LongBreak ? _kBgColor : null,
             ),
             onPressed: () {
-              context
-                  .read(timerControllerProvider)
+              ref
+                  .read(timerControllerProvider.notifier)
                   .setNextRound(next: const Round.longBreak());
             },
             child: const Text('Long Break'),
@@ -90,13 +90,13 @@ class _PeriodsButton extends HookWidget {
   }
 }
 
-class _TimeText extends HookWidget {
-  const _TimeText();
+class _TimeText extends ConsumerWidget {
+  const _TimeText({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final time = useProvider(
-      timerControllerProvider.state.select((value) => value.time),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final time = ref.watch(
+      timerControllerProvider.select((value) => value.time),
     );
 
     return Text(
@@ -110,21 +110,21 @@ class _TimeText extends HookWidget {
   }
 }
 
-class _PlayPauseButton extends HookWidget {
+class _PlayPauseButton extends ConsumerWidget {
   const _PlayPauseButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final color = useProvider(colorFromCurrentRoundProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final color = ref.watch(colorFromCurrentRoundProvider);
 
-    final isPLaying = useProvider(
-      timerControllerProvider.state.select((value) => value.isPlaying),
+    final isPLaying = ref.watch(
+      timerControllerProvider.select((value) => value.isPlaying),
     );
 
     return AnimatedButton(
-      onPressed: () => context.read(timerControllerProvider).playOrPause(),
+      onPressed: () => ref.read(timerControllerProvider.notifier).playOrPause(),
       child: TextWithAnimatedColor(
         isPLaying ? ' PAUSE' : 'START',
         fontFamily: 'ArialRoundedBold',

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pomodory/_internal/styles.dart';
 
-import '../_internal/styles.dart';
 
 class TextWithAnimatedColor extends StatefulWidget {
   const TextWithAnimatedColor(
     this.data, {
-    Key key,
-    @required this.color,
+    Key? key,
+    required this.color,
     this.duration,
     this.fontSize,
     this.fontFamily,
@@ -14,18 +14,18 @@ class TextWithAnimatedColor extends StatefulWidget {
 
   final String data;
   final Color color;
-  final Duration duration;
-  final double fontSize;
-  final String fontFamily;
+  final Duration? duration;
+  final double? fontSize;
+  final String? fontFamily;
 
   @override
-  _TextWithAnimatedColorState createState() => _TextWithAnimatedColorState();
+  State<TextWithAnimatedColor> createState() => _TextWithAnimatedColorState();
 }
 
 class _TextWithAnimatedColorState extends State<TextWithAnimatedColor>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animatable<Color> color;
+  late final AnimationController _controller;
+  late Animatable<Color?> color;
 
   @override
   void initState() {
@@ -40,9 +40,9 @@ class _TextWithAnimatedColorState extends State<TextWithAnimatedColor>
   void didUpdateWidget(covariant TextWithAnimatedColor oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.color != widget.color) {
-      color = TweenSequence<Color>(
+      color = TweenSequence<Color?>(
         [
-          TweenSequenceItem(
+          TweenSequenceItem<Color?>(
             weight: 1,
             tween: ColorTween(
               begin: oldWidget.color,
@@ -59,6 +59,12 @@ class _TextWithAnimatedColorState extends State<TextWithAnimatedColor>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _controller,
@@ -67,10 +73,10 @@ class _TextWithAnimatedColorState extends State<TextWithAnimatedColor>
           widget.data,
           style: TextStyle(
             color: _controller.isAnimating
-                ? color?.evaluate(AlwaysStoppedAnimation(_controller.value))
+                ? color.evaluate(AlwaysStoppedAnimation(_controller.value))
                 : widget.color,
-            fontFamily: widget?.fontFamily,
-            fontSize: widget?.fontSize,
+            fontFamily: widget.fontFamily,
+            fontSize: widget.fontSize,
           ),
         );
       },

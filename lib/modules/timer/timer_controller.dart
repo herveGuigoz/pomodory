@@ -1,16 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:hooks_riverpod/all.dart';
+import 'package:pomodory/models/round.dart';
+import 'package:pomodory/models/settings_state.dart';
+import 'package:pomodory/models/timer_state.dart';
+import 'package:pomodory/modules/activity/logic/activity_manager.dart';
+import 'package:pomodory/services/files_service.dart';
+import 'package:pomodory/services/notifications_service.dart';
 import 'package:state_notifier/state_notifier.dart';
-
-import '../../models/round.dart';
-import '../../models/settings_state.dart';
-import '../../models/timer_state.dart';
-import '../../services/files_service.dart';
-import '../../services/notifications_service.dart';
-import '../activity/logic/activity_manager.dart';
-import '../refs.dart';
 
 part 'notifications.dart';
 part 'ticker.dart';
@@ -27,7 +24,7 @@ class TimerController extends StateNotifier<TimerState>
   final ActivityManager activityManager;
 
   /// Switch to either work, shortBreak or longBreak,
-  void setNextRound({Round next, bool mustStartTimer = false}) {
+  void setNextRound({Round? next, bool mustStartTimer = false}) {
     final nextRound = next ??
         state.currentRound.maybeWhen(
           work: () => state.round < settings.roundsLength
@@ -37,7 +34,7 @@ class TimerController extends StateNotifier<TimerState>
         );
 
     state = state.copyWith(
-      duration: nextRound.getRoundDuration(settings),
+      duration: nextRound!.getRoundDuration(settings),
       tick: nextRound.getRoundDuration(settings).inSeconds,
       currentRound: nextRound,
       round: state.currentRound is LongBreak

@@ -2,29 +2,24 @@ import 'package:flutter/material.dart';
 
 class AnimatedScalfold extends StatefulWidget {
   const AnimatedScalfold({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   final Widget child;
   @override
-  _AnimatedScalfoldState createState() => _AnimatedScalfoldState();
+  State<AnimatedScalfold> createState() => _AnimatedScalfoldState();
 }
 
 class _AnimatedScalfoldState extends State<AnimatedScalfold>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 10),
-      vsync: this,
-    )..repeat();
-  }
+  late final  _controller = AnimationController(
+    duration: const Duration(seconds: 10),
+    vsync: this,
+  )..repeat();
 
-  Animatable<Color> background = TweenSequence<Color>([
+  late final background = TweenSequence([
     TweenSequenceItem(
       weight: 1,
       tween: ColorTween(
@@ -47,6 +42,12 @@ class _AnimatedScalfoldState extends State<AnimatedScalfold>
       ),
     ),
   ]);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

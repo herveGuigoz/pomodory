@@ -5,7 +5,7 @@ mixin Timer on StateNotifier<TimerState> {
   final Ticker _ticker = Ticker();
 
   /// Ticks subscription.
-  StreamSubscription<int> _subscription;
+  StreamSubscription<int>? _subscription;
 
   /// Translated total round duration in seconds.
   int get _duration => state.duration.inSeconds;
@@ -29,12 +29,12 @@ mixin Timer on StateNotifier<TimerState> {
   void playOrPause() => state.isPlaying ? pause() : play();
 
   void play() {
-    _subscription != null ? _subscription.resume() : startTimer();
+    _subscription != null ? _subscription?.resume() : startTimer();
     _playing = true;
   }
 
   void pause() {
-    _subscription.pause();
+    _subscription?.pause();
     _playing = false;
   }
 

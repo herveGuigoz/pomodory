@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'settings_state.dart';
+import 'package:pomodory/models/settings_state.dart';
 
 part 'round.freezed.dart';
 
 @freezed
-abstract class Round implements _$Round {
+class Round with _$Round {
   const Round._();
 
   const factory Round.work() = Work;

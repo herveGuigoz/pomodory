@@ -5,9 +5,9 @@ mixin NotificationMixin on StateNotifier<TimerState> {
   static const _badgeGreen = 'assets/images/badge_green.png';
   static const _badgeRed = 'assets/images/badge_red.png';
 
-  Future<void> showNotification({bool playSound}) async {
-    String title, body;
-    File icon;
+  Future<void> showNotification({required bool playSound}) async {
+    late String title, body;
+    late File icon;
 
     await state.currentRound.when(
       work: () async {

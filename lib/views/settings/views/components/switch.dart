@@ -1,11 +1,11 @@
 part of '../settings.dart';
 
-class _SwitchImpl extends HookWidget {
+class _SwitchImpl extends ConsumerWidget {
   const _SwitchImpl({
-    Key key,
-    @required this.title,
-    @required this.selector,
-    @required this.onChanged,
+    Key? key,
+    required this.title,
+    required this.selector,
+    required this.onChanged,
   }) : super(key: key);
 
   final String title;
@@ -13,8 +13,8 @@ class _SwitchImpl extends HookWidget {
   final void Function(bool) onChanged;
 
   @override
-  Widget build(BuildContext context) {
-    final value = useProvider(settingsProvider.state.select(selector));
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(settingsProvider.select(selector));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

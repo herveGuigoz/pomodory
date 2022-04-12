@@ -2,7 +2,7 @@ part of '../main.dart';
 
 class _Header extends StatelessWidget {
   const _Header({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static const double _kIconSize = 18;

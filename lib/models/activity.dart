@@ -1,13 +1,12 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 const kDefaultProject = 'No Project';
 
 class Activity extends Equatable {
   Activity({
-    @required this.date,
+    required this.date,
     this.project = kDefaultProject,
-    this.duration = 0,
+    this.duration,
   })  : assert(date.hour == 0),
         assert(date.second == 0),
         assert(date.millisecond == 0);
@@ -23,7 +22,7 @@ class Activity extends Equatable {
   final DateTime date;
   final String project;
   // focused time in seconds
-  final int duration;
+  final int? duration;
 
   Activity durationIncrementedByOneSecond() =>
       copyWith(duration: duration ?? 0 + 1);
@@ -36,9 +35,9 @@ class Activity extends Equatable {
   }
 
   Activity copyWith({
-    DateTime date,
-    String project,
-    int duration,
+    DateTime? date,
+    String? project,
+    int? duration,
   }) {
     return Activity(
       date: date ?? this.date,
@@ -47,9 +46,9 @@ class Activity extends Equatable {
     );
   }
 
-  Map<String, Object> toJson() {
-    return {
-      'date': date?.millisecondsSinceEpoch,
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'date': date.millisecondsSinceEpoch,
       'project': project,
       'duration': duration,
     };

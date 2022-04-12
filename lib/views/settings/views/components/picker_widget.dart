@@ -1,15 +1,15 @@
 part of '../settings.dart';
 
-class _RoundsLengthPicker extends StatelessWidget {
+class _RoundsLengthPicker extends ConsumerWidget {
   const _RoundsLengthPicker({
-    Key key,
-    @required this.height,
+    Key? key,
+    required this.height,
   }) : super(key: key);
 
   final double height;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: height,
       color: Colors.white,
@@ -29,10 +29,10 @@ class _RoundsLengthPicker extends StatelessWidget {
               backgroundColor: Colors.white,
               itemExtent: 45,
               onSelectedItemChanged: (value) {
-                context.read(settingsProvider).setRoundsLength(value + 1);
+                ref.read(settingsProvider.notifier).setRoundsLength(value + 1);
               },
               children: List<Widget>.generate(
-                kMaxRoundsNubers,
+                kMaxRoundsNumbers,
                 (index) => Center(child: Text('${index + 1}')),
               ),
             ),

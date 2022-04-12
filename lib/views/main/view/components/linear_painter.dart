@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/all.dart';
-
-import '../../../../modules/refs.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomodory/modules/refs.dart';
 
 const double _kRadius = 2;
 
-class LinearPainter extends HookWidget {
+class LinearPainter extends ConsumerWidget {
   /// Creates a linear progress indicator.
   const LinearPainter({
-    Key key,
+    Key? key,
     this.backgroundColor = const Color.fromRGBO(0, 0, 0, 0.1),
     this.valueColor = const AlwaysStoppedAnimation(Colors.white),
-    this.minHeight,
-  })  : assert(minHeight == null || minHeight > 0),
-        super(key: key);
+    this.minHeight = 0,
+  }) : super(key: key);
 
   /// The progress indicator's background color.
   ///
@@ -24,9 +21,6 @@ class LinearPainter extends HookWidget {
   /// The progress indicator's color as an animated value.
   ///
   /// To specify a constant color use: `AlwaysStoppedAnimation<Color>(color)`.
-  ///
-  /// If null, the progress indicator is rendered with the current theme's
-  /// [ThemeData.accentColor].
   final Animation<Color> valueColor;
 
   /// The minimum height of the line used to draw the indicator.
@@ -34,15 +28,18 @@ class LinearPainter extends HookWidget {
   /// This defaults to 2dp.
   final double minHeight;
 
-  Color getBackgroundColor(BuildContext context) =>
-      backgroundColor ?? Theme.of(context).backgroundColor;
-  Color getValueColor(BuildContext context) =>
-      valueColor?.value ?? Theme.of(context).accentColor;
+  Color getBackgroundColor(BuildContext context) {
+    return backgroundColor;
+  }
+
+  Color getValueColor(BuildContext context) {
+    return valueColor.value;
+  }
 
   @override
-  Widget build(BuildContext context) {
-    final progress = useProvider(
-      timerControllerProvider.state.select((value) => value.fractionalValue),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final progress = ref.watch(
+      timerControllerProvider.select((value) => value.fractionalValue),
     );
 
     final textDirection = Directionality.of(context);
@@ -50,7 +47,7 @@ class LinearPainter extends HookWidget {
     return Container(
       constraints: BoxConstraints(
         minWidth: double.infinity,
-        minHeight: minHeight ?? 2.0,
+        minHeight: minHeight,
       ),
       child: CustomPaint(
         painter: _LinearProgressIndicatorPainter(
@@ -66,11 +63,11 @@ class LinearPainter extends HookWidget {
 
 class _LinearProgressIndicatorPainter extends CustomPainter {
   const _LinearProgressIndicatorPainter({
-    @required this.backgroundColor,
-    @required this.valueColor,
-    @required this.value,
-    @required this.textDirection,
-  }) : assert(textDirection != null);
+    required this.backgroundColor,
+    required this.valueColor,
+    required this.value,
+    required this.textDirection,
+  });
 
   final Color backgroundColor;
   final Color valueColor;
@@ -115,7 +112,7 @@ class _LinearProgressIndicatorPainter extends CustomPainter {
       );
     }
 
-    drawBar(0, value.clamp(0.0, 1.0) * size.width as double);
+    drawBar(0, value.clamp(0.0, 1.0) * size.width);
   }
 
   @override

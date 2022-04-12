@@ -1,9 +1,8 @@
-import 'package:hooks_riverpod/all.dart';
-
-import '../../../_internal/cache/hydrated_state_notifier.dart';
-import '../../../_internal/extensions/time_extensions.dart';
-import '../../../models/activity.dart';
-import '../../refs.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomodory/_internal/cache/hydrated_state_notifier.dart';
+import 'package:pomodory/_internal/extensions/time_extensions.dart';
+import 'package:pomodory/models/activity.dart';
+import 'package:pomodory/modules/refs.dart';
 
 class ActivityManager extends HydratedStateNotifier<List<Activity>> {
   ActivityManager(this._read) : super([]);
@@ -22,12 +21,12 @@ class ActivityManager extends HydratedStateNotifier<List<Activity>> {
       orElse: () => Activity(date: _now, project: project),
     );
 
-    final update = activity.copyWith(duration: activity.duration + 1);
+    final update = activity.copyWith(duration: (activity.duration ?? 0) + 1);
     state = state.update(activity, update);
   }
 
   @override
-  List<Activity> fromJson(Map<String, Object> json) {
+  List<Activity>? fromJson(Map<String, dynamic> json) {
     return json[_kJsonKey] != null
         ? (json[_kJsonKey] as List<Object>)
             .map((e) => Activity.fromJson(e as Map<String, Object>))

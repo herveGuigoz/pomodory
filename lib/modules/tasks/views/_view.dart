@@ -5,8 +5,6 @@ class _TaskModalView extends WidgetView<TaskModalLogic, _TaskModalController> {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: SafeArea(
         child: Unfocus(
@@ -68,78 +66,15 @@ class _TaskModalView extends WidgetView<TaskModalLogic, _TaskModalController> {
         ),
       ),
     );
-
-    // return Unfocus(
-    //   child: Container(
-    //     height: size.height * .4,
-    //     width: size.width * .80,
-    //     decoration: BoxDecoration(
-    //       color: Colors.white,
-    //       borderRadius: Corners.s5Border,
-    //     ),
-    //     child: Stack(
-    //       children: [
-    //         Padding(
-    //           padding: const EdgeInsets.all(16),
-    //           child: Form(
-    //             child: Column(
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               children: [
-    //                 _NameIntputField(textController: state._taskName),
-    //                 const SizedBox(height: 24),
-    //                 Text(
-    //                   'Number of rounds',
-    //                   style: TextStyle(
-    //                     fontFamily: Fonts.arialRoundedBold,
-    //                     color: const Color.fromRGBO(85, 85, 85, 1),
-    //                     fontSize: FontSizes.s16,
-    //                   ),
-    //                 ),
-    //                 const SizedBox(height: 16),
-    //                 _NumberOfPomodoro(
-    //                   value: state._pomodoros,
-    //                   increment: state._increment,
-    //                   decrement: state._decrement,
-    //                 ),
-    //                 const SizedBox(height: 24),
-    //                 Text(
-    //                   'Project',
-    //                   style: TextStyle(
-    //                     fontFamily: Fonts.arialRoundedBold,
-    //                     color: const Color.fromRGBO(85, 85, 85, 1),
-    //                     fontSize: FontSizes.s16,
-    //                   ),
-    //                 ),
-    //                 const SizedBox(height: 16),
-    //                 _ProjectInputField(textController: state._project),
-    //                 const Spacer(),
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           bottom: 0,
-    //           left: 0,
-    //           right: 0,
-    //           child: _ActionButtons(
-    //             onCancel: state._quit,
-    //             onDelete: state._delete,
-    //             onSave: state._isSaveButtonEnable ? state._submit : null,
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }
 
 class _NumberOfPomodoro extends HookWidget {
   const _NumberOfPomodoro({
-    Key key,
-    @required this.value,
-    @required this.increment,
-    @required this.decrement,
+    Key? key,
+    required this.value,
+    required this.increment,
+    required this.decrement,
   }) : super(key: key);
 
   final int value;
@@ -187,9 +122,9 @@ class _NumberOfPomodoro extends HookWidget {
 /// Implemetation of [AnimatedButton] with custom background and borders colors.
 class _AnimatedButtonImpl extends StatelessWidget {
   const _AnimatedButtonImpl({
-    Key key,
-    @required this.icon,
-    @required this.onPressed,
+    Key? key,
+    required this.icon,
+    required this.onPressed,
     this.enable = true,
   }) : super(key: key);
 
@@ -219,8 +154,8 @@ class _AnimatedButtonImpl extends StatelessWidget {
 
 class _NameIntputField extends StatelessWidget {
   const _NameIntputField({
-    Key key,
-    @required this.textController,
+    Key? key,
+    required this.textController,
     this.autofocus = false,
   }) : super(key: key);
 
@@ -234,7 +169,6 @@ class _NameIntputField extends StatelessWidget {
       autofocus: autofocus,
       decoration: InputDecoration(
         border: InputBorder.none,
-        contentPadding: const EdgeInsets.all(0),
         hintText: 'What are you working on?',
         hintStyle: TextStyle(
           fontFamily: Fonts.arialRoundedBold,
@@ -257,8 +191,8 @@ class _NameIntputField extends StatelessWidget {
 
 class _ProjectInputField extends StatelessWidget {
   const _ProjectInputField({
-    Key key,
-    @required this.textController,
+    Key? key,
+    required this.textController,
   }) : super(key: key);
 
   final TextEditingController textController;
@@ -294,15 +228,15 @@ class _ProjectInputField extends StatelessWidget {
 
 class _ActionButtons extends StatelessWidget {
   const _ActionButtons({
-    Key key,
-    @required this.onSave,
-    @required this.onDelete,
+    Key? key,
+    this.onSave,
+    this.onDelete,
     this.onCancel,
   }) : super(key: key);
 
-  final void Function() onSave;
-  final void Function() onDelete;
-  final void Function() onCancel;
+  final void Function()? onSave;
+  final void Function()? onDelete;
+  final void Function()? onCancel;
 
   @override
   Widget build(BuildContext context) {

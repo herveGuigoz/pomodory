@@ -19,23 +19,23 @@ class SettingsController extends HydratedStateNotifier<SettingsState> {
         roundsLength: value,
       );
 
-  set theme(PomodoroTheme value) => state = state.copyWith(
+  void setTheme(PomodoroTheme value) => state = state.copyWith(
         pomodoroThemeName: value.name,
       );
 
-  set autoStartWorkTimer(bool value) => state = state.copyWith(
+  void setAutoStartWorkTimer({required bool value}) => state = state.copyWith(
         autoStartWorkTimer: value,
       );
 
-  set autoStartBreakTimer(bool value) => state = state.copyWith(
+  void setAutoStartBreakTimer({required bool value}) => state = state.copyWith(
         autoStartBreakTimer: value,
       );
 
-  set desktopNotifications(bool value) => state = state.copyWith(
+  void setDesktopNotifications({required bool value}) => state = state.copyWith(
         notifications: value,
       );
 
-  set notificationsSound(bool value) => state = state.copyWith(
+  void setNotificationsSound({required bool value}) => state = state.copyWith(
         sound: value,
       );
 

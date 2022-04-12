@@ -1,41 +1,32 @@
 part of 'task_modal.dart';
 
-class TaskModalLogic extends StatefulWidget {
+class TaskModalLogic extends ConsumerStatefulWidget {
   const TaskModalLogic({
-    Key key,
-    @required this.task,
+    Key? key,
+    required this.task,
   }) : super(key: key);
 
   final Task task;
 
-  // static Future<void> show(BuildContext context, {Task task}) async {
-  //   await showCupertinoDialog<void>(
-  //     context: context,
-  //     builder: (context) => Dialog(
-  //       child: TaskModalLogic(task: task ?? Task.initial()),
-  //     ),
-  //   );
-  // }
-
-  static Route<T> route<T>([Task task]) {
+  static Route<T> route<T>([Task? task]) {
     return CupertinoPageRoute<T>(
       builder: (_) => TaskModalLogic(task: task ?? Task.initial()),
     );
   }
 
   @override
-  _TaskModalController createState() => _TaskModalController();
+  ConsumerState<TaskModalLogic> createState() => _TaskModalController();
 }
 
-class _TaskModalController extends State<TaskModalLogic> {
+class _TaskModalController extends ConsumerState<TaskModalLogic> {
   Task get task => widget.task;
 
-  TextEditingController _taskName;
-  TextEditingController _project;
+  late final TextEditingController _taskName;
+  late final TextEditingController _project;
 
-  bool _isSaveButtonEnable;
+  late bool _isSaveButtonEnable;
 
-  int _pomodoros;
+  late int _pomodoros;
 
   @override
   void initState() {
@@ -60,8 +51,9 @@ class _TaskModalController extends State<TaskModalLogic> {
 
   @override
   void dispose() {
-    _taskName.removeListener(_textControllerListener);
-    _taskName.dispose();
+    _taskName
+      ..removeListener(_textControllerListener)
+      ..dispose();
     _project.dispose();
     super.dispose();
   }
@@ -74,15 +66,15 @@ class _TaskModalController extends State<TaskModalLogic> {
   }
 
   void _submit() {
-    context
-        .read(tasksController)
+    ref
+        .read(tasksController.notifier)
         .update(task.copyWith(name: _taskName.text, estPomodoros: _pomodoros));
 
     _quit();
   }
 
   void _delete() {
-    context.read(tasksController).delete(task);
+    ref.read(tasksController.notifier).delete(task);
     _quit();
   }
 

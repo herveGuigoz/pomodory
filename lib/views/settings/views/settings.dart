@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/all.dart';
-
-import '../../../_internal/styles.dart';
-import '../../../_internal/unfocus.dart';
-import '../controllers/bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomodory/_internal/styles.dart';
+import 'package:pomodory/_internal/unfocus.dart';
+import 'package:pomodory/models/settings_state.dart';
+import 'package:pomodory/views/settings/controllers/bloc.dart';
 
 part 'components/header.dart';
 part 'components/intervals.dart';
@@ -14,9 +13,9 @@ part 'components/switch.dart';
 part 'components/digit_input_field.dart';
 part 'components/picker_widget.dart';
 
-class SettingsView extends StatelessWidget {
+class SettingsView extends ConsumerWidget {
   const SettingsView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static Route route() {
@@ -26,12 +25,12 @@ class SettingsView extends StatelessWidget {
   static const Color _kDividerColor = Color.fromRGBO(34, 34, 34, 0.25);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTextStyle(
       style: const TextStyle(color: Color.fromRGBO(34, 34, 34, 1)),
       child: Unfocus(
         child: Scaffold(
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
             bottom: false,
             child: Padding(
@@ -56,9 +55,9 @@ class SettingsView extends StatelessWidget {
                     child: _SwitchImpl(
                       title: 'Auto start pomodoro timer ?',
                       selector: (state) => state.autoStartWorkTimer,
-                      onChanged: (value) => context
-                          .read(settingsProvider)
-                          .autoStartWorkTimer = value,
+                      onChanged: (value) => ref
+                          .read(settingsProvider.notifier)
+                          .setAutoStartWorkTimer(value: value),
                     ),
                   ),
                   const Divider(color: _kDividerColor),
@@ -67,9 +66,9 @@ class SettingsView extends StatelessWidget {
                     child: _SwitchImpl(
                       title: 'Auto start break timer ?',
                       selector: (state) => state.autoStartBreakTimer,
-                      onChanged: (value) => context
-                          .read(settingsProvider)
-                          .autoStartBreakTimer = value,
+                      onChanged: (value) => ref
+                          .read(settingsProvider.notifier)
+                          .setAutoStartBreakTimer(value:value),
                     ),
                   ),
                   const Divider(color: _kDividerColor),
@@ -78,9 +77,9 @@ class SettingsView extends StatelessWidget {
                     child: _SwitchImpl(
                       title: 'Notifications',
                       selector: (state) => state.notifications,
-                      onChanged: (value) => context
-                          .read(settingsProvider)
-                          .desktopNotifications = value,
+                      onChanged: (value) => ref
+                          .read(settingsProvider.notifier)
+                          .setDesktopNotifications(value:value),
                     ),
                   ),
                   const Divider(color: _kDividerColor),

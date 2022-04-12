@@ -1,48 +1,41 @@
 name: pomodory
 description: Pomodoro Timer
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ^2.16.2
+  flutter: ^2.10.4
 
 dependencies:
+  auto_size_text:
+  cupertino_icons:
+  equatable:
   flutter:
     sdk: flutter
-
-  auto_size_text: ^2.1.0
-  cupertino_icons: ^1.0.0
-
-  # State Management
-  state_notifier: '>=0.6.0 <1.0.0'
-
-  # Dart data class
-  freezed_annotation: '>=0.12.0 <1.0.0'
-
-  # Cache
-  hive: ^1.4.4+1
-  synchronized: ^2.2.0+2
-
-  # MISC
-  flutter_hooks: '>=0.15.0 <1.0.0'
-  hooks_riverpod: '>=0.12.1 <1.0.0'
-  logger: '>=0.9.4 <1.0.0'
-  package_info: ^0.4.3+2
-  flutter_local_notifications: ^3.0.2
-  path_provider: ^1.6.24
-  flutter_slidable: ^0.5.7
-  equatable: ^1.2.6
-
+  flutter_hooks: ^0.18.3
+  flutter_local_notifications:
+  flutter_riverpod: ^1.0.3
+  flutter_slidable: ^1.2.0
+  freezed_annotation: ^1.1.0
+  hive: ^2.1.0
+  json_annotation: ^4.4.0
+  logger: ^1.1.0
+  package_info_plus: ^1.4.2
+  path_provider: ^2.0.9
+  state_notifier: ^0.7.2+1
+  synchronized: ^3.0.0+2
+  
 dev_dependencies:
+  build_runner:
   flutter_test:
     sdk: flutter
-  build_resolvers: '>=1.4.3 <2.0.0'
-  freezed: '>=0.12.0 <1.0.0'
-  json_serializable: '>=3.5.1 <4.0.0'
-  build_runner: '>=1.10.11 <2.0.0'
-  mockito: ^4.1.3
-  uuid: ^2.2.2
+  # build_resolvers: '>=1.4.3 <2.0.0'
+  freezed:
+  json_serializable:
+  mocktail:
+  uuid:
 
 flutter:
   uses-material-design: true
@@ -61,22 +54,21 @@ flutter:
       fonts:
         - asset: assets/fonts/RobotoMono-Light.ttf
           weight: 200
-    
+
     - family: SFProDisplay
       fonts:
         - asset: assets/fonts/SF-Pro-Display-Regular.otf
         - asset: assets/fonts/SF-Pro-Display-RegularItalic.otf
           style: italic
-    
+
     - family: ArialRounded
       fonts:
         - asset: assets/fonts/ArialRounded.ttf
-    
+
     - family: ArialRoundedBold
       fonts:
         - asset: assets/fonts/ArialRounded-bold.ttf
-        
+
     - family: PomodoroIcons
       fonts:
         - asset: assets/fonts/PomodoroIcons.ttf
-

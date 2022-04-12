@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'timer_state.dart';
 
@@ -9,15 +11,17 @@ part of 'timer_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$TimerStateTearOff {
   const _$TimerStateTearOff();
 
-// ignore: unused_element
   _TimerState call(
-      {@required Duration duration,
-      @required int tick,
-      @required bool isPlaying,
+      {required Duration duration,
+      required int tick,
+      required bool isPlaying,
       int round = 1,
       Round currentRound = const Round.work()}) {
     return _TimerState(
@@ -31,18 +35,19 @@ class _$TimerStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $TimerState = _$TimerStateTearOff();
 
 /// @nodoc
 mixin _$TimerState {
-  Duration get duration;
-  int get tick;
-  bool get isPlaying;
-  int get round;
-  Round get currentRound;
+  Duration get duration => throw _privateConstructorUsedError;
+  int get tick => throw _privateConstructorUsedError;
+  bool get isPlaying => throw _privateConstructorUsedError;
+  int get round => throw _privateConstructorUsedError;
+  Round get currentRound => throw _privateConstructorUsedError;
 
-  $TimerStateCopyWith<TimerState> get copyWith;
+  @JsonKey(ignore: true)
+  $TimerStateCopyWith<TimerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -70,27 +75,38 @@ class _$TimerStateCopyWithImpl<$Res> implements $TimerStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object duration = freezed,
-    Object tick = freezed,
-    Object isPlaying = freezed,
-    Object round = freezed,
-    Object currentRound = freezed,
+    Object? duration = freezed,
+    Object? tick = freezed,
+    Object? isPlaying = freezed,
+    Object? round = freezed,
+    Object? currentRound = freezed,
   }) {
     return _then(_value.copyWith(
-      duration: duration == freezed ? _value.duration : duration as Duration,
-      tick: tick == freezed ? _value.tick : tick as int,
-      isPlaying: isPlaying == freezed ? _value.isPlaying : isPlaying as bool,
-      round: round == freezed ? _value.round : round as int,
-      currentRound:
-          currentRound == freezed ? _value.currentRound : currentRound as Round,
+      duration: duration == freezed
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      tick: tick == freezed
+          ? _value.tick
+          : tick // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPlaying: isPlaying == freezed
+          ? _value.isPlaying
+          : isPlaying // ignore: cast_nullable_to_non_nullable
+              as bool,
+      round: round == freezed
+          ? _value.round
+          : round // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentRound: currentRound == freezed
+          ? _value.currentRound
+          : currentRound // ignore: cast_nullable_to_non_nullable
+              as Round,
     ));
   }
 
   @override
   $RoundCopyWith<$Res> get currentRound {
-    if (_value.currentRound == null) {
-      return null;
-    }
     return $RoundCopyWith<$Res>(_value.currentRound, (value) {
       return _then(_value.copyWith(currentRound: value));
     });
@@ -126,37 +142,47 @@ class __$TimerStateCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object duration = freezed,
-    Object tick = freezed,
-    Object isPlaying = freezed,
-    Object round = freezed,
-    Object currentRound = freezed,
+    Object? duration = freezed,
+    Object? tick = freezed,
+    Object? isPlaying = freezed,
+    Object? round = freezed,
+    Object? currentRound = freezed,
   }) {
     return _then(_TimerState(
-      duration: duration == freezed ? _value.duration : duration as Duration,
-      tick: tick == freezed ? _value.tick : tick as int,
-      isPlaying: isPlaying == freezed ? _value.isPlaying : isPlaying as bool,
-      round: round == freezed ? _value.round : round as int,
-      currentRound:
-          currentRound == freezed ? _value.currentRound : currentRound as Round,
+      duration: duration == freezed
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      tick: tick == freezed
+          ? _value.tick
+          : tick // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPlaying: isPlaying == freezed
+          ? _value.isPlaying
+          : isPlaying // ignore: cast_nullable_to_non_nullable
+              as bool,
+      round: round == freezed
+          ? _value.round
+          : round // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentRound: currentRound == freezed
+          ? _value.currentRound
+          : currentRound // ignore: cast_nullable_to_non_nullable
+              as Round,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
   _$_TimerState(
-      {@required this.duration,
-      @required this.tick,
-      @required this.isPlaying,
+      {required this.duration,
+      required this.tick,
+      required this.isPlaying,
       this.round = 1,
       this.currentRound = const Round.work()})
-      : assert(duration != null),
-        assert(tick != null),
-        assert(isPlaying != null),
-        assert(round != null),
-        assert(currentRound != null),
-        super._();
+      : super._();
 
   @override
   final Duration duration;
@@ -164,10 +190,10 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
   final int tick;
   @override
   final bool isPlaying;
-  @JsonKey(defaultValue: 1)
+  @JsonKey()
   @override
   final int round;
-  @JsonKey(defaultValue: const Round.work())
+  @JsonKey()
   @override
   final Round currentRound;
 
@@ -191,44 +217,39 @@ class _$_TimerState extends _TimerState with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TimerState &&
-            (identical(other.duration, duration) ||
-                const DeepCollectionEquality()
-                    .equals(other.duration, duration)) &&
-            (identical(other.tick, tick) ||
-                const DeepCollectionEquality().equals(other.tick, tick)) &&
-            (identical(other.isPlaying, isPlaying) ||
-                const DeepCollectionEquality()
-                    .equals(other.isPlaying, isPlaying)) &&
-            (identical(other.round, round) ||
-                const DeepCollectionEquality().equals(other.round, round)) &&
-            (identical(other.currentRound, currentRound) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentRound, currentRound)));
+        (other.runtimeType == runtimeType &&
+            other is _TimerState &&
+            const DeepCollectionEquality().equals(other.duration, duration) &&
+            const DeepCollectionEquality().equals(other.tick, tick) &&
+            const DeepCollectionEquality().equals(other.isPlaying, isPlaying) &&
+            const DeepCollectionEquality().equals(other.round, round) &&
+            const DeepCollectionEquality()
+                .equals(other.currentRound, currentRound));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(duration) ^
-      const DeepCollectionEquality().hash(tick) ^
-      const DeepCollectionEquality().hash(isPlaying) ^
-      const DeepCollectionEquality().hash(round) ^
-      const DeepCollectionEquality().hash(currentRound);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(duration),
+      const DeepCollectionEquality().hash(tick),
+      const DeepCollectionEquality().hash(isPlaying),
+      const DeepCollectionEquality().hash(round),
+      const DeepCollectionEquality().hash(currentRound));
 
+  @JsonKey(ignore: true)
   @override
   _$TimerStateCopyWith<_TimerState> get copyWith =>
       __$TimerStateCopyWithImpl<_TimerState>(this, _$identity);
 }
 
 abstract class _TimerState extends TimerState {
-  _TimerState._() : super._();
   factory _TimerState(
-      {@required Duration duration,
-      @required int tick,
-      @required bool isPlaying,
+      {required Duration duration,
+      required int tick,
+      required bool isPlaying,
       int round,
       Round currentRound}) = _$_TimerState;
+  _TimerState._() : super._();
 
   @override
   Duration get duration;
@@ -241,5 +262,7 @@ abstract class _TimerState extends TimerState {
   @override
   Round get currentRound;
   @override
-  _$TimerStateCopyWith<_TimerState> get copyWith;
+  @JsonKey(ignore: true)
+  _$TimerStateCopyWith<_TimerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

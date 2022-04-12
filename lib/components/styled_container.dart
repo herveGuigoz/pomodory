@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../_internal/styles.dart';
+import 'package:pomodory/_internal/styles.dart';
 
 /// A container that will animate when you change colors.
 class StyledContainer extends StatelessWidget {
   const StyledContainer({
-    Key key,
+    Key? key,
     this.color,
     this.borderRadius,
     this.shadows,
@@ -18,17 +18,17 @@ class StyledContainer extends StatelessWidget {
     this.border,
   }) : super(key: key);
 
-  final Color color;
-  final BorderRadiusGeometry borderRadius;
-  final List<BoxShadow> shadows;
-  final Widget child;
-  final double width;
-  final double height;
-  final Alignment align;
-  final BoxShape shape;
-  final EdgeInsets margin;
-  final Duration duration;
-  final BoxBorder border;
+  final Color? color;
+  final BorderRadiusGeometry? borderRadius;
+  final List<BoxShadow>? shadows;
+  final Widget? child;
+  final double? width;
+  final double? height;
+  final Alignment? align;
+  final BoxShape? shape;
+  final EdgeInsets? margin;
+  final Duration? duration;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {

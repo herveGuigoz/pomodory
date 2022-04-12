@@ -3,12 +3,12 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/all.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 class ErrorHandler {
   ErrorHandler({
-    @required Widget child,
+    required Widget child,
   }) {
     if (kReleaseMode) {
       // override the error widget in release mode (the red error screen)
@@ -33,7 +33,7 @@ class ErrorHandler {
   /// Prints it to the console otherwise.
   Future<void> _handleFlutterError(FlutterErrorDetails details) async {
     if (kReleaseMode) {
-      Zone.current.handleUncaughtError(details.exception, details.stack);
+      Zone.current.handleUncaughtError(details.exception, details.stack!);
     } else {
       FlutterError.dumpErrorToConsole(details);
     }

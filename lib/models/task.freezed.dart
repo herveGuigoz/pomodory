@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'task.dart';
 
@@ -9,15 +11,21 @@ part of 'task.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+Task _$TaskFromJson(Map<String, dynamic> json) {
+  return _Task.fromJson(json);
+}
+
 /// @nodoc
 class _$TaskTearOff {
   const _$TaskTearOff();
 
-// ignore: unused_element
   _Task call(
-      {@required String id,
-      @required String name,
-      @required int estPomodoros,
+      {required String id,
+      required String name,
+      required int estPomodoros,
       bool selected = false,
       bool visible = false,
       bool completed = false,
@@ -32,23 +40,28 @@ class _$TaskTearOff {
       project: project,
     );
   }
+
+  Task fromJson(Map<String, Object?> json) {
+    return Task.fromJson(json);
+  }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Task = _$TaskTearOff();
 
 /// @nodoc
 mixin _$Task {
-  String get id;
-  String get name;
-  int get estPomodoros;
-  bool get selected;
-  bool get visible;
-  bool get completed;
-  String get project;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  int get estPomodoros => throw _privateConstructorUsedError;
+  bool get selected => throw _privateConstructorUsedError;
+  bool get visible => throw _privateConstructorUsedError;
+  bool get completed => throw _privateConstructorUsedError;
+  String get project => throw _privateConstructorUsedError;
 
-  $TaskCopyWith<Task> get copyWith;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TaskCopyWith<Task> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -75,23 +88,43 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object estPomodoros = freezed,
-    Object selected = freezed,
-    Object visible = freezed,
-    Object completed = freezed,
-    Object project = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? estPomodoros = freezed,
+    Object? selected = freezed,
+    Object? visible = freezed,
+    Object? completed = freezed,
+    Object? project = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      estPomodoros:
-          estPomodoros == freezed ? _value.estPomodoros : estPomodoros as int,
-      selected: selected == freezed ? _value.selected : selected as bool,
-      visible: visible == freezed ? _value.visible : visible as bool,
-      completed: completed == freezed ? _value.completed : completed as bool,
-      project: project == freezed ? _value.project : project as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      estPomodoros: estPomodoros == freezed
+          ? _value.estPomodoros
+          : estPomodoros // ignore: cast_nullable_to_non_nullable
+              as int,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      visible: visible == freezed
+          ? _value.visible
+          : visible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      completed: completed == freezed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      project: project == freezed
+          ? _value.project
+          : project // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -122,45 +155,61 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object estPomodoros = freezed,
-    Object selected = freezed,
-    Object visible = freezed,
-    Object completed = freezed,
-    Object project = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? estPomodoros = freezed,
+    Object? selected = freezed,
+    Object? visible = freezed,
+    Object? completed = freezed,
+    Object? project = freezed,
   }) {
     return _then(_Task(
-      id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      estPomodoros:
-          estPomodoros == freezed ? _value.estPomodoros : estPomodoros as int,
-      selected: selected == freezed ? _value.selected : selected as bool,
-      visible: visible == freezed ? _value.visible : visible as bool,
-      completed: completed == freezed ? _value.completed : completed as bool,
-      project: project == freezed ? _value.project : project as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      estPomodoros: estPomodoros == freezed
+          ? _value.estPomodoros
+          : estPomodoros // ignore: cast_nullable_to_non_nullable
+              as int,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      visible: visible == freezed
+          ? _value.visible
+          : visible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      completed: completed == freezed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      project: project == freezed
+          ? _value.project
+          : project // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
 class _$_Task extends _Task with DiagnosticableTreeMixin {
   const _$_Task(
-      {@required this.id,
-      @required this.name,
-      @required this.estPomodoros,
+      {required this.id,
+      required this.name,
+      required this.estPomodoros,
       this.selected = false,
       this.visible = false,
       this.completed = false,
       this.project = kDefaultProject})
-      : assert(id != null),
-        assert(name != null),
-        assert(estPomodoros != null),
-        assert(selected != null),
-        assert(visible != null),
-        assert(completed != null),
-        assert(project != null),
-        super._();
+      : super._();
+
+  factory _$_Task.fromJson(Map<String, dynamic> json) => _$$_TaskFromJson(json);
 
   @override
   final String id;
@@ -168,16 +217,16 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
   final String name;
   @override
   final int estPomodoros;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool selected;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool visible;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool completed;
-  @JsonKey(defaultValue: kDefaultProject)
+  @JsonKey()
   @override
   final String project;
 
@@ -203,53 +252,52 @@ class _$_Task extends _Task with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Task &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.estPomodoros, estPomodoros) ||
-                const DeepCollectionEquality()
-                    .equals(other.estPomodoros, estPomodoros)) &&
-            (identical(other.selected, selected) ||
-                const DeepCollectionEquality()
-                    .equals(other.selected, selected)) &&
-            (identical(other.visible, visible) ||
-                const DeepCollectionEquality()
-                    .equals(other.visible, visible)) &&
-            (identical(other.completed, completed) ||
-                const DeepCollectionEquality()
-                    .equals(other.completed, completed)) &&
-            (identical(other.project, project) ||
-                const DeepCollectionEquality().equals(other.project, project)));
+        (other.runtimeType == runtimeType &&
+            other is _Task &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.estPomodoros, estPomodoros) &&
+            const DeepCollectionEquality().equals(other.selected, selected) &&
+            const DeepCollectionEquality().equals(other.visible, visible) &&
+            const DeepCollectionEquality().equals(other.completed, completed) &&
+            const DeepCollectionEquality().equals(other.project, project));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(estPomodoros) ^
-      const DeepCollectionEquality().hash(selected) ^
-      const DeepCollectionEquality().hash(visible) ^
-      const DeepCollectionEquality().hash(completed) ^
-      const DeepCollectionEquality().hash(project);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(estPomodoros),
+      const DeepCollectionEquality().hash(selected),
+      const DeepCollectionEquality().hash(visible),
+      const DeepCollectionEquality().hash(completed),
+      const DeepCollectionEquality().hash(project));
 
+  @JsonKey(ignore: true)
   @override
   _$TaskCopyWith<_Task> get copyWith =>
       __$TaskCopyWithImpl<_Task>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TaskToJson(this);
+  }
 }
 
 abstract class _Task extends Task {
-  const _Task._() : super._();
   const factory _Task(
-      {@required String id,
-      @required String name,
-      @required int estPomodoros,
+      {required String id,
+      required String name,
+      required int estPomodoros,
       bool selected,
       bool visible,
       bool completed,
       String project}) = _$_Task;
+  const _Task._() : super._();
+
+  factory _Task.fromJson(Map<String, dynamic> json) = _$_Task.fromJson;
 
   @override
   String get id;
@@ -266,5 +314,6 @@ abstract class _Task extends Task {
   @override
   String get project;
   @override
-  _$TaskCopyWith<_Task> get copyWith;
+  @JsonKey(ignore: true)
+  _$TaskCopyWith<_Task> get copyWith => throw _privateConstructorUsedError;
 }

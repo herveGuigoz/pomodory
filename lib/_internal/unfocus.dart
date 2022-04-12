@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// This implements the "Unfocus when tapping in empty space" behavior for the
 /// entire application.
 class Unfocus extends StatelessWidget {
-  const Unfocus({Key key, this.child}) : super(key: key);
+  const Unfocus({Key? key, required this.child}) : super(key: key);
 
   final Widget child;
 

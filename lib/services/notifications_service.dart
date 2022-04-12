@@ -7,16 +7,16 @@ class NotificationsService {
 
   final FlutterLocalNotificationsPlugin _service;
 
-  static NotificationsService _instance;
+  static NotificationsService? _instance;
 
-  static NotificationsService get instance => _instance;
+  static NotificationsService get instance => _instance!;
 
   static Future<NotificationsService> init() async {
     if (_instance == null) {
       final notificationsPlugin = await _initDependencies();
       _instance = NotificationsService._(notificationsPlugin);
     }
-    return _instance;
+    return _instance!;
   }
 
   static Future<FlutterLocalNotificationsPlugin> _initDependencies() async {
@@ -63,7 +63,7 @@ class NotificationsService {
     await _service
         .resolvePlatformSpecificImplementation<
             MacOSFlutterLocalNotificationsPlugin>()
-        .requestPermissions(
+        ?.requestPermissions(
           alert: true,
           badge: true,
           sound: true,
@@ -73,18 +73,21 @@ class NotificationsService {
   Future<void> show(
     String title,
     String body, {
-    String filePath,
-    bool withSound,
+    String? filePath,
+    bool withSound = true,
   }) async {
     // Android
-    final android = AndroidNotificationDetails('id', 'channel ', 'description',
-        importance: Importance.max,
-        priority: Priority.high,
-        playSound: withSound);
+    final android = AndroidNotificationDetails(
+      'id',
+      'channel ',
+      importance: Importance.max,
+      priority: Priority.high,
+      playSound: withSound,
+    );
 
     // MacOs
     final macOs = MacOSNotificationDetails(
-      presentSound: withSound ?? true,
+      presentSound: withSound,
       attachments: filePath != null
           ? [
               MacOSNotificationAttachment(filePath),

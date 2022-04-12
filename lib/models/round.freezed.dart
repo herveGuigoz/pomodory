@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'round.dart';
 
@@ -9,58 +11,75 @@ part of 'round.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$RoundTearOff {
   const _$RoundTearOff();
 
-// ignore: unused_element
   Work work() {
     return const Work();
   }
 
-// ignore: unused_element
   ShortBreak shortBreak() {
     return const ShortBreak();
   }
 
-// ignore: unused_element
   LongBreak longBreak() {
     return const LongBreak();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Round = _$RoundTearOff();
 
 /// @nodoc
 mixin _$Round {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult work(),
-    @required TResult shortBreak(),
-    @required TResult longBreak(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() work,
+    required TResult Function() shortBreak,
+    required TResult Function() longBreak,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult work(),
-    TResult shortBreak(),
-    TResult longBreak(),
-    @required TResult orElse(),
-  });
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult work(Work value),
-    @required TResult shortBreak(ShortBreak value),
-    @required TResult longBreak(LongBreak value),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult work(Work value),
-    TResult shortBreak(ShortBreak value),
-    TResult longBreak(LongBreak value),
-    @required TResult orElse(),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Work value) work,
+    required TResult Function(ShortBreak value) shortBreak,
+    required TResult Function(LongBreak value) longBreak,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -95,6 +114,7 @@ class _$WorkCopyWithImpl<$Res> extends _$RoundCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Work extends Work with DiagnosticableTreeMixin {
   const _$Work() : super._();
 
@@ -111,7 +131,8 @@ class _$Work extends Work with DiagnosticableTreeMixin {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Work);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Work);
   }
 
   @override
@@ -119,26 +140,32 @@ class _$Work extends Work with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult work(),
-    @required TResult shortBreak(),
-    @required TResult longBreak(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() work,
+    required TResult Function() shortBreak,
+    required TResult Function() longBreak,
   }) {
-    assert(work != null);
-    assert(shortBreak != null);
-    assert(longBreak != null);
     return work();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult work(),
-    TResult shortBreak(),
-    TResult longBreak(),
-    @required TResult orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
   }) {
-    assert(orElse != null);
+    return work?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
+    required TResult orElse(),
+  }) {
     if (work != null) {
       return work();
     }
@@ -147,26 +174,32 @@ class _$Work extends Work with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult work(Work value),
-    @required TResult shortBreak(ShortBreak value),
-    @required TResult longBreak(LongBreak value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Work value) work,
+    required TResult Function(ShortBreak value) shortBreak,
+    required TResult Function(LongBreak value) longBreak,
   }) {
-    assert(work != null);
-    assert(shortBreak != null);
-    assert(longBreak != null);
     return work(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult work(Work value),
-    TResult shortBreak(ShortBreak value),
-    TResult longBreak(LongBreak value),
-    @required TResult orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
   }) {
-    assert(orElse != null);
+    return work?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
+    required TResult orElse(),
+  }) {
     if (work != null) {
       return work(this);
     }
@@ -175,8 +208,8 @@ class _$Work extends Work with DiagnosticableTreeMixin {
 }
 
 abstract class Work extends Round {
-  const Work._() : super._();
   const factory Work() = _$Work;
+  const Work._() : super._();
 }
 
 /// @nodoc
@@ -197,6 +230,7 @@ class _$ShortBreakCopyWithImpl<$Res> extends _$RoundCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
   const _$ShortBreak() : super._();
 
@@ -213,7 +247,8 @@ class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ShortBreak);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ShortBreak);
   }
 
   @override
@@ -221,26 +256,32 @@ class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult work(),
-    @required TResult shortBreak(),
-    @required TResult longBreak(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() work,
+    required TResult Function() shortBreak,
+    required TResult Function() longBreak,
   }) {
-    assert(work != null);
-    assert(shortBreak != null);
-    assert(longBreak != null);
     return shortBreak();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult work(),
-    TResult shortBreak(),
-    TResult longBreak(),
-    @required TResult orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
   }) {
-    assert(orElse != null);
+    return shortBreak?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
+    required TResult orElse(),
+  }) {
     if (shortBreak != null) {
       return shortBreak();
     }
@@ -249,26 +290,32 @@ class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult work(Work value),
-    @required TResult shortBreak(ShortBreak value),
-    @required TResult longBreak(LongBreak value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Work value) work,
+    required TResult Function(ShortBreak value) shortBreak,
+    required TResult Function(LongBreak value) longBreak,
   }) {
-    assert(work != null);
-    assert(shortBreak != null);
-    assert(longBreak != null);
     return shortBreak(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult work(Work value),
-    TResult shortBreak(ShortBreak value),
-    TResult longBreak(LongBreak value),
-    @required TResult orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
   }) {
-    assert(orElse != null);
+    return shortBreak?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
+    required TResult orElse(),
+  }) {
     if (shortBreak != null) {
       return shortBreak(this);
     }
@@ -277,8 +324,8 @@ class _$ShortBreak extends ShortBreak with DiagnosticableTreeMixin {
 }
 
 abstract class ShortBreak extends Round {
-  const ShortBreak._() : super._();
   const factory ShortBreak() = _$ShortBreak;
+  const ShortBreak._() : super._();
 }
 
 /// @nodoc
@@ -298,6 +345,7 @@ class _$LongBreakCopyWithImpl<$Res> extends _$RoundCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
   const _$LongBreak() : super._();
 
@@ -314,7 +362,8 @@ class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LongBreak);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LongBreak);
   }
 
   @override
@@ -322,26 +371,32 @@ class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult work(),
-    @required TResult shortBreak(),
-    @required TResult longBreak(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() work,
+    required TResult Function() shortBreak,
+    required TResult Function() longBreak,
   }) {
-    assert(work != null);
-    assert(shortBreak != null);
-    assert(longBreak != null);
     return longBreak();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult work(),
-    TResult shortBreak(),
-    TResult longBreak(),
-    @required TResult orElse(),
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
   }) {
-    assert(orElse != null);
+    return longBreak?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? work,
+    TResult Function()? shortBreak,
+    TResult Function()? longBreak,
+    required TResult orElse(),
+  }) {
     if (longBreak != null) {
       return longBreak();
     }
@@ -350,26 +405,32 @@ class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult work(Work value),
-    @required TResult shortBreak(ShortBreak value),
-    @required TResult longBreak(LongBreak value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Work value) work,
+    required TResult Function(ShortBreak value) shortBreak,
+    required TResult Function(LongBreak value) longBreak,
   }) {
-    assert(work != null);
-    assert(shortBreak != null);
-    assert(longBreak != null);
     return longBreak(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult work(Work value),
-    TResult shortBreak(ShortBreak value),
-    TResult longBreak(LongBreak value),
-    @required TResult orElse(),
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
   }) {
-    assert(orElse != null);
+    return longBreak?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Work value)? work,
+    TResult Function(ShortBreak value)? shortBreak,
+    TResult Function(LongBreak value)? longBreak,
+    required TResult orElse(),
+  }) {
     if (longBreak != null) {
       return longBreak(this);
     }
@@ -378,6 +439,6 @@ class _$LongBreak extends LongBreak with DiagnosticableTreeMixin {
 }
 
 abstract class LongBreak extends Round {
-  const LongBreak._() : super._();
   const factory LongBreak() = _$LongBreak;
+  const LongBreak._() : super._();
 }

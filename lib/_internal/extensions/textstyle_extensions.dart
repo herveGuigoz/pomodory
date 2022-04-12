@@ -36,7 +36,7 @@ extension TextStyleExtensions on TextStyle {
   TextStyle size(double v) => copyWith(fontSize: v);
 
   /// Scales fontSize up or down
-  TextStyle scale(double v) => copyWith(fontSize: fontSize * v);
+  // TextStyle scale(double v) => copyWith(fontSize: fontSize * v);
 
   /// Shortcut for fontWeight
   TextStyle weight(FontWeight v) => copyWith(fontWeight: v);
@@ -74,9 +74,9 @@ extension TextStyleExtensions on TextStyle {
   /// Shortcut for decoration
   TextStyle textDecoration(
     TextDecoration v, {
-    Color color,
-    TextDecorationStyle style,
-    double thickness,
+    Color? color,
+    TextDecorationStyle? style,
+    double? thickness,
   }) =>
       copyWith(
         decoration: v,

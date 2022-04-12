@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/all.dart';
-
-import '../models/activity.dart';
-import '../models/task.dart';
-import '../views/settings/controllers/bloc.dart';
-import 'activity/logic/activity_manager.dart';
-import 'tasks/logic/task_controller.dart';
-import 'timer/timer_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomodory/models/activity.dart';
+import 'package:pomodory/models/task.dart';
+import 'package:pomodory/models/timer_state.dart';
+import 'package:pomodory/modules/activity/logic/activity_manager.dart';
+import 'package:pomodory/modules/tasks/logic/task_controller.dart';
+import 'package:pomodory/modules/timer/timer_controller.dart';
+import 'package:pomodory/views/settings/controllers/bloc.dart';
 
 export '../models/round.dart';
 export '../models/timer_state.dart';
 
-final activityManagerProvider = StateNotifierProvider((ref) {
-  return ActivityManager(ref.read);
-});
+final activityManagerProvider =
+    StateNotifierProvider<ActivityManager, List<Activity>>(
+  (ref) => ActivityManager(ref.read),
+);
 
-final timerControllerProvider = StateNotifierProvider<TimerController>((ref) {
-  final settings = ref.watch(settingsProvider.state);
-  final activityManager = ref.read(activityManagerProvider);
+final timerControllerProvider =
+    StateNotifierProvider<TimerController, TimerState>((ref) {
+  final settings = ref.watch(settingsProvider);
+  final activityManager = ref.read(activityManagerProvider.notifier);
   final controller = TimerController(settings, activityManager);
 
   return controller;
 });
 
 final currentRoundProvider = Provider((ref) {
-  return ref.watch(timerControllerProvider.state).currentRound;
+  return ref.watch(timerControllerProvider).currentRound;
 });
 
 final timerIsPlayingProvider = Provider.autoDispose<bool>((ref) {
-  final state = ref.watch(timerControllerProvider.state);
+  final state = ref.watch(timerControllerProvider);
   return state.isPlaying;
 });
 
@@ -53,15 +55,18 @@ final headlineProvider = Provider((ref) {
       );
 });
 
-final tasksController = StateNotifierProvider((ref) {
-  return TaskController();
-});
+final tasksController = StateNotifierProvider<TaskController, List<Task>>(
+  (ref) => TaskController(),
+);
 
-final taskProvider = ScopedProvider<Task>(null);
+final taskProvider = Provider<Task>((ref) => throw UnimplementedError());
 
-final selectedTaskProvider = Provider((ref) {
-  final controller = ref.watch(tasksController.state);
-  return controller.firstWhere((task) => task.selected, orElse: () => null);
+final selectedTaskProvider = Provider<Task?>((ref) {
+  final controller = ref.watch(tasksController);
+  if (controller.any((task) => task.selected)) {
+    return controller.firstWhere((task) => task.selected);
+  }
+  return null;
 });
 
 final selectedProjectProvider = Provider<String>((ref) {
